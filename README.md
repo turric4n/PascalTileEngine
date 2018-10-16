@@ -4,7 +4,7 @@ Pascal binding for Tilengine 2D retro graphics engine
 *****************************************************************************
 * Delphi/FreePascal Tilengine wrapper - Up to date to library version 1.20
 * http://www.tilengine.org
-* 
+* https://github.com/turric4n/PascalTileEngine
 *****************************************************************************
 Copyright (c) 2018 Enrique Fuentes (aka Turric4n) - thanks to Marc Palacios for
 this great project.
