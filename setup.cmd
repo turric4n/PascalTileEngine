@@ -2,7 +2,7 @@
 if exist .git (
   echo initializing dependancies
   call initsubmodules.cmd
-  call src/deps/makelibtileengine.cmd
+  call src/deps/makelibtilengine.cmd
 )
 if %libraryfail% == 1 (
   echo Cannot compile Tilengine library automatically... You need Visual Studio Community 2017 in the default path. Don't worry you can compile libary manually with VC++ or GCC32
