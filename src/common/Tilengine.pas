@@ -38,10 +38,11 @@ uses
   {$ENDIF}
 
   const
-   {$IFDEF WINDOWS}
-     LIB = 'Tilengine.dll';
-   {$ELSE}
+    //Binary dependancies
+   {$IFNDEF MSWINDOWS}
      LIB = 'libTilengine.so';
+   {$ELSE}
+     LIB = 'Tilengine.dll';
    {$ENDIF}
 
 type
@@ -972,6 +973,9 @@ type
       procedure SetSprites(const Value: TArray<TSprite>);
       procedure SetVersion(const Value: UInt32);
       procedure SetWidth(const Value: Integer);
+      function GetLayers : TArray<TLayer>;
+      function GetSprites : TArray<TSprite>;
+      function GetAnimations : TArray<TAnimation>;
       function GetNumObjects: UInt32;
       function GetUsedMemory: UInt32;
       procedure SetBackgroundBitmap(const Value: TBitmap);
@@ -983,9 +987,9 @@ type
       /// <param name="success"></param>
       class procedure ThrowException(success : Boolean);
     public
-      property Layers : TArray<TLayer> write SetLayers;
-      property Sprites : TArray<TSprite> write SetSprites;
-      property Animation : TArray<TAnimation> write SetAnimation;
+      property Layers : TArray<TLayer> read GetLayers write SetLayers;
+      property Sprites : TArray<TSprite> read GetSprites write SetSprites;
+      property Animation : TArray<TAnimation> read GetAnimations write SetAnimation;
       property Width : Integer write SetWidth;
       property Height : Integer write SetHeight;
       property Version : UInt32 write SetVersion;
@@ -1227,6 +1231,11 @@ begin
   Result := TLN_DrawNextScanline;
 end;
 
+function TEngine.GetAnimations: TArray<TAnimation>;
+begin
+  Result := FAnimations;
+end;
+
 function TEngine.GetAvailableSprite: TSprite;
 var
   index : Integer;
@@ -1236,9 +1245,19 @@ begin
   Result := FSprites[index];
 end;
 
+function TEngine.GetLayers: TArray<TLayer>;
+begin
+  Result := FLayers;
+end;
+
 function TEngine.GetNumObjects: UInt32;
 begin
   Result := TLN_GetNumObjects;
+end;
+
+function TEngine.GetSprites: TArray<TSprite>;
+begin
+  Result := FSprites;
 end;
 
 function TEngine.GetUsedMemory: UInt32;

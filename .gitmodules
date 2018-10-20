@@ -1,0 +1,3 @@
+[submodule "src/deps/tilengine"]
+	path = src/deps/tilengine
+	url = https://github.com/megamarc/Tilengine.git

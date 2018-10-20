@@ -10,11 +10,12 @@ uses
   {$ELSE}
   System.SysUtils,
   {$ENDIF }
-  Tilengine in '..\common\Tilengine.pas';
+  Tilengine in '..\..\common\Tilengine.pas';
 
 begin
   try
     { TODO -oUser -cConsole Main : Insert code here }
+    Writeln('Tilengine pascal Wrapper is compiled succesfully');
   except
     on E: Exception do
       Writeln(E.ClassName, ': ', E.Message);
