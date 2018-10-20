@@ -31,7 +31,6 @@ unit Tilengine;
 interface
 
 uses
-  TilengineLibraryMappings,
   {$IFDEF DELPHI}
   System.SysUtils;
   {$ELSE}
