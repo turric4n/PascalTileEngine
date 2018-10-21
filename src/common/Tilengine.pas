@@ -289,12 +289,12 @@ type
   /// <summary>
   /// Video callback aka function pointer
   /// </summary>
-  TVideocallback = procedure(line : Integer);
+  TVideocallback = procedure(line : Integer); cdecl;
 
   /// <summary>
   /// Callback aka function pointer
   /// </summary>
-  TBlendFunction = procedure(src, dst : Byte);
+  TBlendFunction = procedure(src, dst : Byte); cdecl;
 
   //TLN Library Bindings don't use these externals directly
   //ENGINE BINDINGS
@@ -330,11 +330,11 @@ type
   procedure TLN_SetWindowTitle(const title : PAnsiChar) cdecl; external LIB name 'TLN_SetWindowTitle';
   function TLN_ProcessWindow : Boolean; cdecl; external LIB name 'TLN_ProcessWindow';
   function TLN_IsWindowActive : Boolean; cdecl; external LIB name 'TLN_IsWindowActive';
-  function TLN_GetInput(id : TInput) : Boolean; cdecl; external LIB name 'TLN_GetInput';
-  procedure TLN_EnableInput(player : TPlayer; enable : Boolean) cdecl; external LIB name 'TLN_EnableInput';
-  procedure TLN_AssignInputJoystick(player : TPlayer; index : Integer) cdecl; external LIB name 'TLN_AssignInputJoystick';
-  procedure TLN_DefineInputKey(player : TPlayer; input : TInput; keycode : Integer) cdecl; external LIB name 'TLN_DefineInputKey';
-  procedure TLN_DefineInputButton(player : TPlayer; input : TInput; joybutton : Byte) cdecl; external LIB name 'TLN_DefineInputButton';
+  function TLN_GetInput(id : PInteger) : Boolean; cdecl; external LIB name 'TLN_GetInput';
+  procedure TLN_EnableInput(player : PInteger; enable : Boolean) cdecl; external LIB name 'TLN_EnableInput';
+  procedure TLN_AssignInputJoystick(player : PInteger; index : Integer) cdecl; external LIB name 'TLN_AssignInputJoystick';
+  procedure TLN_DefineInputKey(player : PInteger; input : PInteger; keycode : Integer) cdecl; external LIB name 'TLN_DefineInputKey';
+  procedure TLN_DefineInputButton(player : PInteger; input : PInteger; joybutton : Byte) cdecl; external LIB name 'TLN_DefineInputButton';
   procedure TLN_DrawFrame(time : Integer) cdecl; external LIB name 'TLN_DrawFrame';
   procedure TLN_WaitRedraw cdecl; external LIB name 'TLN_WaitRedraw';
   procedure TLN_DeleteWindow cdecl; external LIB name 'TLN_DeleteWindow';
@@ -364,26 +364,26 @@ type
   function TLN_DisableLayer(nlayer : Integer) : Boolean; cdecl; external LIB name 'TLN_DisableLayer';
   function TLN_GetLayerPalette(nlayer : Integer) : PInteger; cdecl; external LIB name 'TLN_GetLayerPalette';
   function TLN_GetLayerTile(nlayer, x, y : Integer; out info : TTileInfo) : Boolean; cdecl; external LIB name 'TLN_GetLayerTile';
-  function TLN_GetLayerWidth(nlayer : Integer) : Integer; cdecl; external LIB name 'TLN_GetLayerWidth';  
+  function TLN_GetLayerWidth(nlayer : Integer) : Integer; cdecl; external LIB name 'TLN_GetLayerWidth';
   function TLN_GetLayerHeight(nlayer : Integer) : Integer; cdecl; external LIB name 'TLN_GetLayerHeight';
   //SPRITE BINDINGS
   function TLN_ConfigSprite(nsprite : Integer; spriteset : PInteger; flags : TTileFlags) : Boolean; cdecl; external LIB name 'TLN_ConfigSprite';
   function TLN_SetSpriteSet(nsprite : Integer; spriteset : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetSpriteSet';
-  function TLN_SetSpriteFlags(nsprite : Integer; flags : TTileFlags) : Boolean; cdecl; external LIB name 'TLN_SetSpriteFlags';
+  function TLN_SetSpriteFlags(nsprite : Integer; flags : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetSpriteFlags';
   function TLN_SetSpritePosition(nsprite, x, y : Integer) : Boolean; cdecl; external LIB name 'TLN_SetSpritePosition';
   function TLN_SetSpritePicture(nsprite, entry : Integer) : Boolean; cdecl; external LIB name 'TLN_SetSpritePicture';
   function TLN_SetSpritePalette(nsprite : Integer; Palette : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetSpritePalette';
-  function TLN_SetSpriteBlendMode(nsprite : Integer; mode : TBlend; factor : Byte) : Boolean; cdecl; external LIB name 'TLN_SetSpriteBlendMode';
+  function TLN_SetSpriteBlendMode(nsprite : Integer; mode : PInteger; factor : Byte) : Boolean; cdecl; external LIB name 'TLN_SetSpriteBlendMode';
   function TLN_SetSpriteScaling(nsprite : Integer; sx, sy : Single) : Boolean; cdecl; external LIB name 'TLN_SetSpriteScaling';  
   function TLN_ResetSpriteScaling(nsprite : Integer) : Boolean; cdecl; external LIB name 'TLN_ResetSpriteScaling';
   function TLN_GetSpritePicture(nsprite : Integer) : Integer; cdecl; external LIB name 'TLN_GetSpritePicture'; 
-  function TLN_EnableSpriteCollision(nsprite : Integer; enable : Boolean) : Boolean; cdecl; external LIB name 'TLN_EnableSpriteCollision'; 
+  function TLN_EnableSpriteCollision(nsprite : Integer; enable : Boolean) : Boolean; cdecl; external LIB name 'TLN_EnableSpriteCollision';
   function TLN_GetSpriteCollision(nsprite : Integer) : Boolean; cdecl; external LIB name 'TLN_GetSpriteCollision';   
   function TLN_DisableSprite(nsprite : Integer) : Boolean; cdecl; external LIB name 'TLN_DisableSprite';
-  function TLN_GetSpritePalette(nsprite : Integer) : PInteger; cdecl; external LIB name 'TLN_GetSpritePalette'; 
+  function TLN_GetSpritePalette(nsprite : Integer) : PInteger; cdecl; external LIB name 'TLN_GetSpritePalette';
   //ANIMATION BINDINGS
-  function TLN_SetPaletteAnimation(index : Integer; palette, sequence : Pinteger; blend : Boolean) : Boolean; cdecl; external LIB name 'TLN_SetPaletteAnimation';
-  function TLN_SetPaletteAnimationSource(index : Integer; palette : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetPaletteAnimationSource';  
+  function TLN_SetPaletteAnimation(index : Integer; palette, sequence : PInteger; blend : Boolean) : Boolean; cdecl; external LIB name 'TLN_SetPaletteAnimation';
+  function TLN_SetPaletteAnimationSource(index : Integer; palette : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetPaletteAnimationSource';
   function TLN_SetTilemapAnimation(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetTilemapAnimation';    
   function TLN_SetTilesetAnimation(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetTilesetAnimation';
   function TLN_SetSpriteAnimation(index, nlayer : Integer; sequence : PInteger; loop : Integer) : Boolean; cdecl; external LIB name 'TLN_SetSpriteAnimation';  
@@ -682,6 +682,9 @@ type
   /// <summary>
   /// Tilemap resource
   /// </summary>
+
+  { TTilemap }
+
   TTilemap = class
     private
       ptr : PInteger;
@@ -966,25 +969,16 @@ type
       class var finstance : TEngine;
       class var finit : Boolean;
       FVersion: UInt32;
-      FAnimations: TArray<TAnimation>;
-      FSprites : TArray<TSprite>;
-      FLayers : TArray<TLayer>;
       FHeight : Integer;
       FWidth : Integer;
       //Hidden constructor for Singleton Pattern
       constructor Create(numLayers, numSprites, numAnimations : Integer);
-      procedure SetAnimation(const Value: TArray<TAnimation>);
-      procedure SetHeight(const Value: Integer);
-      procedure SetLayers(const Value: TArray<TLayer>);
-      procedure SetSprites(const Value: TArray<TSprite>);
       procedure SetVersion(const Value: UInt32);
       procedure SetWidth(const Value: Integer);
+      procedure SetHeight(const Value: Integer);
       function GetWidth : Integer;
       function GetHeight : Integer;
       function GetVersion : UInt32;
-      function GetLayers : TArray<TLayer>;
-      function GetSprites : TArray<TSprite>;
-      function GetAnimations : TArray<TAnimation>;
       function GetNumObjects: UInt32;
       function GetUsedMemory: UInt32;
       procedure SetBackgroundBitmap(const Value: TBitmap);
@@ -996,9 +990,9 @@ type
       /// <param name="success"></param>
       class procedure ThrowException(success : Boolean);
     public
-      property Layers : TArray<TLayer> read GetLayers write SetLayers;
-      property Sprites : TArray<TSprite> read GetSprites write SetSprites;
-      property Animation : TArray<TAnimation> read GetAnimations write SetAnimation;
+      Animations : TArray<TAnimation>;
+      Layers : TArray<TLayer>;
+      Sprites : TArray<TSprite>;
       property Width : Integer read GetWidth write SetWidth;
       property Height : Integer read GetHeight write SetHeight;
       property Version : UInt32 read GetVersion write SetVersion;
@@ -1214,12 +1208,12 @@ constructor TEngine.Create(numLayers, numSprites, numAnimations: Integer);
 var
   c: Integer;
 begin
-  SetLength(FLayers, numLayers);
-  for c := 0 to numLayers - 1 do FLayers[0] := TLayer.Create(c);
-  SetLength(FSprites, numSprites);
-  for c := 0 to numSprites - 1 do FSprites[c] := TSprite.Create(c);
-  SetLength(FAnimations, numAnimations);
-  for c := 0 to numAnimations - 1 do FAnimations[c] := TAnimation.Create(c);
+  SetLength(layers, numLayers);
+  for c := 0 to numLayers - 1 do layers[c] := TLayer.Create(c);
+  SetLength(sprites, numSprites);
+  for c := 0 to numSprites - 1 do sprites[c] := TSprite.Create(c);
+  SetLength(Animations, numAnimations);
+  for c := 0 to numAnimations - 1 do Animations[c] := TAnimation.Create(c);
   Width := 0;
   Height := 0;
   Version := 0;
@@ -1240,18 +1234,13 @@ begin
   Result := TLN_DrawNextScanline;
 end;
 
-function TEngine.GetAnimations: TArray<TAnimation>;
-begin
-  Result := FAnimations;
-end;
-
 function TEngine.GetAvailableSprite: TSprite;
 var
   index : Integer;
 begin
   index := TLN_GetAvailableSprite;
   ThrowException(index <> -1);
-  Result := FSprites[index];
+  Result := sprites[index];
 end;
 
 function TEngine.GetHeight: Integer;
@@ -1259,19 +1248,9 @@ begin
   Result := fheight;
 end;
 
-function TEngine.GetLayers: TArray<TLayer>;
-begin
-  Result := FLayers;
-end;
-
 function TEngine.GetNumObjects: UInt32;
 begin
   Result := TLN_GetNumObjects;
-end;
-
-function TEngine.GetSprites: TArray<TSprite>;
-begin
-  Result := FSprites;
 end;
 
 function TEngine.GetUsedMemory: UInt32;
@@ -1289,11 +1268,6 @@ begin
   Result := fwidth;
 end;
 
-procedure TEngine.SetAnimation(const Value: TArray<TAnimation>);
-begin
-  FAnimations := Value;
-end;
-
 procedure TEngine.SetBackgroundBitmap(const Value: TBitmap);
 var
   ok : Boolean;
@@ -1308,7 +1282,7 @@ end;
 
 procedure TEngine.SetBackgroundColor(const value: TColor);
 begin
-  TLN_SetBGColor(value.B, value.G, value.B);
+  TLN_SetBGColor(value.R, value.G, value.B);
 end;
 
 procedure TEngine.SetBackgroundPalette(const Value: TPalette);
@@ -1325,17 +1299,12 @@ end;
 
 procedure TEngine.SetFrameCallback(callback: TVideocallback);
 begin
-  TLN_SetFrameCallback(callback);
+  TLN_SetFrameCallback(@callback);
 end;
 
 procedure TEngine.SetHeight(const Value: Integer);
 begin
   FHeight := Value;
-end;
-
-procedure TEngine.SetLayers(const Value: TArray<TLayer>);
-begin
-  FLayers := Value;
 end;
 
 procedure TEngine.SetLoadPath(const Value: PAnsiChar);
@@ -1345,17 +1314,12 @@ end;
 
 procedure TEngine.SetRasterCallback(callback: TVideocallback);
 begin
-  TLN_SetRasterCallback(callback);
+  TLN_SetRasterCallback(@callback);
 end;
 
 procedure TEngine.SetRenderTarget(data: TByteArray; pitch: Integer);
 begin
   TLN_SetRenderTarget(data, pitch);
-end;
-
-procedure TEngine.SetSprites(const Value: TArray<TSprite>);
-begin
-  FSprites := Value;
 end;
 
 procedure TEngine.SetVersion(const Value: UInt32);
@@ -1403,7 +1367,7 @@ end;
 
 procedure TWindow.AssignInputJoystick(player: TPlayer; index: Integer);
 begin
-  TLN_AssignInputJoystick (player, index);
+  TLN_AssignInputJoystick(PInteger(player), index);
 end;
 
 procedure TWindow.BeginFrame(frame: Integer);
@@ -1419,13 +1383,13 @@ end;
 procedure TWindow.DefineInputButton(player: TPlayer; input: TInput;
   joybutton: Byte);
 begin
-  TLN_DefineInputButton (player, input, joybutton);
+  TLN_DefineInputButton(PInteger(player), PInteger(input), joybutton);
 end;
 
 procedure TWindow.DefineInputKey(player: TPlayer; input: TInput;
   keycode: Integer);
 begin
-  TLN_DefineInputKey (player, input, keycode);
+  TLN_DefineInputKey(PInteger(player), PInteger(input), keycode);
 end;
 
 procedure TWindow.Delay(msecs: Word);
@@ -1456,7 +1420,7 @@ end;
 
 procedure TWindow.EnableInput(player: TPlayer; enable: Boolean);
 begin
-  TLN_EnableInput(player, enable);
+  TLN_EnableInput(PInteger(player), enable);
 end;
 
 procedure TWindow.EndFrame;
@@ -1471,7 +1435,7 @@ end;
 
 function TWindow.GetInput(ID: TInput): Boolean;
 begin
-  Result := TLN_GetInput(id);
+  Result := TLN_GetInput(Pinteger(ID));
 end;
 
 function TWindow.GetTicks: Word;
@@ -1614,7 +1578,7 @@ procedure TLayer.SetBlendMode(const Value: TBlend);
 var
   ok : Boolean;
 begin
-  ok := TLN_SetSpriteBlendMode(findex, value, 0);
+  ok := TLN_SetSpriteBlendMode(findex, PInteger(value), 0);
   TEngine.ThrowException(ok);
 end;
 
@@ -1730,7 +1694,7 @@ procedure TSprite.SetBlendMode(value: TBlend);
 var
   ok : Boolean;
 begin
-  ok := TLN_SetSpriteBlendMode(findex, value, 0);
+  ok := TLN_SetSpriteBlendMode(findex, PInteger(value), 0);
   TEngine.ThrowException(ok);
 end;
 
@@ -1738,7 +1702,7 @@ procedure TSprite.SetFlags(value: TTileFlags);
 var
   ok : Boolean;
 begin
-  ok := TLN_SetSpriteFlags(findex, value);
+  ok := TLN_SetSpriteFlags(findex, PInteger(value));
   TEngine.ThrowException(ok);
 end;
 
@@ -2294,7 +2258,7 @@ end;
 
 constructor TSequence.Create(res: PInteger);
 begin
-  res := ptr;
+  ptr := res;
 end;
 
 constructor TSequence.Create(name: PAnsiChar; target: Integer;

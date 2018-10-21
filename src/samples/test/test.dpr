@@ -1,4 +1,18 @@
+{******************************************************************************
+*
+* Pascal Tilengine sample
+* Copyright (c) 2018 Enrique Fuentes (aka Turric4n) - thanks to Marc Palacios for
+*  this great project.
+* http://www.tilengine.org
+*
+* This example show a basic initialization example. Engine, Window and
+* foreground tilemap layer with animation.
+*
+******************************************************************************}
+
 program test;
+
+{$APPTYPE GUI}
 
 uses
   {$IFDEF FPC}
@@ -21,7 +35,7 @@ begin
   foreground := TTilemap.FromFile('Sonic_md_fg1.tmx', '');
   engine.Layers[0].SetMap(foreground);
   //Main Loop
-  window := TWindow.Singleton('', TWindowsFlags.Vsync);
+  window := TWindow.Singleton('', TWindowsFlags.VSync);
   frame := 0;
   while window.Process do
   begin
@@ -31,11 +45,6 @@ begin
 end;
 
 begin
-  try
-    Main;
-  except
-    on E: Exception do
-      Writeln(E.ClassName, ': ', E.Message);
-  end;
+  Main;
 end.
 

@@ -12,7 +12,7 @@
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="TilengineProject"/>
+      <Title Value="test"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
@@ -34,7 +34,7 @@
     </RequiredPackages>
     <Units Count="1">
       <Unit0>
-        <Filename Value="TilengineProject.dpr"/>
+        <Filename Value="test.dpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
     </Units>
@@ -44,7 +44,7 @@
     <PathDelim Value="\"/>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <UnitOutputDirectory Value="..\..\..\bin\package\$(TargetCPU)-$(TargetOS)"/>
+      <UnitOutputDirectory Value="..\..\..\bin\package\fpc\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>
