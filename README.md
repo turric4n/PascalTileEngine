@@ -9,6 +9,7 @@ Pascal bindings for Tilengine 2D retro graphics engine
 * http://www.tilengine.org
 * https://github.com/turric4n/PascalTileEngine
 *****************************************************************************
+
 Copyright (c) 2018 Enrique Fuentes (aka Turric4n) - thanks to Marc Palacios for
 this great project.
 
@@ -29,4 +30,29 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+# Contents
+- [Features](#features)
+- [Installing](#installing)
+    - [Windows](#windows)
+    - [Unix-like](#unix-like)
+
+# Features
+* Written in portable Pascal (FPC and Delphi)
+* LGPL v2.1 license: free for any project, including commercial ones
+* Cross platform: available builds for Windows (32/64), Linux PC(32/64), Mac OS X and Raspberry Pi using FPC
+* High performance: Wrapper is made using native lightweight OOP Pascal (no VM or garbage collector environment)
+
+# Installing
+Setup will checkout dependancies and will try to build everything to work with native library.
+
+## Windows
+```
+> setup.cmd
+```
+
+## Debian-based linux
+```
+> sudo ./setup
+```
 
