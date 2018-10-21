@@ -36,4 +36,4 @@ if %libraryfail% == 1 (
 goto :buildpascal
 
 :eof
-echo acaba
+echo Finished.
