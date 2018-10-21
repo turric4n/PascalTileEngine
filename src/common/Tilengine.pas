@@ -354,7 +354,7 @@ type
   //function TLN_SetLayerScaling(nlayer : Integer; xfactor, yfactor : Single) : Boolean; cdecl; external LIB name 'TLN_SetLayerScaling';
   function TLN_SetLayerTransform(nlayer : Integer; angle, dx, dy, sx, sy : Single) : Boolean; cdecl; external LIB name 'TLN_SetLayerTransform';
   function TLN_SetLayerPixelMapping(nlayer : Integer; table : TArray<TPixelMap>) : Boolean; cdecl; external LIB name 'TLN_SetLayerPixelMapping'; 
-  function TLN_SetLayerBlendMode(nlayer : Integer; mode : TBlend; factor : Byte) : Boolean; cdecl; external LIB name 'TLN_SetLayerBlendMode';   
+  function TLN_SetLayerBlendMode(nlayer : Integer; mode : PInteger; factor : Byte) : Boolean; cdecl; external LIB name 'TLN_SetLayerBlendMode';
   function TLN_SetLayerColumnOffset(nlayer : Integer; offset : TIntArray) : Boolean; cdecl; external LIB name 'TLN_SetLayerColumnOffset';
   function TLN_SetLayerClip(nlayer, x1, y1, x2, y2 : Integer) : Boolean; cdecl; external LIB name 'TLN_SetLayerClip';     
   function TLN_DisableLayerClip(nlayer : Integer) : Boolean; cdecl; external LIB name 'TLN_DisableLayerClip'; 
@@ -367,7 +367,7 @@ type
   function TLN_GetLayerWidth(nlayer : Integer) : Integer; cdecl; external LIB name 'TLN_GetLayerWidth';
   function TLN_GetLayerHeight(nlayer : Integer) : Integer; cdecl; external LIB name 'TLN_GetLayerHeight';
   //SPRITE BINDINGS
-  function TLN_ConfigSprite(nsprite : Integer; spriteset : PInteger; flags : TTileFlags) : Boolean; cdecl; external LIB name 'TLN_ConfigSprite';
+  function TLN_ConfigSprite(nsprite : Integer; spriteset : PInteger; flags : PInteger) : Boolean; cdecl; external LIB name 'TLN_ConfigSprite';
   function TLN_SetSpriteSet(nsprite : Integer; spriteset : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetSpriteSet';
   function TLN_SetSpriteFlags(nsprite : Integer; flags : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetSpriteFlags';
   function TLN_SetSpritePosition(nsprite, x, y : Integer) : Boolean; cdecl; external LIB name 'TLN_SetSpritePosition';
@@ -395,7 +395,7 @@ type
   function TLN_CreateSpriteset(bitmap : PInteger; rects : TArray<TSpriteData>; entries : Integer) : PInteger; cdecl; external LIB name 'TLN_CreateSpriteset';
   function TLN_LoadSpriteset(name : PAnsiChar) : PInteger; cdecl; external LIB name 'TLN_LoadSpriteset';
   function TLN_CloneSpriteset(src : PInteger) : PInteger; cdecl; external LIB name 'TLN_CloneSpriteset';
-  function TLN_GetSpriteInfo(spriteset : PInteger; entry : Integer; info : TSpriteInfo) : Boolean; cdecl; external LIB name 'TLN_GetSpriteInfo';   
+  function TLN_GetSpriteInfo(spriteset : PInteger; entry : Integer; info : PSpriteInfo) : Boolean; cdecl; external LIB name 'TLN_GetSpriteInfo';
   function TLN_GetSpritesetPalette(spriteset : PInteger) : PInteger; cdecl; external LIB name 'TLN_GetSpritesetPalette';
   function TLN_FindSpritesetSprite(spriteset : PInteger; name : PAnsiChar) : Integer; cdecl; external LIB name 'TLN_FindSpritesetSprite';
   function TLN_SetSpritesetData(spriteset : PInteger; entry : Integer; data : TArray<TSpriteData>; pixels : PInteger; pitch : Integer) : Boolean; cdecl; external LIB name 'TLN_SetSpritesetData';
@@ -743,6 +743,7 @@ type
       /// <param name="dstCol"></param>
       procedure CopyTiles(srcRow, srcCol, rows, cols : Integer; dst : TTilemap; dstRow, dstCol : Integer);
       procedure Delete;
+      destructor Destroy; override;
   end;
 
   /// <summary>
@@ -1087,6 +1088,22 @@ type
       /// </summary>
       /// <returns></returns>
       function GetAvailableSprite : TSprite;
+      /// <summary>
+      /// Init engine sprite array. WARNING! If you call this method you will current sprites
+      /// </summary>
+      /// <returns></returns>
+      procedure InitSprites(count : Integer);
+      /// <summary>
+      /// Init engine layers array. WARNING! If you call this method you will current layers
+      /// </summary>
+      /// <returns></returns>
+      procedure InitLayers(count : Integer);
+      /// <summary>
+      /// Init engine animations array. WARNING! If you call this method you will current animations
+      /// </summary>
+      /// <returns></returns>
+      procedure InitAnimations(count : Integer);
+      destructor Destroy; override;
   end;
 
   /// <summary>
@@ -1184,6 +1201,7 @@ type
       procedure DisableCRTEffect;
       procedure Delay(msecs : Word);
       procedure Delete;
+      destructor Destroy; override;
   end;
 
 implementation
@@ -1208,12 +1226,9 @@ constructor TEngine.Create(numLayers, numSprites, numAnimations: Integer);
 var
   c: Integer;
 begin
-  SetLength(layers, numLayers);
-  for c := 0 to numLayers - 1 do layers[c] := TLayer.Create(c);
-  SetLength(sprites, numSprites);
-  for c := 0 to numSprites - 1 do sprites[c] := TSprite.Create(c);
-  SetLength(Animations, numAnimations);
-  for c := 0 to numAnimations - 1 do Animations[c] := TAnimation.Create(c);
+  InitLayers(numLayers);
+  InitSprites(numSprites);
+  InitAnimations(numAnimations);
   Width := 0;
   Height := 0;
   Version := 0;
@@ -1222,6 +1237,12 @@ end;
 procedure TEngine.Deinit;
 begin
   TLN_Deinit;
+end;
+
+destructor TEngine.Destroy;
+begin
+  Deinit;
+  inherited;
 end;
 
 procedure TEngine.DisableBackgroundColor;
@@ -1266,6 +1287,30 @@ end;
 function TEngine.GetWidth: Integer;
 begin
   Result := fwidth;
+end;
+
+procedure TEngine.InitAnimations(count: Integer);
+var
+  c : Integer;
+begin
+  SetLength(animations, count);
+  for c := 0 to count - 1 do animations[c] := TAnimation.Create(c);
+end;
+
+procedure TEngine.InitLayers(count: Integer);
+var
+  c : Integer;
+begin
+  SetLength(layers, count);
+  for c := 0 to count - 1 do layers[c] := TLayer.Create(c);
+end;
+
+procedure TEngine.InitSprites(count: Integer);
+var
+  c : Integer;
+begin
+  SetLength(sprites, count);
+  for c := 0 to count - 1 do sprites[c] := TSprite.Create(c);
 end;
 
 procedure TEngine.SetBackgroundBitmap(const Value: TBitmap);
@@ -1400,6 +1445,12 @@ end;
 procedure TWindow.Delete;
 begin
   TLN_DeleteWindow;
+end;
+
+destructor TWindow.Destroy;
+begin
+  Delete;
+  inherited;
 end;
 
 procedure TWindow.DisableCRTEffect;
@@ -1562,7 +1613,7 @@ procedure TLayer.Reset;
 var
   ok : Boolean;
 begin
-  ok := TLN_ResetSpriteScaling(findex);
+  ok := TLN_ResetLayerMode(findex);
   TEngine.ThrowException(ok);
 end;
 
@@ -1578,7 +1629,7 @@ procedure TLayer.SetBlendMode(const Value: TBlend);
 var
   ok : Boolean;
 begin
-  ok := TLN_SetSpriteBlendMode(findex, PInteger(value), 0);
+  ok := TLN_SetLayerBlendMode(findex, PInteger(value), 128);
   TEngine.ThrowException(ok);
 end;
 
@@ -1750,7 +1801,7 @@ procedure TSprite.Setup(spriteset: TSpriteset; flags: TTileFlags);
 var
   ok : Boolean;
 begin
-  ok := TLN_ConfigSprite(findex, spriteset.ptr, flags);
+  ok := TLN_ConfigSprite(findex, spriteset.ptr, PInteger(flags));
   TEngine.ThrowException(ok);
 end;
 
@@ -1882,7 +1933,7 @@ var
   ok : Boolean;
   retval : TSpriteInfo;
 begin
-  ok := TLN_GetSpriteInfo(ptr, index, retval);
+  ok := TLN_GetSpriteInfo(ptr, index, @retval);
   TEngine.ThrowException(ok);
   Result := retval;
 end;
@@ -2025,6 +2076,12 @@ begin
   ok := TLN_DeleteTilemap(ptr);
   TEngine.ThrowException(ok);
   ptr := nil;
+end;
+
+destructor TTilemap.Destroy;
+begin
+  Delete;
+  inherited;
 end;
 
 class function TTilemap.FromFile(filename, layername: PAnsiChar): TTilemap;
