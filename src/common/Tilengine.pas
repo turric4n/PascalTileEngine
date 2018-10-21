@@ -281,7 +281,10 @@ type
   /// <summary>
   /// Generic Tilengine exception
   /// </summary>
-  TTilengineException = Exception;
+  TTilengineException = class(Exception)
+    public
+      constructor Create(const msg : string);
+  end;
 
   /// <summary>
   /// Video callback aka function pointer
@@ -317,7 +320,7 @@ type
   function TLN_DrawNextScanline : Boolean; cdecl; external LIB name 'TLN_DrawNextScanline';
   procedure TLN_SetLastError(error : TError) cdecl; external LIB name 'TLN_SetLastError';
   function TLN_GetLastError : TError; cdecl; external LIB name 'TLN_GetLastError';
-  function TLN_GetErrorString(error : TError) : PAnsiChar; cdecl; external LIB name 'TLN_GetLastError';
+  function TLN_GetErrorString(error : TError) : PAnsiChar; cdecl; external LIB name 'TLN_GetErrorString';
   function TLN_GetAvailableSprite : Integer; cdecl; external LIB name 'TLN_GetAvailableSprite';
   procedure TLN_SetLoadPath(path : PAnsiChar) cdecl; external LIB name 'TLN_SetLoadPath';
   procedure TLN_SetCustomBlendFunction(customfunction : TBlendFunction) cdecl; external LIB name 'TLN_SetCustomBlendFunction';
@@ -973,6 +976,9 @@ type
       procedure SetSprites(const Value: TArray<TSprite>);
       procedure SetVersion(const Value: UInt32);
       procedure SetWidth(const Value: Integer);
+      function GetWidth : Integer;
+      function GetHeight : Integer;
+      function GetVersion : UInt32;
       function GetLayers : TArray<TLayer>;
       function GetSprites : TArray<TSprite>;
       function GetAnimations : TArray<TAnimation>;
@@ -990,9 +996,9 @@ type
       property Layers : TArray<TLayer> read GetLayers write SetLayers;
       property Sprites : TArray<TSprite> read GetSprites write SetSprites;
       property Animation : TArray<TAnimation> read GetAnimations write SetAnimation;
-      property Width : Integer write SetWidth;
-      property Height : Integer write SetHeight;
-      property Version : UInt32 write SetVersion;
+      property Width : Integer read GetWidth write SetWidth;
+      property Height : Integer read GetHeight write SetHeight;
+      property Version : UInt32 read GetVersion write SetVersion;
       /// <summary>
       /// Base path for all data loading .FromFile() static methods
       /// </summary>
@@ -1205,12 +1211,12 @@ constructor TEngine.Create(numLayers, numSprites, numAnimations: Integer);
 var
   c: Integer;
 begin
-  SetLength(FLayers, numLayers);
-  for c := 0 to numLayers - 1 do FLayers[c].findex := c;
-  SetLength(FLayers, numLayers);
-  for c := 0 to numSprites - 1 do FSprites[c].findex := c;
-  SetLength(FLayers, numLayers);
-  for c := 0 to numAnimations - 1 do FAnimations[c].findex := c;
+//  SetLength(FLayers, numLayers);
+//  for c := 0 to numLayers - 1 do FLayers[c].findex := c;
+//  SetLength(FSprites, numSprites);
+//  for c := 0 to numSprites - 1 do FSprites[c].findex := c;
+//  SetLength(FAnimations, numAnimations);
+//  for c := 0 to numAnimations - 1 do FAnimations[c].findex := c;
   Width := 0;
   Height := 0;
   Version := 0;
@@ -1245,6 +1251,11 @@ begin
   Result := FSprites[index];
 end;
 
+function TEngine.GetHeight: Integer;
+begin
+  Result := fheight;
+end;
+
 function TEngine.GetLayers: TArray<TLayer>;
 begin
   Result := FLayers;
@@ -1263,6 +1274,16 @@ end;
 function TEngine.GetUsedMemory: UInt32;
 begin
   Result := TLN_GetUsedMemory;
+end;
+
+function TEngine.GetVersion: UInt32;
+begin
+  Result := fversion;
+end;
+
+function TEngine.GetWidth: Integer;
+begin
+  Result := fwidth;
 end;
 
 procedure TEngine.SetAnimation(const Value: TArray<TAnimation>);
@@ -1353,7 +1374,7 @@ begin
     retval := TLN_Init(Hres, Vres, numLayers, numSprites, numAnimations);
     TEngine.ThrowException(retval);
     finit := True;
-    finstance := TEngine.Create(numLayers, numSprites, numAnimations);
+    finstance := Create(numLayers, numSprites, numAnimations);
     finstance.Width := Hres;
     finstance.Height := Vres;
     finstance.Version := TLN_GetVersion;
@@ -1364,12 +1385,13 @@ end;
 class procedure TEngine.ThrowException(success: Boolean);
 var
   error : TError;
-  name : string;
+  name : PAnsiChar;
 begin
   if not success then
   begin
     error := TLN_GetLastError;
     name := TLN_GetErrorString(error);
+    if name = nil then name := '';
     raise TTilengineException.Create(name);
   end;
 end;
@@ -2347,6 +2369,17 @@ end;
 function TSequencePack.GetSequences: Integer;
 begin
   Result := TLN_GetSequencePackCount(ptr);
+end;
+
+{ TTilengineException }
+
+constructor TTilengineException.Create(const msg: string);
+var
+  excpt : string;
+begin
+  excpt := msg;
+  if msg = '' then excpt := 'Unknown error';
+  inherited Create(excpt);
 end;
 
 end.

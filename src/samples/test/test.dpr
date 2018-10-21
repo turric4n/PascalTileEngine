@@ -1,8 +1,8 @@
 program test;
 
-{$IFDEF FPC}
-  {$MODE DELPHI}
-{$ENDIF}
+{$APPTYPE CONSOLE}
+
+{$R *.res}
 
 uses
   {$IFDEF FPC}
@@ -24,7 +24,6 @@ begin
   engine.LoadPath := 'assets/sonic';
   foreground := TTilemap.FromFile('Sonic_md_fg1.tmx', '');
   engine.Layers[0].SetMap(foreground);
-
   //Main Loop
   window := TWindow.Singleton('', TWindowsFlags.Vsync);
   frame := 0;
