@@ -801,6 +801,7 @@ type
       function GetActive : Boolean;
       procedure SetDelay(value : Integer);
     public
+      constructor Create(index : Integer);
       property Active : Boolean read GetActive;
       property Delay : Integer write SetDelay;
       /// <summary>
@@ -850,6 +851,7 @@ type
       procedure SetPalette(const Value: TPalette);
       procedure SetPicture(const Value: Integer);
     public
+      constructor Create(index : Integer);
       property SpriteSet : TSpriteset write SetSpriteSet;
       property Flags : TTileFlags write SetFlags;
       property Picture : Integer write SetPicture;
@@ -900,6 +902,7 @@ type
       procedure SetBlendMode(const Value: TBlend);
       function GetCollision: Boolean;
     public
+      constructor Create(index : Integer);
       property BlendMode : TBlend write SetBlendMode;
       property Palette : TPalette read GetPalette write SetPalette;
       property Bitmap : TBitmap write SetBitmap;
@@ -1211,12 +1214,12 @@ constructor TEngine.Create(numLayers, numSprites, numAnimations: Integer);
 var
   c: Integer;
 begin
-//  SetLength(FLayers, numLayers);
-//  for c := 0 to numLayers - 1 do FLayers[c].findex := c;
-//  SetLength(FSprites, numSprites);
-//  for c := 0 to numSprites - 1 do FSprites[c].findex := c;
-//  SetLength(FAnimations, numAnimations);
-//  for c := 0 to numAnimations - 1 do FAnimations[c].findex := c;
+  SetLength(FLayers, numLayers);
+  for c := 0 to numLayers - 1 do FLayers[0] := TLayer.Create(c);
+  SetLength(FSprites, numSprites);
+  for c := 0 to numSprites - 1 do FSprites[c] := TSprite.Create(c);
+  SetLength(FAnimations, numAnimations);
+  for c := 0 to numAnimations - 1 do FAnimations[c] := TAnimation.Create(c);
   Width := 0;
   Height := 0;
   Version := 0;
@@ -1521,6 +1524,11 @@ end;
 
 { TLayer }
 
+constructor TLayer.Create(index: Integer);
+begin
+  findex := index;
+end;
+
 procedure TLayer.Disable;
 var
   ok : Boolean;
@@ -1692,6 +1700,11 @@ end;
 
 { TSprite }
 
+constructor TSprite.Create(index: Integer);
+begin
+  findex := index;
+end;
+
 procedure TSprite.EnableCollision(mode: Boolean);
 var
   ok : Boolean;
@@ -1778,6 +1791,11 @@ begin
 end;
 
 { TAnimation }
+
+constructor TAnimation.Create(index: Integer);
+begin
+  findex := index;
+end;
 
 procedure TAnimation.Disable;
 var

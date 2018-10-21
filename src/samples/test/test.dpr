@@ -1,9 +1,5 @@
 program test;
 
-{$APPTYPE CONSOLE}
-
-{$R *.res}
-
 uses
   {$IFDEF FPC}
   SysUtils,
@@ -21,7 +17,7 @@ var
 begin
   //Setup engine
   engine := TEngine.Singleton(400, 240, 1, 0, 20);
-  engine.LoadPath := 'assets/sonic';
+  engine.LoadPath := '../../../../assets/sonic/';
   foreground := TTilemap.FromFile('Sonic_md_fg1.tmx', '');
   engine.Layers[0].SetMap(foreground);
   //Main Loop
