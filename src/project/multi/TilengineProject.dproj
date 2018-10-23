@@ -146,6 +146,11 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>(None)</Manifest_File>
+        <DCC_DcpOutput>..\..\..\bin\package\x86_64-Win64\dcp</DCC_DcpOutput>
+        <DCC_ExeOutput>..\..\..\bin\package\x86_64-Win64</DCC_ExeOutput>
+        <DCC_BplOutput>..\..\..\bin\package\x86_64-Win64</DCC_BplOutput>
+        <DCC_DcuOutput>..\..\..\bin\package\x86_64-Win64\units</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -166,11 +171,10 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Manifest_File>(None)</Manifest_File>
-        <DCC_ExeOutput>..\..\..\bin\package\x86-64-Windows</DCC_ExeOutput>
-        <DCC_BplOutput>..\..\..\bin\package\x86-64-Windows</DCC_BplOutput>
-        <DCC_DcpOutput>..\..\..\bin\package\x86-64-Windows\dcp</DCC_DcpOutput>
-        <DCC_DcuOutput>..\..\..\bin\package\x86-64-Windows\units</DCC_DcuOutput>
+        <DCC_ExeOutput>..\..\..\bin\package\x86_64-Win64</DCC_ExeOutput>
+        <DCC_BplOutput>..\..\..\bin\package\x86_64-Win64</DCC_BplOutput>
+        <DCC_DcpOutput>..\..\..\bin\package\x86_64-Win64\dcp</DCC_DcpOutput>
+        <DCC_DcuOutput>..\..\..\bin\package\x86_64-Win64\units</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -186,12 +190,7 @@
         <DCC_DcuOutput>..\..\..\bin\package\i386-win32\units</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
-        <DCC_DcpOutput>..\..\..\bin\package\x86-64-win64\dcp</DCC_DcpOutput>
-        <DCC_ExeOutput>..\..\..\bin\package\x86-64-win64</DCC_ExeOutput>
-        <DCC_BplOutput>..\..\..\bin\package\x86-64-win64</DCC_BplOutput>
-        <DCC_DcuOutput>..\..\..\bin\package\x86-64-win64\units</DCC_DcuOutput>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Manifest_File>(None)</Manifest_File>
         <DCC_UseMSBuildExternally>false</DCC_UseMSBuildExternally>
     </PropertyGroup>
     <ItemGroup>

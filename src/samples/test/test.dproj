@@ -148,10 +148,10 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_DcpOutput>..\..\..\bin\package\x86-64-win64\dcp</DCC_DcpOutput>
-        <DCC_ExeOutput>..\..\..\bin\package\x86-64-win64</DCC_ExeOutput>
-        <DCC_BplOutput>..\..\..\bin\package\x86-64-win64</DCC_BplOutput>
-        <DCC_DcuOutput>..\..\..\bin\package\x86-64-win64\units</DCC_DcuOutput>
+        <DCC_DcpOutput>..\..\..\bin\package\x86_64-win64\dcp</DCC_DcpOutput>
+        <DCC_ExeOutput>..\..\..\bin\package\x86_64-win64</DCC_ExeOutput>
+        <DCC_BplOutput>..\..\..\bin\package\x86_64-win64</DCC_BplOutput>
+        <DCC_DcuOutput>..\..\..\bin\package\x86_64-win64\units</DCC_DcuOutput>
         <DCC_UseMSBuildExternally>false</DCC_UseMSBuildExternally>
         <Manifest_File>(None)</Manifest_File>
     </PropertyGroup>

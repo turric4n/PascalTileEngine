@@ -59,6 +59,12 @@
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
+        <Cfg_1_Win64>true</Cfg_1_Win64>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
         <Cfg_2>true</Cfg_2>
         <CfgParent>Base</CfgParent>
@@ -143,11 +149,11 @@
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>(None)</Manifest_File>
-        <DCC_DcpOutput>..\..\..\bin\package\x86-64-win64\dcp</DCC_DcpOutput>
-        <DCC_ExeOutput>..\..\..\bin\package\x86-64-win64</DCC_ExeOutput>
-        <DCC_BplOutput>..\..\..\bin\package\x86-64-win64</DCC_BplOutput>
+        <DCC_DcpOutput>..\..\..\bin\package\x86_64-win64\dcp</DCC_DcpOutput>
+        <DCC_ExeOutput>..\..\..\bin\package\x86_64-win64</DCC_ExeOutput>
+        <DCC_BplOutput>..\..\..\bin\package\x86_64-win64</DCC_BplOutput>
         <DCC_UseMSBuildExternally>false</DCC_UseMSBuildExternally>
-        <DCC_DcuOutput>..\..\..\bin\package\x86-64-win64\units</DCC_DcuOutput>
+        <DCC_DcuOutput>..\..\..\bin\package\x86_64-win64\units</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -162,6 +168,9 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_UseMSBuildExternally>false</DCC_UseMSBuildExternally>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
         <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
@@ -175,11 +184,9 @@
         <DCC_ExeOutput>..\..\..\bin\package\i386-win32</DCC_ExeOutput>
         <DCC_BplOutput>..\..\..\bin\package\i386-win32</DCC_BplOutput>
         <DCC_DcuOutput>..\..\..\bin\package\i386-win32\units</DCC_DcuOutput>
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Manifest_File>(None)</Manifest_File>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

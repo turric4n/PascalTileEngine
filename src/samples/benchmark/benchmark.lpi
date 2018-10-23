@@ -34,7 +34,7 @@
     </RequiredPackages>
     <Units Count="1">
       <Unit0>
-        <Filename Value="platformer.dpr"/>
+        <Filename Value="benchmark.dpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
     </Units>
