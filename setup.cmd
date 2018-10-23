@@ -23,7 +23,7 @@ if %errorlevel% == 1 (
 if %errorlevel% == 2 (
   build-windows-fpc.cmd
 ) 
-goto :eof
+goto :finished
 
 :buildlibrary  
 echo you select build library using VC++ automatically, you need Visual Studio Community 2017 in the default path
@@ -35,5 +35,6 @@ if %libraryfail% == 1 (
 )
 goto :buildpascal
 
-:eof
+:finished
+call prebuilt/gitignorelibs.cmd
 echo Finished.
