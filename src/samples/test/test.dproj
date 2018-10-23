@@ -6,8 +6,8 @@
         <MainSource>test.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
-        <TargetedPlatforms>1</TargetedPlatforms>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Console</AppType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
@@ -59,6 +59,12 @@
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
+        <Cfg_1_Win64>true</Cfg_1_Win64>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
         <Cfg_2>true</Cfg_2>
         <CfgParent>Base</CfgParent>
@@ -66,6 +72,12 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
         <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
+        <Cfg_2_Win64>true</Cfg_2_Win64>
         <CfgParent>Cfg_2</CfgParent>
         <Cfg_2>true</Cfg_2>
         <Base>true</Base>
@@ -122,14 +134,26 @@
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
         <Manifest_File>(None)</Manifest_File>
-        <DCC_UseMSBuildExternally>true</DCC_UseMSBuildExternally>
-        <DCC_BplOutput>..\..\..\bin\package\$(Platform)\$(Config)</DCC_BplOutput>
+        <DCC_UseMSBuildExternally>false</DCC_UseMSBuildExternally>
+        <DCC_BplOutput>..\..\..\bin\package\i386-win32</DCC_BplOutput>
+        <DCC_DcpOutput>..\..\..\bin\package\i386-win32\dcp</DCC_DcpOutput>
+        <DCC_ExeOutput>..\..\..\bin\package\i386-win32</DCC_ExeOutput>
+        <DCC_DcuOutput>..\..\..\bin\package\i386-win32\units</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;DBXInterBaseDriver;vclactnband;vclFireDAC;tethering;FireDACADSDriver;vcltouch;vcldb;bindcompfmx;inetdb;FmxTeeUI;fmx;fmxdae;tmsdXE11;tmsexdXE11;dbexpress;IndyCore;vclx;dsnap;VCLRESTComponents;vclie;bindengine;DBXMySQLDriver;FireDACMySQLDriver;FireDACCommonODBC;IndyIPCommon;bindcompdbx;vcl;IndyIPServer;IndySystem;dsnapcon;FireDACMSAccDriver;fmxFireDAC;vclimg;TeeDB;FireDACPgDriver;FMXTee;DbxCommonDriver;Tee;xmlrtl;fmxobj;vclwinx;rtl;DbxClientDriver;CustomIPTransport;vcldsnap;bindcomp;appanalytics;IndyIPClient;bindcompvcl;TeeUI;dbxcds;VclSmp;adortl;dsnapxml;dbrtl;IndyProtocols;inetdbxpress;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_ConsoleTarget>true</DCC_ConsoleTarget>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_DcpOutput>..\..\..\bin\package\x86-64-win64\dcp</DCC_DcpOutput>
+        <DCC_ExeOutput>..\..\..\bin\package\x86-64-win64</DCC_ExeOutput>
+        <DCC_BplOutput>..\..\..\bin\package\x86-64-win64</DCC_BplOutput>
+        <DCC_DcuOutput>..\..\..\bin\package\x86-64-win64\units</DCC_DcuOutput>
+        <DCC_UseMSBuildExternally>false</DCC_UseMSBuildExternally>
+        <Manifest_File>(None)</Manifest_File>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -144,6 +168,9 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_UseMSBuildExternally>false</DCC_UseMSBuildExternally>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
         <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
@@ -152,7 +179,14 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UseMSBuildExternally>true</DCC_UseMSBuildExternally>
+        <DCC_UseMSBuildExternally>false</DCC_UseMSBuildExternally>
+        <DCC_DcpOutput>..\..\..\bin\package\i386-win32\dcp</DCC_DcpOutput>
+        <DCC_ExeOutput>..\..\..\bin\package\i386-win32</DCC_ExeOutput>
+        <DCC_BplOutput>..\..\..\bin\package\i386-win32</DCC_BplOutput>
+        <DCC_DcuOutput>..\..\..\bin\package\i386-win32\units</DCC_DcuOutput>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -636,7 +670,7 @@
                 <Platform value="iOSSimulator">False</Platform>
                 <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">False</Platform>
+                <Platform value="Win64">True</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

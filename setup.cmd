@@ -2,20 +2,20 @@
 echo ##############################
 echo # Native library dependancy  #
 echo ##############################
-echo do you want to compile native library or use a precompiled one?
-CHOICE /C ab /M "Build yourself or download manually from https://megamarc.itch.io/tilengine"
+echo do you want to compile native library yourself (Only Windows (Need VS)) or use prebuilt (easy mode)?
+CHOICE /C ab /M "Compile or Prebuilt"
 if %errorlevel% == 1 (
   goto :buildlibrary
 )
 if %errorlevel% == 2 (
-  goto :buildpascal
+  call "prebuilt/copylibs.cmd"
 ) 
 
 :buildpascal
 echo ##############################
 echo # Pascal Tile Engine Wrapper #
 echo ##############################
-echo what compiler do you want to use?
+echo what compiler do you want to use to compile examples and wrapper?
 CHOICE /C ab /M "DCC32 or FPC"
 if %errorlevel% == 1 (
   call build-windows-delphi.cmd

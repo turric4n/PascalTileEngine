@@ -6,8 +6,16 @@ if errorlevel 1 (
 ) else (
   call rsvars.bat
   set builderror=0
-  msbuild project\multi\TilengineProject.dproj /t:Rebuild /p:Config=Release
-  msbuild samples\test\test.dproj /t:Rebuild /p:Config=Release
+  echo # i386-win32
+  msbuild project\multi\TilengineProject.dproj /t:Rebuild /p:Config=Release /p:platform=Win32
+  msbuild samples\test\test.dproj /t:Rebuild /p:Config=Release /p:platform=Win32
+  msbuild samples\platformer\platformer.dproj /t:Rebuild /p:Config=Release /p:platform=Win32
+  msbuild samples\benchmark\benchmark.dproj /t:Rebuild /p:Config=Release /p:platform=Win32
+  echo # x86-64-win64
+  msbuild project\multi\TilengineProject.dproj /t:Rebuild /p:Config=Release /p:platform=Win64
+  msbuild samples\test\test.dproj /t:Rebuild /p:Config=Release /p:platform=Win64
+  msbuild samples\platformer\platformer.dproj /t:Rebuild /p:Config=Release /p:platform=Win64
+  msbuild samples\benchmark\benchmark.dproj /t:Rebuild /p:Config=Release /p:platform=Win64
   if errorlevel 1 (
     set builderror=1
   )

@@ -73,7 +73,7 @@ begin
   if VISIBLEWINDOW then window := TWindow.Singleton('', TWindowsFlags.Vsync);
 
   // Create assets
-  engine.LoadPath := '../../../../assets/tf4';
+  engine.LoadPath := '../../../assets/tf4';
   tilemap := TTilemap.FromFile('TF4_bg1.tmx', '');
   spriteset := TSpriteset.FromFile('FireLeo');
 

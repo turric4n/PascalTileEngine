@@ -28,11 +28,9 @@
 
 # Delphi compiler-generated binaries (safe to delete)
 *.exe
-*.dll
 *.bpl
 *.bpi
 *.dcp
-*.so
 *.apk
 *.drc
 *.map
@@ -71,9 +69,6 @@ modules/
 
 # Lazarus compiler-generated binaries (safe to delete)
 *.exe
-*.dll
-*.so
-*.dylib
 *.lrs
 *.res
 *.compiled

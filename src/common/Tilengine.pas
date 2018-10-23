@@ -39,9 +39,16 @@ uses
 
   const
     //Binary dependancies
-   {$IFNDEF MSWINDOWS}
+   {$IFDEF LINUX}
      LIB = 'libTilengine.so';
-   {$ELSE}
+   {$ENDIF}
+   {$IFDEF ANDROID}
+     LIB = 'libTilengine.so';
+   {$ENDIF}
+   {$IFDEF DARWIN}
+     LIB = 'Tilengine.dylib';
+   {$ENDIF}
+   {$IFDEF MSWINDOWS}
      LIB = 'Tilengine.dll';
    {$ENDIF}
 
@@ -2064,7 +2071,11 @@ var
   retval : PInteger;
 begin
   color := $FF000000 + (bgcolor.R shl 16) + (bgcolor.G shl 8) + bgcolor.B;
+  {$IFNDEF DELPHI}
+  retval := TLN_CreateTilemap(rows, cols, tiles, UInt32(color), tileset.ptr);
+  {$ELSE}
   retval := TLN_CreateTilemap(rows, cols, tiles, FixedUInt(color), tileset.ptr);
+  {$ENDIF}
   TEngine.ThrowException(retval <> nil);
   ptr := retval;
 end;

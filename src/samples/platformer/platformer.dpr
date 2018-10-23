@@ -145,7 +145,7 @@ begin
   background := engine.Layers[1];
 
   // Load Resources
-  engine.LoadPath := '../../../../assets/sonic/';
+  engine.LoadPath := '../../../assets/sonic/';
   LoadLayer(foreground, 'Sonic_md_fg1.tmx');
   LoadLayer(background, 'Sonic_md_bg1.tmx');
 
