@@ -99,3 +99,5 @@ lib/
 
 # Application bundle for Mac OS
 *.app/
+
+src/deps/tilengine
