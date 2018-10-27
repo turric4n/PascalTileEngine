@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "##############################"
+echo "# Native library dependancy  #"
+echo "##############################"
+echo "do you want to compile native library yourself (Need Make and GCC) or use prebuilt (easy mode)?"
+options=("Compile dependancies" "Use Precompiled")
+select opt in "${options[@]}"
+do
+	case $opt in
+	     "Compile dependancies")
+	     	  echo "Not implementend yet";;
+             "Use Precompiled")
+	     	 ./prebuilt/copylibs
+		 break;;
+	     *)
+		  echo "Invalid option";;
+	esac
+done	     	  
