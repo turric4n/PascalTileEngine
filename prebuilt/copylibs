@@ -2,14 +2,12 @@
 echo ----------------------------------------
 echo ---Copying Tilengine native libraries---
 echo ----------------------------------------
-if [ -f prebuilt/Tilengine/arm-linux/libTilengine.so_ ]; then mkdir -p ../bin/package/arm-linux/ && cp prebuilt/Tilengine/arm-linux/libTilengine.so_ ../bin/package/arm-linux/libTilengine.so 
+if [ -f prebuilt/Tilengine/arm-linux/libTilengine.so_ ]; then mkdir -p bin/package/arm-linux/ && cp prebuilt/Tilengine/arm-linux/libTilengine.so_ bin/package/arm-linux/libTilengine.so 
 fi
-if [ -f prebuilt/Tilengine/arm-linux/libTilengine.so_ ]; then mkdir -p ../bin/package/arm-linux/ && cp prebuilt/Tilengine/arm-linux/libTilengine.so_ ../bin/package/arm-linux/libTilengine.so
+if [ -f prebuilt/Tilengine/arm-linux/libTilengine.so_ ]; then mkdir -p bin/package/arm-android/ && cp prebuilt/Tilengine/arm-linux/libTilengine.so_ bin/package/arm-android/libTilengine.so
 fi
-if [ -f prebuilt/Tilengine/arm-linux/libTilengine.so_ ]; then mkdir -p ../bin/package/arm-android/ && cp prebuilt/Tilengine/arm-linux/libTilengine.so_ ../bin/package/arm-android/libTilengine.so
+if [ -f prebuilt/Tilengine/i386-linux/libTilengine.so_ ]; then mkdir -p bin/package/i386-linux/ && cp prebuilt/Tilengine/i386-linux/libTilengine.so_ bin/package/i386-linux/libTilengine.so
 fi
-if [ -f prebuilt/Tilengine/i386-linux/libTilengine.so_ ]; then mkdir -p ../bin/package/i386-linux/ && cp prebuilt/Tilengine/i386-linux/libTilengine.so_ ../bin/package/i386-linux/libTilengine.so
-fi
-if [ -f prebuilt/Tilengine/i386-linux/libTilengine.so_ ]; then mkdir -p ../bin/package/i386-linux/ && cp prebuilt/Tilengine/i386-linux/libTilengine.so_ ../bin/package/i386-linux/libTilengine.so
+if [ -f prebuilt/Tilengine/x86_64-linux/libTilengine.so_ ]; then mkdir -p bin/package/x86_64-linux/ && cp prebuilt/Tilengine/x86_64-linux/libTilengine.so_ bin/package/x86_64-linux/libTilengine.so
 fi
 echo "ok"
