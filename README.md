@@ -76,7 +76,7 @@ Benchmark specs ->
   RAM : 16 GB DDR4 @ 3200MHZ
 ```
 
-![PascalTilengine benchmark Pascal vs C](performance.gif)
+![PascalTilengine benchmark Pascal vs C](benchmark_win.gif)
 
 ```
 Benchmark specs -> 
