@@ -2,7 +2,11 @@
 # PascalTilengine
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
 
+## Delphi + Windows
 ![PascalTilengine demo](PascalTilengineDemo.gif)
+
+## Lazarus + FPC + Linux
+![PascalTilengine demo Lazarus](PascalTilengineDemoLaz.gif)
 
 Pascal bindings for Tilengine 2D retro graphics engine 
 
