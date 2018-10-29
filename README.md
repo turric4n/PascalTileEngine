@@ -67,7 +67,7 @@ Setup will checkout dependancies and will try to build everything to work with n
 # Performance
 Our wrapper is near or equal performance as plain C.
 
-````
+```
 Benchmark specs -> 
   Compiler : Delphi Tokyo 10.2 and Visual C 2017
   Architecture : x86-64 -O2
