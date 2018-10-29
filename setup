@@ -3,7 +3,10 @@ echo "##############################"
 echo "# Native library dependancy  #"
 echo "##############################"
 ./initsubmodules
-make src/deps/tilengine/src
+cd src/deps/tilengine/src
+make all
 cd src/deps/tilengine
 ./install
+cp /src/deps/lib/libTilengine.so /usr/local/lib
+sudo chmod 755 /usr/local/lib/libTilengine.so
 cd src
