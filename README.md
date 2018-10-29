@@ -77,3 +77,14 @@ Benchmark specs ->
 ```
 
 ![PascalTilengine benchmark Pascal vs C](performance.gif)
+
+```
+Benchmark specs -> 
+  Compiler : FPC 3.2 and GCC 8.2
+  Architecture : x86-64 -O2
+  OS : Linux MINT 19
+  CPU : I7700K @ 4.9GHZ (Oracle VM VirtualBox for Windows)
+  RAM : 4 GB DDR4 @ 3200MHZ
+```
+
+![PascalTilengine benchmark Pascal vs C](benchmark_linux_vm.gif)
