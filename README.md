@@ -38,12 +38,18 @@ SOFTWARE.
 - [Installing](#installing)
     - [Windows](#windows)
     - [Unix-like](#unix-like)
+- [Performance](#performance)
 
 # Features
 * Written in portable Pascal (FPC and Delphi)
 * LGPL v2.1 license: free for any project, including commercial ones
 * Cross platform: available builds for Windows (32/64), Linux PC(32/64), Mac OS X and Raspberry Pi using FPC
 * High performance: Wrapper is made using native lightweight OOP Pascal (no VM or garbage collector environment)
+
+# Requirements
+As OpenSource project, I recommend to use FPC but is fine Delphi Community (Free) to compile too. Delphi has sightly 
+better perfomance in Windows but FreePascal is a real multiarch. Firemonkey is not supported yet... if you want Android definetly 
+go to FPC.
 
 # Installing
 Setup will checkout dependancies and will try to build everything to work with native library.
@@ -58,3 +64,15 @@ Setup will checkout dependancies and will try to build everything to work with n
 > sudo ./setup
 ```
 
+# Performance
+Our wrapper is near or equal performance as plain C.
+
+````
+Benchmark specs -> 
+  Compiler : Delphi Tokyo 10.2 and Visual C 2017
+  Architecture : x86-64 -O2
+  OS : Windows 10 (1809)  
+  CPU : I7700K @ 4.9GHZ
+  RAM : 16 GB DDR4 @ 3200MHZ
+
+![PascalTilengine benchmark Pascal vs C](performance.gif)

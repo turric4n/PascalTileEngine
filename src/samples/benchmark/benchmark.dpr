@@ -27,7 +27,7 @@ const
   VRES = 240;
   NUM_SPRITES = 250;
   NUM_FRAMES = 2000;
-  VISIBLEWINDOW = True;
+  VISIBLEWINDOW = False;
 
 var
   pixels : Integer;
@@ -48,7 +48,7 @@ begin
   if window <> nil then window.DrawFrame(frame);
   elapse := TLN_GetTicks - t0;
   Result := frame * pixels div elapse;
-  Writeln(Format('%3u.%03u Mpixels/s', [result div 1000, result mod 1000]));
+  Write(Format(' %3u.%03u Mpixels/s'#13#10, [result div 1000, result mod 1000]));
 end;
 
 procedure Main;
@@ -62,14 +62,16 @@ var
 begin
   // Setup engine
   engine := TEngine.Singleton(HRES, VRES, 1, NUM_SPRITES, 0);
+  Writeln;
   Writeln('Tilengine pascal benchmark tool');
   Writeln('Written by Turric4n based on Megamarc C version');
-  Writeln(Format('Library version %d,%d,%d', [(engine.Version shr 16 and $FF), (engine.Version shr 8 and $FF), (engine.Version and $FF)]));
-
+  Writeln(Format('Library version %d.%d.%d', [(engine.Version shr 16 and $FF), (engine.Version shr 8 and $FF), (engine.Version and $FF)]));
+  Writeln('http://www.tilengine.org');
+  Writeln;
   // Set stack framebuffer (C uses heap with malloc)
   SetLength(framebuffer, hres * vres * 4);
   engine.SetRenderTarget(framebuffer, HRES * 4);
-  //engine.DisableBackgroundColor;
+  engine.DisableBackgroundColor;
   if VISIBLEWINDOW then window := TWindow.Singleton('', TWindowsFlags.Vsync);
 
   // Create assets
@@ -82,27 +84,27 @@ begin
   pixels := HRES * VRES;
 
   // Benchmark
-  Writeln('Normal layer........');
+  Write('Normal layer........');
   Profile;
 
-  Writeln('Scaling Layer.......');
+  Write('Scaling layer.......');
   engine.Layers[0].SetScaling(2.0, 2.0);
   Profile;
 
-  Writeln('Affine Layer........');
+  Write('Affine layer........');
   engine.Layers[0].SetTransform(45.0, 0.0, 0.0, 1.0, 1.0);
   Profile;
 
-  Writeln('Blend Layer.........');
+  Write('Blend layer.........');
   engine.Layers[0].Reset;
   engine.Layers[0].BlendMode := TBlend.Mix50;
   Profile;
 
-  Writeln('Scaling blend.......');
+  Write('Scaling blend layer.');
   engine.Layers[0].SetScaling(2.0, 2.0);
   Profile;
 
-  Writeln('Affine blend layer..');
+  Write('Affine blend layer..');
   engine.Layers[0].SetTransform(45.0, 0, 0, 1.0, 1.0);
   Profile;
 
@@ -118,9 +120,9 @@ begin
   end;
   spriteinfo := spriteset.GetInfo(0);
   pixels := NUM_SPRITES * spriteinfo.W * spriteinfo.H;
-  Writeln('Normal Sprites..........');
+  Write('Normal sprites......');
   Profile;
-  Writeln('Colliding Sprites.......');
+  Write('Colliding sprites...');
   for c := 0 to NUM_SPRITES - 1 do engine.Sprites[c].EnableCollision(True);
   Profile;
   tilemap.Free;
@@ -133,6 +135,5 @@ begin
   except
     on e : Exception do Writeln(e.Message);
   end;
-  Readln;
 end.
 
