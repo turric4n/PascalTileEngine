@@ -1,0 +1,29 @@
+DiGraph Classes {
+  Exception -> TObject
+  TTilengineException -> Exception
+  TTilengineException [href="Tilengine.TTilengineException.html"]
+  TAnimation -> TObject
+  TAnimation [href="Tilengine.TAnimation.html"]
+  TBitmap -> TObject
+  TBitmap [href="Tilengine.TBitmap.html"]
+  TEngine -> TObject
+  TEngine [href="Tilengine.TEngine.html"]
+  TLayer -> TObject
+  TLayer [href="Tilengine.TLayer.html"]
+  TPalette -> TObject
+  TPalette [href="Tilengine.TPalette.html"]
+  TSequence -> TObject
+  TSequence [href="Tilengine.TSequence.html"]
+  TSequencePack -> TObject
+  TSequencePack [href="Tilengine.TSequencePack.html"]
+  TSprite -> TObject
+  TSprite [href="Tilengine.TSprite.html"]
+  TSpriteset -> TObject
+  TSpriteset [href="Tilengine.TSpriteset.html"]
+  TTilemap -> TObject
+  TTilemap [href="Tilengine.TTilemap.html"]
+  TTileset -> TObject
+  TTileset [href="Tilengine.TTileset.html"]
+  TWindow -> TObject
+  TWindow [href="Tilengine.TWindow.html"]
+}
