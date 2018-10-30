@@ -192,6 +192,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="..\..\common\bindings\TilengineBindings.pas"/>
         <DCCReference Include="..\..\common\Tilengine.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

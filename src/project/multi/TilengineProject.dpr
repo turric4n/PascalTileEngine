@@ -10,7 +10,8 @@ uses
   {$ELSE}
   System.SysUtils,
   {$ENDIF }
-  Tilengine in '..\..\common\Tilengine.pas';
+  Tilengine in '..\..\common\Tilengine.pas',
+  TilengineBindings in '..\..\common\bindings\TilengineBindings.pas';
 
 begin
   try

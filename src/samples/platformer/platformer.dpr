@@ -1,4 +1,4 @@
-{******************************************************************************
+ {******************************************************************************
 *
 * Pascal Tilengine sample
 * Copyright (c) 2018 coversion by Enrique Fuentes (aka Turric4n) - thanks to
@@ -19,6 +19,7 @@ uses
   {$ELSE}
   System.SysUtils,
   {$ENDIF }
+  TilengineBindings in '..\..\common\bindings\TilengineBindings.pas',
   Tilengine in '..\..\common\Tilengine.pas';
 
 // constants

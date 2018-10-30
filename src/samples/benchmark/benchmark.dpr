@@ -19,7 +19,8 @@ uses
   {$ELSE}
   System.SysUtils,
   {$ENDIF }
-  Tilengine in '..\..\common\Tilengine.pas';
+  Tilengine in '..\..\common\Tilengine.pas',
+  TilengineBindings in '..\..\common\bindings\TilengineBindings.pas';
 
 // constants
 const
@@ -39,14 +40,14 @@ var
   t0, elapse, frame : Word;
 begin
   frame := 0;
-  t0 := TLN_GetTicks;
+  t0 := engine.Ticks;
   while frame < NUM_FRAMES do
   begin
     Inc(frame);
-    TLN_UpdateFrame(frame);
+    engine.UpdateFrame(frame);
   end;
   if window <> nil then window.DrawFrame(frame);
-  elapse := TLN_GetTicks - t0;
+  elapse := engine.Ticks - t0;
   Result := frame * pixels div elapse;
   Write(Format(' %3u.%03u Mpixels/s'#13#10, [result div 1000, result mod 1000]));
 end;
@@ -58,7 +59,7 @@ var
   tilemap : TTilemap;
   spriteset : TSpriteset;
   spriteinfo : TSpriteInfo;
-  framebuffer : TByteArray;
+  framebuffer : TArray<Byte>;
 begin
   // Setup engine
   engine := TEngine.Singleton(HRES, VRES, 1, NUM_SPRITES, 0);

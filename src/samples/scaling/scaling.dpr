@@ -18,6 +18,7 @@ uses
   {$ELSE}
   System.SysUtils,
   {$ENDIF }
+  TilengineBindings in '..\..\common\bindings\TilengineBindings.pas',
   Tilengine in '..\..\common\Tilengine.pas';
 
 // constants
