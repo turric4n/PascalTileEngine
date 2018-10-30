@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>PascalTilengine: TilengineBindings</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="PasDoc 0.15.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="tipuesearch/tipuesearch.css">
+
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>PascalTilengine</h2><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="GVUses.png" class="navigation">Unit dependency graph</a></p><p><a href="GVClasses.png" class="navigation">Classes hierarchy graph</a></p><form class="search-form" action="_tipue_results.html"><div class="search-input"><input type="text" name="q" id="tipue_search_input"></div><div class="search-button"><input type="button" id="tipue_search_button" onclick="this.form.submit();"></div></form>
+<div style="clear: both"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#tipue_search_input').tipuesearch({
+        /* 10 items to display seems standard */
+        'show': 10,
+        /* For PasDoc docs, showing urls is not very useful,
+           since the page title already shows the unit and identifier. */
+        'showURL': false
+    });
+});
+</script>
+</td><td class="content">
+<h1 class="unit">Unit TilengineBindings</h1>
+<div class="sections">
+<div class="one_section"><a class="section" href="#PasDoc-Description">Description</a></div><div class="one_section">Uses</div><div class="one_section"><a class="section" href="#PasDoc-Classes">Classes, Interfaces, Objects and Records</a></div><div class="one_section"><a class="section" href="#PasDoc-FuncsProcs">Functions and Procedures</a></div><div class="one_section"><a class="section" href="#PasDoc-Types">Types</a></div><div class="one_section"><a class="section" href="#PasDoc-Constants">Constants</a></div><div class="one_section">Variables</div></div>
+<span id="PasDoc-Description"></span><h2 class="description">Description</h2>
+&nbsp;<span id="PasDoc-Uses"></span><h2 class="overview">Overview</h2>
+<span id="PasDoc-Classes"></span><h3 class="cio">Classes, Interfaces, Objects and Records</h3>
+<table class="classestable wide_list">
+<tr class="listheader">
+<th class="itemname">Name</th>
+<th class="itemdesc">Description</th>
+</tr>
+<tr class="list">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TTile.html"><code>TTile</code></a></td>
+<td class="itemdesc"> Tile data contained in each cell of a cref=&quot;Tilemap&quot; object </td>
+</tr>
+<tr class="list2">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TSpriteData.html"><code>TSpriteData</code></a></td>
+<td class="itemdesc"> Data used to create cref=&quot;Spriteset&quot; objects </td>
+</tr>
+<tr class="list">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TSpriteInfo.html"><code>TSpriteInfo</code></a></td>
+<td class="itemdesc"> Data returned by cref=&quot;Spriteset.GetSpriteInfo&quot; with dimensions of the requested sprite </td>
+</tr>
+<tr class="list2">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TTileInfo.html"><code>TTileInfo</code></a></td>
+<td class="itemdesc"> Data returned by cref=&quot;Layer.GetTile&quot; about a given tile inside a background layer </td>
+</tr>
+<tr class="list">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TTileAtributes.html"><code>TTileAtributes</code></a></td>
+<td class="itemdesc"> cref=&quot;Tileset&quot; attributes for constructor </td>
+</tr>
+<tr class="list2">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TSequenceFrame.html"><code>TSequenceFrame</code></a></td>
+<td class="itemdesc"> Data used to define each frame of an animation for cref=&quot;Sequence&quot; objects </td>
+</tr>
+<tr class="list">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TColorStrip.html"><code>TColorStrip</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TSequenceInfo.html"><code>TSequenceInfo</code></a></td>
+<td class="itemdesc"> Sequence info returned by cref=&quot;Sequence.GetInfo&quot; </td>
+</tr>
+<tr class="list">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TColor.html"><code>TColor</code></a></td>
+<td class="itemdesc"> Represents a color value in RGB format </td>
+</tr>
+<tr class="list2">
+<td class="itemname">Record&nbsp;<a class="bold" href="TilengineBindings.TPixelMap.html"><code>TPixelMap</code></a></td>
+<td class="itemdesc"> pixel mapping for cref=&quot;Layer.SetPixelMapping&quot; </td>
+</tr>
+</table>
+<span id="PasDoc-FuncsProcs"></span><h3 class="summary">Functions and Procedures</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_Init">TLN_Init</a></b>(hres, vres, numlayers, numsprites, numanimations : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_Init';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_Deinit">TLN_Deinit</a></b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_Deinit';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetWidth">TLN_GetWidth</a></b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetWidth';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetHeight">TLN_GetHeight</a></b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetHeight';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetNumObjects">TLN_GetNumObjects</a></b> : UInt32; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetNumObjects';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetUsedMemory">TLN_GetUsedMemory</a></b> : UInt32; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetUsedMemory';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetVersion">TLN_GetVersion</a></b> : UInt32; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetVersion';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetNumLayers">TLN_GetNumLayers</a></b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetNumLayers';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetNumSprites">TLN_GetNumSprites</a></b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetNumSprites';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_SetBGColor">TLN_SetBGColor</a></b>(r, g, b : Byte) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBGColor';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetBGColorFromTilemap">TLN_SetBGColorFromTilemap</a></b>(tilemap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBGColorFromTilemap';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_DisableBGColor">TLN_DisableBGColor</a></b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableBGColor';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetBGBitmap">TLN_SetBGBitmap</a></b>(bitmap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBGBitmap';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetBGPalette">TLN_SetBGPalette</a></b>(palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBGPalette';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_SetRasterCallback">TLN_SetRasterCallback</a></b>(callback : Pointer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetRasterCallback';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_SetFrameCallback">TLN_SetFrameCallback</a></b>(callback : Pointer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetFrameCallback';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_SetRenderTarget">TLN_SetRenderTarget</a></b>(data : TArray&lt;Byte&gt;; pitch : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetRenderTarget';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_UpdateFrame">TLN_UpdateFrame</a></b>(time : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_UpdateFrame';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_BeginFrame">TLN_BeginFrame</a></b>(frame : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_BeginFrame';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DrawNextScanline">TLN_DrawNextScanline</a></b> : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DrawNextScanline';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_SetLastError">TLN_SetLastError</a></b>(error : <a  href="TilengineBindings.html#TError">TError</a>) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLastError';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetLastError">TLN_GetLastError</a></b> : <a  href="TilengineBindings.html#TError">TError</a>; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLastError';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetErrorString">TLN_GetErrorString</a></b>(error : <a  href="TilengineBindings.html#TError">TError</a>) : PAnsiChar; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetErrorString';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetAvailableSprite">TLN_GetAvailableSprite</a></b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetAvailableSprite';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_SetLoadPath">TLN_SetLoadPath</a></b>(path : PAnsiChar) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLoadPath';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_SetCustomBlendFunction">TLN_SetCustomBlendFunction</a></b>(customfunction : Pointer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetCustomBlendFunction';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreateWindow">TLN_CreateWindow</a></b>(const overlay : PAnsiChar; flags : <a  href="TilengineBindings.html#TWindowsFlags">TWindowsFlags</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateWindow';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreateWindowThread">TLN_CreateWindowThread</a></b>(const overlay : PAnsiChar; flags : <a  href="TilengineBindings.html#TWindowsFlags">TWindowsFlags</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateWindowThread';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_SetWindowTitle">TLN_SetWindowTitle</a></b>(const title : PAnsiChar) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetWindowTitle';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_ProcessWindow">TLN_ProcessWindow</a></b> : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ProcessWindow';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_IsWindowActive">TLN_IsWindowActive</a></b> : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_IsWindowActive';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetInput">TLN_GetInput</a></b>(id : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetInput';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_EnableInput">TLN_EnableInput</a></b>(player : PInteger; enable : Boolean) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_EnableInput';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_AssignInputJoystick">TLN_AssignInputJoystick</a></b>(player : PInteger; index : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_AssignInputJoystick';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_DefineInputKey">TLN_DefineInputKey</a></b>(player : PInteger; input : PInteger; keycode : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DefineInputKey';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_DefineInputButton">TLN_DefineInputButton</a></b>(player : PInteger; input : PInteger; joybutton : Byte) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DefineInputButton';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_DrawFrame">TLN_DrawFrame</a></b>(time : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DrawFrame';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_WaitRedraw">TLN_WaitRedraw</a></b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_WaitRedraw';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_DeleteWindow">TLN_DeleteWindow</a></b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteWindow';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_EnableCRTEffect">TLN_EnableCRTEffect</a></b>(overlay : <a  href="TilengineBindings.html#TOverlay">TOverlay</a>; overlay_factor, threshold, v0, v1, v2, v3 : Byte; blur, glow_factor : Byte) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_EnableCRTEffect';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_DisableCRTEffect">TLN_DisableCRTEffect</a></b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableCRTEffect';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_Delay">TLN_Delay</a></b>(msecs : Word) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_Delay';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetTicks">TLN_GetTicks</a></b> : Word cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTicks';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_BeginWindowFrame">TLN_BeginWindowFrame</a></b>(frame : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_BeginWindowFrame';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a  href="TilengineBindings.html#TLN_EndWindowFrame">TLN_EndWindowFrame</a></b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_EndWindowFrame';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayer">TLN_SetLayer</a></b>(nlayer : Integer; tileset, tilemap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayer';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerPalette">TLN_SetLayerPalette</a></b>(nlayer : Integer; tilemap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerPalette';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerBitmap">TLN_SetLayerBitmap</a></b>(nlayer : Integer; bitmap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerBitmap';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerPosition">TLN_SetLayerPosition</a></b>(nlayer, hstart, vstart : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerPosition';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerScaling">TLN_SetLayerScaling</a></b>(nlayer : Integer; xfactor, yfactor : Single) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerScaling';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerTransform">TLN_SetLayerTransform</a></b>(nlayer : Integer; angle, dx, dy, sx, sy : Single) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerTransform';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerPixelMapping">TLN_SetLayerPixelMapping</a></b>(nlayer : Integer; table : TArray&lt;<a  href="TilengineBindings.TPixelMap.html">TPixelMap</a>&gt;) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerPixelMapping';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerBlendMode">TLN_SetLayerBlendMode</a></b>(nlayer : Integer; mode : PInteger; factor : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerBlendMode';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerColumnOffset">TLN_SetLayerColumnOffset</a></b>(nlayer : Integer; offset : TArray&lt;Integer&gt;) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerColumnOffset';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerClip">TLN_SetLayerClip</a></b>(nlayer, x1, y1, x2, y2 : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerClip';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DisableLayerClip">TLN_DisableLayerClip</a></b>(nlayer : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableLayerClip';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetLayerMosaic">TLN_SetLayerMosaic</a></b>(nlayer, width, height : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerMosaic';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DisableLayerMosaic">TLN_DisableLayerMosaic</a></b>(nlayer : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableLayerMosaic';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_ResetLayerMode">TLN_ResetLayerMode</a></b>(nlayer : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ResetLayerMode';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DisableLayer">TLN_DisableLayer</a></b>(nlayer : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableLayer';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetLayerPalette">TLN_GetLayerPalette</a></b>(nlayer : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLayerPalette';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetLayerTile">TLN_GetLayerTile</a></b>(nlayer, x, y : Integer; out info : <a  href="TilengineBindings.TTileInfo.html">TTileInfo</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLayerTile';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetLayerWidth">TLN_GetLayerWidth</a></b>(nlayer : Integer) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLayerWidth';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetLayerHeight">TLN_GetLayerHeight</a></b>(nlayer : Integer) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLayerHeight';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_ConfigSprite">TLN_ConfigSprite</a></b>(nsprite : Integer; spriteset : PInteger; flags : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ConfigSprite';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetSpriteSet">TLN_SetSpriteSet</a></b>(nsprite : Integer; spriteset : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteSet';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetSpriteFlags">TLN_SetSpriteFlags</a></b>(nsprite : Integer; flags : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteFlags';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetSpritePosition">TLN_SetSpritePosition</a></b>(nsprite, x, y : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritePosition';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetSpritePicture">TLN_SetSpritePicture</a></b>(nsprite, entry : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritePicture';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetSpritePalette">TLN_SetSpritePalette</a></b>(nsprite : Integer; Palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritePalette';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetSpriteBlendMode">TLN_SetSpriteBlendMode</a></b>(nsprite : Integer; mode : PInteger; factor : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteBlendMode';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetSpriteScaling">TLN_SetSpriteScaling</a></b>(nsprite : Integer; sx, sy : Single) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteScaling';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_ResetSpriteScaling">TLN_ResetSpriteScaling</a></b>(nsprite : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ResetSpriteScaling';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetSpritePicture">TLN_GetSpritePicture</a></b>(nsprite : Integer) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpritePicture';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_EnableSpriteCollision">TLN_EnableSpriteCollision</a></b>(nsprite : Integer; enable : Boolean) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_EnableSpriteCollision';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetSpriteCollision">TLN_GetSpriteCollision</a></b>(nsprite : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpriteCollision';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DisableSprite">TLN_DisableSprite</a></b>(nsprite : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableSprite';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetSpritePalette">TLN_GetSpritePalette</a></b>(nsprite : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpritePalette';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetPaletteAnimation">TLN_SetPaletteAnimation</a></b>(index : Integer; palette, sequence : PInteger; blend : Boolean) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetPaletteAnimation';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetPaletteAnimationSource">TLN_SetPaletteAnimationSource</a></b>(index : Integer; palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetPaletteAnimationSource';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetTilemapAnimation">TLN_SetTilemapAnimation</a></b>(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetTilemapAnimation';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetTilesetAnimation">TLN_SetTilesetAnimation</a></b>(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetTilesetAnimation';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetSpriteAnimation">TLN_SetSpriteAnimation</a></b>(index, nlayer : Integer; sequence : PInteger; loop : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteAnimation';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetAnimationState">TLN_GetAnimationState</a></b>(index : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetAnimationState';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetAnimationDelay">TLN_SetAnimationDelay</a></b>(index, delay : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetAnimationDelay';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetAvailableAnimation">TLN_GetAvailableAnimation</a></b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetAvailableAnimation';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DisableAnimation">TLN_DisableAnimation</a></b>(index : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableAnimation';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreateSpriteset">TLN_CreateSpriteset</a></b>(bitmap : PInteger; rects : TArray&lt;<a  href="TilengineBindings.TSpriteData.html">TSpriteData</a>&gt;; entries : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateSpriteset';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_LoadSpriteset">TLN_LoadSpriteset</a></b>(name : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadSpriteset';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CloneSpriteset">TLN_CloneSpriteset</a></b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneSpriteset';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetSpriteInfo">TLN_GetSpriteInfo</a></b>(spriteset : PInteger; entry : Integer; info : <a  href="TilengineBindings.html#PSpriteInfo">PSpriteInfo</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpriteInfo';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetSpritesetPalette">TLN_GetSpritesetPalette</a></b>(spriteset : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpritesetPalette';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_FindSpritesetSprite">TLN_FindSpritesetSprite</a></b>(spriteset : PInteger; name : PAnsiChar) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_FindSpritesetSprite';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetSpritesetData">TLN_SetSpritesetData</a></b>(spriteset : PInteger; entry : Integer; data : TArray&lt;<a  href="TilengineBindings.TSpriteData.html">TSpriteData</a>&gt;; pixels : PInteger; pitch : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritesetData';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DeleteSpriteset">TLN_DeleteSpriteset</a></b>(spriteset : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritesetData';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreateTileset">TLN_CreateTileset</a></b>(numtiles, width, height : Integer; palette, sequencepack : PInteger; attributes : TArray&lt;<a  href="TilengineBindings.TTileAtributes.html">TTileAtributes</a>&gt;) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateTileset';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_LoadTileset">TLN_LoadTileset</a></b>(filename : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadTileset';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CloneTileset">TLN_CloneTileset</a></b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneTileset';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CopyTile">TLN_CopyTile</a></b>(tileset : PInteger; src, dst : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CopyTile';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetTilesetPixels">TLN_SetTilesetPixels</a></b>(tileset : PInteger; entry : Integer; srcdata : TArray&lt;Byte&gt;; srcpitch : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetTilesetPixels';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetTileWidth">TLN_GetTileWidth</a></b>(tileset : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTileWidth';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetTileHeight">TLN_GetTileHeight</a></b>(tileset : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTileHeight';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetTilesetPalette">TLN_GetTilesetPalette</a></b>(tileset : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilesetPalette';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetTilesetSequencePack">TLN_GetTilesetSequencePack</a></b>(tileset : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilesetSequencePack';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DeleteTileset">TLN_DeleteTileset</a></b>(tileset : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteTileset';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreateTilemap">TLN_CreateTilemap</a></b>(rows, cols : Integer; tiles : TArray&lt;<a  href="TilengineBindings.TTile.html">TTile</a>&gt;; bgcolor : Word; tileset : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateTilemap';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_LoadTilemap">TLN_LoadTilemap</a></b>(filename, layername : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadTilemap';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CloneTilemap">TLN_CloneTilemap</a></b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneTilemap';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetTilemapRows">TLN_GetTilemapRows</a></b>(tilemap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilemapRows';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetTilemapCols">TLN_GetTilemapCols</a></b>(tilemap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilemapCols';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetTilemapTileset">TLN_GetTilemapTileset</a></b>(tilemap : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilemapTileset';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetTilemapTile">TLN_GetTilemapTile</a></b>(tilemap : PInteger; row, col : Integer; tile : <a  href="TilengineBindings.html#PTile">PTile</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilemapTile';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetTilemapTile">TLN_SetTilemapTile</a></b>(tilemap : PInteger; row, col : Integer; tile : <a  href="TilengineBindings.html#PTile">PTile</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetTilemapTile';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CopyTiles">TLN_CopyTiles</a></b>(src : PInteger; srcrow, srccol, rows, cols : Integer; dst : PInteger; dstrow, dscol : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CopyTiles';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DeleteTilemap">TLN_DeleteTilemap</a></b>(tilemap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteTilemap';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreatePalette">TLN_CreatePalette</a></b>(entries : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreatePalette';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_LoadPalette">TLN_LoadPalette</a></b>(filename : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadPalette';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_ClonePalette">TLN_ClonePalette</a></b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ClonePalette';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetPaletteColor">TLN_SetPaletteColor</a></b>(palette : PInteger; index : Integer; r, g, b : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetPaletteColor';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_MixPalettes">TLN_MixPalettes</a></b>(src1, src2, dst : PInteger; factor : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_MixPalettes';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_AddPaletteColor">TLN_AddPaletteColor</a></b>(palette : PInteger; r, g, b, start, num : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_AddPaletteColor';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SubPaletteColor">TLN_SubPaletteColor</a></b>(palette : PInteger; r, g, b, start, num : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SubPaletteColor';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_ModPaletteColor">TLN_ModPaletteColor</a></b>(palette : PInteger; r, g, b, start, num : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ModPaletteColor';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetPaletteData">TLN_GetPaletteData</a></b>(palette : PInteger; index : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ModPaletteColor';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DeletePalette">TLN_DeletePalette</a></b>(palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeletePalette';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreateBitmap">TLN_CreateBitmap</a></b>(width, height, bpp : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateBitmap';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_LoadBitmap">TLN_LoadBitmap</a></b>(filename : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadBitmap';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CloneBitmap">TLN_CloneBitmap</a></b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneBitmap';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetBitmapWidth">TLN_GetBitmapWidth</a></b>(bitmap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapWidth';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetBitmapHeight">TLN_GetBitmapHeight</a></b>(bitmap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapHeight';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetBitmapDepth">TLN_GetBitmapDepth</a></b>(bitmap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapHeight';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetBitmapPitch">TLN_GetBitmapPitch</a></b>(bitmap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapPitch';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetBitmapPtr">TLN_GetBitmapPtr</a></b>(bitmap : PInteger; x, y : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapPtr';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetBitmapPalette">TLN_GetBitmapPalette</a></b>(bitmap : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapPalette';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_SetBitmapPalette">TLN_SetBitmapPalette</a></b>(bitmap, palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBitmapPalette';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DeleteBitmap">TLN_DeleteBitmap</a></b>(bitmap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteBitmap';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreateSequence">TLN_CreateSequence</a></b>(name : PAnsiChar; target, num_frames : Integer; frames : TArray&lt;<a  href="TilengineBindings.TSequenceFrame.html">TSequenceFrame</a>&gt;) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateSequence';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreateCycle">TLN_CreateCycle</a></b>(name : PAnsiChar; num_strips : Integer; strips : TArray&lt;<a  href="TilengineBindings.TColorStrip.html">TColorStrip</a>&gt;) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateCycle';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CloneSequence">TLN_CloneSequence</a></b>(sequence : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneSequence';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetSequenceInfo">TLN_GetSequenceInfo</a></b>(sequence : PInteger; info : <a  href="TilengineBindings.html#PSequenceInfo">PSequenceInfo</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSequenceInfo';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DeleteSequence">TLN_DeleteSequence</a></b>(sequence : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteSequence';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_CreateSequencePack">TLN_CreateSequencePack</a></b> : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateSequencePack';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_LoadSequencePack">TLN_LoadSequencePack</a></b>(filename : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadSequencePack';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_FindSequence">TLN_FindSequence</a></b>(sp : PInteger; name : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_FindSequence';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetSequence">TLN_GetSequence</a></b>(sp : PInteger; index : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSequence';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_GetSequencePackCount">TLN_GetSequencePackCount</a></b>(sp : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSequencePackCount';</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_AddSequenceToPack">TLN_AddSequenceToPack</a></b>(sp, sequence : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_AddSequenceToPack';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a  href="TilengineBindings.html#TLN_DeleteSequencePack">TLN_DeleteSequencePack</a></b>(sp : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_AddSequenceToPack';</code></td>
+</tr>
+</table>
+<span id="PasDoc-Types"></span><h3 class="summary">Types</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PTile">PTile</a></b> = &circ;<a  href="TilengineBindings.TTile.html">TTile</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#TError">TError</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#TWindowsFlags">TWindowsFlags</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#TPlayer">TPlayer</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#TInput">TInput</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#TBlend">TBlend</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#TTileFlags">TTileFlags</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PSpriteData">PSpriteData</a></b> = &circ;<a  href="TilengineBindings.TSpriteData.html">TSpriteData</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PSpriteInfo">PSpriteInfo</a></b> = &circ;<a  href="TilengineBindings.TSpriteInfo.html">TSpriteInfo</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PTileInfo">PTileInfo</a></b> = &circ;<a  href="TilengineBindings.TTileInfo.html">TTileInfo</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PTileAtributes">PTileAtributes</a></b> = &circ;<a  href="TilengineBindings.TTileAtributes.html">TTileAtributes</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PSquenceFrame">PSquenceFrame</a></b> = &circ;<a  href="TilengineBindings.TSequenceFrame.html">TSequenceFrame</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PColorStrip">PColorStrip</a></b> = &circ;<a  href="TilengineBindings.TColorStrip.html">TColorStrip</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PSequenceInfo">PSequenceInfo</a></b> = &circ;<a  href="TilengineBindings.TSequenceInfo.html">TSequenceInfo</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PColor">PColor</a></b> = &circ;<a  href="TilengineBindings.TColor.html">TColor</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#TOverlay">TOverlay</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#PPixelMap">PPixelMap</a></b> = &circ;<a  href="TilengineBindings.TPixelMap.html">TPixelMap</a>;</code></td>
+</tr>
+</table>
+<span id="PasDoc-Constants"></span><h3 class="summary">Constants</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code><b><a  href="TilengineBindings.html#LIB">LIB</a></b> = 'Tilengine.dll';</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Functions and Procedures</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_Init"></span><code>function <b>TLN_Init</b>(hres, vres, numlayers, numsprites, numanimations : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_Init';</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+ TLN Library Bindings don't use these externals directly ENGINE BINDINGS </p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_Deinit"></span><code>procedure <b>TLN_Deinit</b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_Deinit';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetWidth"></span><code>function <b>TLN_GetWidth</b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetWidth';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetHeight"></span><code>function <b>TLN_GetHeight</b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetHeight';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetNumObjects"></span><code>function <b>TLN_GetNumObjects</b> : UInt32; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetNumObjects';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetUsedMemory"></span><code>function <b>TLN_GetUsedMemory</b> : UInt32; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetUsedMemory';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetVersion"></span><code>function <b>TLN_GetVersion</b> : UInt32; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetVersion';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetNumLayers"></span><code>function <b>TLN_GetNumLayers</b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetNumLayers';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetNumSprites"></span><code>function <b>TLN_GetNumSprites</b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetNumSprites';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetBGColor"></span><code>procedure <b>TLN_SetBGColor</b>(r, g, b : Byte) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBGColor';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetBGColorFromTilemap"></span><code>function <b>TLN_SetBGColorFromTilemap</b>(tilemap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBGColorFromTilemap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DisableBGColor"></span><code>procedure <b>TLN_DisableBGColor</b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableBGColor';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetBGBitmap"></span><code>function <b>TLN_SetBGBitmap</b>(bitmap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBGBitmap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetBGPalette"></span><code>function <b>TLN_SetBGPalette</b>(palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBGPalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetRasterCallback"></span><code>procedure <b>TLN_SetRasterCallback</b>(callback : Pointer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetRasterCallback';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetFrameCallback"></span><code>procedure <b>TLN_SetFrameCallback</b>(callback : Pointer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetFrameCallback';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetRenderTarget"></span><code>procedure <b>TLN_SetRenderTarget</b>(data : TArray&lt;Byte&gt;; pitch : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetRenderTarget';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_UpdateFrame"></span><code>procedure <b>TLN_UpdateFrame</b>(time : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_UpdateFrame';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_BeginFrame"></span><code>procedure <b>TLN_BeginFrame</b>(frame : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_BeginFrame';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DrawNextScanline"></span><code>function <b>TLN_DrawNextScanline</b> : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DrawNextScanline';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLastError"></span><code>procedure <b>TLN_SetLastError</b>(error : <a  href="TilengineBindings.html#TError">TError</a>) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLastError';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetLastError"></span><code>function <b>TLN_GetLastError</b> : <a  href="TilengineBindings.html#TError">TError</a>; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLastError';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetErrorString"></span><code>function <b>TLN_GetErrorString</b>(error : <a  href="TilengineBindings.html#TError">TError</a>) : PAnsiChar; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetErrorString';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetAvailableSprite"></span><code>function <b>TLN_GetAvailableSprite</b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetAvailableSprite';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLoadPath"></span><code>procedure <b>TLN_SetLoadPath</b>(path : PAnsiChar) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLoadPath';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetCustomBlendFunction"></span><code>procedure <b>TLN_SetCustomBlendFunction</b>(customfunction : Pointer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetCustomBlendFunction';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreateWindow"></span><code>function <b>TLN_CreateWindow</b>(const overlay : PAnsiChar; flags : <a  href="TilengineBindings.html#TWindowsFlags">TWindowsFlags</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateWindow';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreateWindowThread"></span><code>function <b>TLN_CreateWindowThread</b>(const overlay : PAnsiChar; flags : <a  href="TilengineBindings.html#TWindowsFlags">TWindowsFlags</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateWindowThread';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetWindowTitle"></span><code>procedure <b>TLN_SetWindowTitle</b>(const title : PAnsiChar) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetWindowTitle';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_ProcessWindow"></span><code>function <b>TLN_ProcessWindow</b> : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ProcessWindow';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_IsWindowActive"></span><code>function <b>TLN_IsWindowActive</b> : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_IsWindowActive';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetInput"></span><code>function <b>TLN_GetInput</b>(id : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetInput';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_EnableInput"></span><code>procedure <b>TLN_EnableInput</b>(player : PInteger; enable : Boolean) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_EnableInput';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_AssignInputJoystick"></span><code>procedure <b>TLN_AssignInputJoystick</b>(player : PInteger; index : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_AssignInputJoystick';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DefineInputKey"></span><code>procedure <b>TLN_DefineInputKey</b>(player : PInteger; input : PInteger; keycode : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DefineInputKey';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DefineInputButton"></span><code>procedure <b>TLN_DefineInputButton</b>(player : PInteger; input : PInteger; joybutton : Byte) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DefineInputButton';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DrawFrame"></span><code>procedure <b>TLN_DrawFrame</b>(time : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DrawFrame';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_WaitRedraw"></span><code>procedure <b>TLN_WaitRedraw</b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_WaitRedraw';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DeleteWindow"></span><code>procedure <b>TLN_DeleteWindow</b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteWindow';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_EnableCRTEffect"></span><code>procedure <b>TLN_EnableCRTEffect</b>(overlay : <a  href="TilengineBindings.html#TOverlay">TOverlay</a>; overlay_factor, threshold, v0, v1, v2, v3 : Byte; blur, glow_factor : Byte) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_EnableCRTEffect';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DisableCRTEffect"></span><code>procedure <b>TLN_DisableCRTEffect</b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableCRTEffect';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_Delay"></span><code>procedure <b>TLN_Delay</b>(msecs : Word) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_Delay';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetTicks"></span><code>function <b>TLN_GetTicks</b> : Word cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTicks';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_BeginWindowFrame"></span><code>procedure <b>TLN_BeginWindowFrame</b>(frame : Integer) cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_BeginWindowFrame';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_EndWindowFrame"></span><code>procedure <b>TLN_EndWindowFrame</b> cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_EndWindowFrame';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayer"></span><code>function <b>TLN_SetLayer</b>(nlayer : Integer; tileset, tilemap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayer';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerPalette"></span><code>function <b>TLN_SetLayerPalette</b>(nlayer : Integer; tilemap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerPalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerBitmap"></span><code>function <b>TLN_SetLayerBitmap</b>(nlayer : Integer; bitmap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerBitmap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerPosition"></span><code>function <b>TLN_SetLayerPosition</b>(nlayer, hstart, vstart : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerPosition';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerScaling"></span><code>function <b>TLN_SetLayerScaling</b>(nlayer : Integer; xfactor, yfactor : Single) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerScaling';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerTransform"></span><code>function <b>TLN_SetLayerTransform</b>(nlayer : Integer; angle, dx, dy, sx, sy : Single) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerTransform';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerPixelMapping"></span><code>function <b>TLN_SetLayerPixelMapping</b>(nlayer : Integer; table : TArray&lt;<a  href="TilengineBindings.TPixelMap.html">TPixelMap</a>&gt;) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerPixelMapping';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerBlendMode"></span><code>function <b>TLN_SetLayerBlendMode</b>(nlayer : Integer; mode : PInteger; factor : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerBlendMode';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerColumnOffset"></span><code>function <b>TLN_SetLayerColumnOffset</b>(nlayer : Integer; offset : TArray&lt;Integer&gt;) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerColumnOffset';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerClip"></span><code>function <b>TLN_SetLayerClip</b>(nlayer, x1, y1, x2, y2 : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerClip';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DisableLayerClip"></span><code>function <b>TLN_DisableLayerClip</b>(nlayer : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableLayerClip';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetLayerMosaic"></span><code>function <b>TLN_SetLayerMosaic</b>(nlayer, width, height : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetLayerMosaic';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DisableLayerMosaic"></span><code>function <b>TLN_DisableLayerMosaic</b>(nlayer : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableLayerMosaic';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_ResetLayerMode"></span><code>function <b>TLN_ResetLayerMode</b>(nlayer : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ResetLayerMode';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DisableLayer"></span><code>function <b>TLN_DisableLayer</b>(nlayer : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableLayer';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetLayerPalette"></span><code>function <b>TLN_GetLayerPalette</b>(nlayer : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLayerPalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetLayerTile"></span><code>function <b>TLN_GetLayerTile</b>(nlayer, x, y : Integer; out info : <a  href="TilengineBindings.TTileInfo.html">TTileInfo</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLayerTile';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetLayerWidth"></span><code>function <b>TLN_GetLayerWidth</b>(nlayer : Integer) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLayerWidth';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetLayerHeight"></span><code>function <b>TLN_GetLayerHeight</b>(nlayer : Integer) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetLayerHeight';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_ConfigSprite"></span><code>function <b>TLN_ConfigSprite</b>(nsprite : Integer; spriteset : PInteger; flags : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ConfigSprite';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetSpriteSet"></span><code>function <b>TLN_SetSpriteSet</b>(nsprite : Integer; spriteset : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteSet';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetSpriteFlags"></span><code>function <b>TLN_SetSpriteFlags</b>(nsprite : Integer; flags : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteFlags';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetSpritePosition"></span><code>function <b>TLN_SetSpritePosition</b>(nsprite, x, y : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritePosition';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetSpritePicture"></span><code>function <b>TLN_SetSpritePicture</b>(nsprite, entry : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritePicture';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetSpritePalette"></span><code>function <b>TLN_SetSpritePalette</b>(nsprite : Integer; Palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritePalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetSpriteBlendMode"></span><code>function <b>TLN_SetSpriteBlendMode</b>(nsprite : Integer; mode : PInteger; factor : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteBlendMode';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetSpriteScaling"></span><code>function <b>TLN_SetSpriteScaling</b>(nsprite : Integer; sx, sy : Single) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteScaling';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_ResetSpriteScaling"></span><code>function <b>TLN_ResetSpriteScaling</b>(nsprite : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ResetSpriteScaling';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetSpritePicture"></span><code>function <b>TLN_GetSpritePicture</b>(nsprite : Integer) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpritePicture';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_EnableSpriteCollision"></span><code>function <b>TLN_EnableSpriteCollision</b>(nsprite : Integer; enable : Boolean) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_EnableSpriteCollision';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetSpriteCollision"></span><code>function <b>TLN_GetSpriteCollision</b>(nsprite : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpriteCollision';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DisableSprite"></span><code>function <b>TLN_DisableSprite</b>(nsprite : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableSprite';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetSpritePalette"></span><code>function <b>TLN_GetSpritePalette</b>(nsprite : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpritePalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetPaletteAnimation"></span><code>function <b>TLN_SetPaletteAnimation</b>(index : Integer; palette, sequence : PInteger; blend : Boolean) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetPaletteAnimation';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetPaletteAnimationSource"></span><code>function <b>TLN_SetPaletteAnimationSource</b>(index : Integer; palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetPaletteAnimationSource';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetTilemapAnimation"></span><code>function <b>TLN_SetTilemapAnimation</b>(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetTilemapAnimation';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetTilesetAnimation"></span><code>function <b>TLN_SetTilesetAnimation</b>(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetTilesetAnimation';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetSpriteAnimation"></span><code>function <b>TLN_SetSpriteAnimation</b>(index, nlayer : Integer; sequence : PInteger; loop : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpriteAnimation';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetAnimationState"></span><code>function <b>TLN_GetAnimationState</b>(index : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetAnimationState';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetAnimationDelay"></span><code>function <b>TLN_SetAnimationDelay</b>(index, delay : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetAnimationDelay';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetAvailableAnimation"></span><code>function <b>TLN_GetAvailableAnimation</b> : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetAvailableAnimation';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DisableAnimation"></span><code>function <b>TLN_DisableAnimation</b>(index : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DisableAnimation';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreateSpriteset"></span><code>function <b>TLN_CreateSpriteset</b>(bitmap : PInteger; rects : TArray&lt;<a  href="TilengineBindings.TSpriteData.html">TSpriteData</a>&gt;; entries : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateSpriteset';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_LoadSpriteset"></span><code>function <b>TLN_LoadSpriteset</b>(name : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadSpriteset';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CloneSpriteset"></span><code>function <b>TLN_CloneSpriteset</b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneSpriteset';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetSpriteInfo"></span><code>function <b>TLN_GetSpriteInfo</b>(spriteset : PInteger; entry : Integer; info : <a  href="TilengineBindings.html#PSpriteInfo">PSpriteInfo</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpriteInfo';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetSpritesetPalette"></span><code>function <b>TLN_GetSpritesetPalette</b>(spriteset : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSpritesetPalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_FindSpritesetSprite"></span><code>function <b>TLN_FindSpritesetSprite</b>(spriteset : PInteger; name : PAnsiChar) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_FindSpritesetSprite';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetSpritesetData"></span><code>function <b>TLN_SetSpritesetData</b>(spriteset : PInteger; entry : Integer; data : TArray&lt;<a  href="TilengineBindings.TSpriteData.html">TSpriteData</a>&gt;; pixels : PInteger; pitch : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritesetData';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DeleteSpriteset"></span><code>function <b>TLN_DeleteSpriteset</b>(spriteset : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetSpritesetData';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreateTileset"></span><code>function <b>TLN_CreateTileset</b>(numtiles, width, height : Integer; palette, sequencepack : PInteger; attributes : TArray&lt;<a  href="TilengineBindings.TTileAtributes.html">TTileAtributes</a>&gt;) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateTileset';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_LoadTileset"></span><code>function <b>TLN_LoadTileset</b>(filename : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadTileset';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CloneTileset"></span><code>function <b>TLN_CloneTileset</b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneTileset';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CopyTile"></span><code>function <b>TLN_CopyTile</b>(tileset : PInteger; src, dst : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CopyTile';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetTilesetPixels"></span><code>function <b>TLN_SetTilesetPixels</b>(tileset : PInteger; entry : Integer; srcdata : TArray&lt;Byte&gt;; srcpitch : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetTilesetPixels';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetTileWidth"></span><code>function <b>TLN_GetTileWidth</b>(tileset : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTileWidth';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetTileHeight"></span><code>function <b>TLN_GetTileHeight</b>(tileset : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTileHeight';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetTilesetPalette"></span><code>function <b>TLN_GetTilesetPalette</b>(tileset : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilesetPalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetTilesetSequencePack"></span><code>function <b>TLN_GetTilesetSequencePack</b>(tileset : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilesetSequencePack';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DeleteTileset"></span><code>function <b>TLN_DeleteTileset</b>(tileset : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteTileset';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreateTilemap"></span><code>function <b>TLN_CreateTilemap</b>(rows, cols : Integer; tiles : TArray&lt;<a  href="TilengineBindings.TTile.html">TTile</a>&gt;; bgcolor : Word; tileset : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateTilemap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_LoadTilemap"></span><code>function <b>TLN_LoadTilemap</b>(filename, layername : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadTilemap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CloneTilemap"></span><code>function <b>TLN_CloneTilemap</b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneTilemap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetTilemapRows"></span><code>function <b>TLN_GetTilemapRows</b>(tilemap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilemapRows';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetTilemapCols"></span><code>function <b>TLN_GetTilemapCols</b>(tilemap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilemapCols';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetTilemapTileset"></span><code>function <b>TLN_GetTilemapTileset</b>(tilemap : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilemapTileset';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetTilemapTile"></span><code>function <b>TLN_GetTilemapTile</b>(tilemap : PInteger; row, col : Integer; tile : <a  href="TilengineBindings.html#PTile">PTile</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetTilemapTile';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetTilemapTile"></span><code>function <b>TLN_SetTilemapTile</b>(tilemap : PInteger; row, col : Integer; tile : <a  href="TilengineBindings.html#PTile">PTile</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetTilemapTile';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CopyTiles"></span><code>function <b>TLN_CopyTiles</b>(src : PInteger; srcrow, srccol, rows, cols : Integer; dst : PInteger; dstrow, dscol : Integer) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CopyTiles';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DeleteTilemap"></span><code>function <b>TLN_DeleteTilemap</b>(tilemap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteTilemap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreatePalette"></span><code>function <b>TLN_CreatePalette</b>(entries : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreatePalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_LoadPalette"></span><code>function <b>TLN_LoadPalette</b>(filename : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadPalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_ClonePalette"></span><code>function <b>TLN_ClonePalette</b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ClonePalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetPaletteColor"></span><code>function <b>TLN_SetPaletteColor</b>(palette : PInteger; index : Integer; r, g, b : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetPaletteColor';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_MixPalettes"></span><code>function <b>TLN_MixPalettes</b>(src1, src2, dst : PInteger; factor : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_MixPalettes';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_AddPaletteColor"></span><code>function <b>TLN_AddPaletteColor</b>(palette : PInteger; r, g, b, start, num : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_AddPaletteColor';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SubPaletteColor"></span><code>function <b>TLN_SubPaletteColor</b>(palette : PInteger; r, g, b, start, num : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SubPaletteColor';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_ModPaletteColor"></span><code>function <b>TLN_ModPaletteColor</b>(palette : PInteger; r, g, b, start, num : Byte) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ModPaletteColor';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetPaletteData"></span><code>function <b>TLN_GetPaletteData</b>(palette : PInteger; index : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_ModPaletteColor';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DeletePalette"></span><code>function <b>TLN_DeletePalette</b>(palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeletePalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreateBitmap"></span><code>function <b>TLN_CreateBitmap</b>(width, height, bpp : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateBitmap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_LoadBitmap"></span><code>function <b>TLN_LoadBitmap</b>(filename : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadBitmap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CloneBitmap"></span><code>function <b>TLN_CloneBitmap</b>(src : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneBitmap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetBitmapWidth"></span><code>function <b>TLN_GetBitmapWidth</b>(bitmap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapWidth';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetBitmapHeight"></span><code>function <b>TLN_GetBitmapHeight</b>(bitmap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapHeight';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetBitmapDepth"></span><code>function <b>TLN_GetBitmapDepth</b>(bitmap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapHeight';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetBitmapPitch"></span><code>function <b>TLN_GetBitmapPitch</b>(bitmap : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapPitch';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetBitmapPtr"></span><code>function <b>TLN_GetBitmapPtr</b>(bitmap : PInteger; x, y : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapPtr';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetBitmapPalette"></span><code>function <b>TLN_GetBitmapPalette</b>(bitmap : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetBitmapPalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_SetBitmapPalette"></span><code>function <b>TLN_SetBitmapPalette</b>(bitmap, palette : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_SetBitmapPalette';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DeleteBitmap"></span><code>function <b>TLN_DeleteBitmap</b>(bitmap : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteBitmap';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreateSequence"></span><code>function <b>TLN_CreateSequence</b>(name : PAnsiChar; target, num_frames : Integer; frames : TArray&lt;<a  href="TilengineBindings.TSequenceFrame.html">TSequenceFrame</a>&gt;) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateSequence';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreateCycle"></span><code>function <b>TLN_CreateCycle</b>(name : PAnsiChar; num_strips : Integer; strips : TArray&lt;<a  href="TilengineBindings.TColorStrip.html">TColorStrip</a>&gt;) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateCycle';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CloneSequence"></span><code>function <b>TLN_CloneSequence</b>(sequence : PInteger) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CloneSequence';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetSequenceInfo"></span><code>function <b>TLN_GetSequenceInfo</b>(sequence : PInteger; info : <a  href="TilengineBindings.html#PSequenceInfo">PSequenceInfo</a>) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSequenceInfo';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DeleteSequence"></span><code>function <b>TLN_DeleteSequence</b>(sequence : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_DeleteSequence';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_CreateSequencePack"></span><code>function <b>TLN_CreateSequencePack</b> : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_CreateSequencePack';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_LoadSequencePack"></span><code>function <b>TLN_LoadSequencePack</b>(filename : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_LoadSequencePack';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_FindSequence"></span><code>function <b>TLN_FindSequence</b>(sp : PInteger; name : PAnsiChar) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_FindSequence';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetSequence"></span><code>function <b>TLN_GetSequence</b>(sp : PInteger; index : Integer) : PInteger; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSequence';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_GetSequencePackCount"></span><code>function <b>TLN_GetSequencePackCount</b>(sp : PInteger) : Integer; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_GetSequencePackCount';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_AddSequenceToPack"></span><code>function <b>TLN_AddSequenceToPack</b>(sp, sequence : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_AddSequenceToPack';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TLN_DeleteSequencePack"></span><code>function <b>TLN_DeleteSequencePack</b>(sp : PInteger) : Boolean; cdecl; external <a  href="TilengineBindings.html#LIB">LIB</a> name 'TLN_AddSequenceToPack';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Types</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PTile"></span><code><b>PTile</b> = &circ;<a  href="TilengineBindings.TTile.html">TTile</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TError"></span><code><b>TError</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+ List of possible exception error codes </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+<span id="Ok">Ok</span></li>
+<li>
+<span id="OutOfMemory">OutOfMemory</span></li>
+<li>
+<span id="IdxLayer">IdxLayer</span></li>
+<li>
+<span id="IdxSprite">IdxSprite</span></li>
+<li>
+<span id="IdxAnimation">IdxAnimation</span></li>
+<li>
+<span id="IdxPicture">IdxPicture</span></li>
+<li>
+<span id="RefTileset">RefTileset</span></li>
+<li>
+<span id="RefTilemap">RefTilemap</span></li>
+<li>
+<span id="RefSpriteset">RefSpriteset</span></li>
+<li>
+<span id="RefPalette">RefPalette</span></li>
+<li>
+<span id="RefSequence">RefSequence</span></li>
+<li>
+<span id="RefSequencePack">RefSequencePack</span></li>
+<li>
+<span id="RefBitmap">RefBitmap</span></li>
+<li>
+<span id="NullPointer">NullPointer</span></li>
+<li>
+<span id="FileNotFound">FileNotFound</span></li>
+<li>
+<span id="WrongFormat">WrongFormat</span></li>
+<li>
+<span id="WrongSize">WrongSize</span></li>
+<li>
+<span id="Unsupported">Unsupported</span></li>
+<li>
+<span id="MaxError">MaxError</span></li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TWindowsFlags"></span><code><b>TWindowsFlags</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+ List of flag values for window creation </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+<span id="Fullscreen">Fullscreen = (1shl0)</span></li>
+<li>
+<span id="Vsync">Vsync = (1shl1)</span></li>
+<li>
+<span id="S1">S1 = (1shl2)</span></li>
+<li>
+<span id="S2">S2 = (2shl2)</span></li>
+<li>
+<span id="S3">S3 = (3shl2)</span></li>
+<li>
+<span id="S4">S4 = (4shl2)</span></li>
+<li>
+<span id="S5">S5 = (5shl2)</span></li>
+<li>
+<span id="Nearest">Nearest = (1shl6)</span></li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TPlayer"></span><code><b>TPlayer</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+unfiltered upscaling &lt;summary&gt; Player index for input assignment functions &lt;/summary&gt;</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+<span id="P1">P1</span></li>
+<li>
+<span id="P2">P2</span></li>
+<li>
+<span id="P3">P3</span></li>
+<li>
+<span id="P4">P4</span></li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TInput"></span><code><b>TInput</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+ Standard inputs query for cref=&quot;Window.GetInput()&quot; </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+<span id="None">None</span></li>
+<li>
+<span id="Up">Up</span></li>
+<li>
+<span id="Down">Down</span></li>
+<li>
+<span id="Left">Left</span></li>
+<li>
+<span id="Right">Right</span></li>
+<li>
+<span id="Button1">Button1</span></li>
+<li>
+<span id="Button2">Button2</span></li>
+<li>
+<span id="Button3">Button3</span></li>
+<li>
+<span id="Button4">Button4</span></li>
+<li>
+<span id="Button5">Button5</span></li>
+<li>
+<span id="Button6">Button6</span></li>
+<li>
+<span id="Start">Start</span></li>
+<li>
+<span id="IP1">IP1 = (0shl4)</span>: Pascal limitations here :(</li>
+<li>
+<span id="IP2">IP2 = (1shl4)</span>: request player 1 input (default)</li>
+<li>
+<span id="IP3">IP3 = (2shl4)</span>: request player 2 input</li>
+<li>
+<span id="IP4">IP4 = (3shl4)</span>: request player 3 input</li>
+<li>
+<span id="Button_A">Button_A = Button1</span>: request player 4 input compatibility symbols for pre-1.18 input model</li>
+<li>
+<span id="Button_B">Button_B = Button2</span></li>
+<li>
+<span id="Button_C">Button_C = Button3</span></li>
+<li>
+<span id="Button_D">Button_D = Button4</span></li>
+<li>
+<span id="Button_E">Button_E = Button5</span></li>
+<li>
+<span id="Button_F">Button_F = Button6</span></li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TBlend"></span><code><b>TBlend</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+ Available blending modes for cref=&quot;Layer&quot; and cref=&quot;Sprite&quot; </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+<span id="BNone">BNone</span></li>
+<li>
+<span id="Mix25">Mix25</span></li>
+<li>
+<span id="Mix50">Mix50</span></li>
+<li>
+<span id="Mix75">Mix75</span></li>
+<li>
+<span id="Add">Add</span></li>
+<li>
+<span id="Sub">Sub</span></li>
+<li>
+<span id="Modulus">Modulus</span></li>
+<li>
+<span id="Custom">Custom</span></li>
+<li>
+<span id="Mix">Mix = Mix50</span></li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TTileFlags"></span><code><b>TTileFlags</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+ List of flags for tiles and sprites </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+<span id="FNone">FNone = (0)</span></li>
+<li>
+<span id="FlipX">FlipX = (1shl15)</span></li>
+<li>
+<span id="FlipY">FlipY = (1shl14)</span></li>
+<li>
+<span id="Rotate">Rotate = (1shl13)</span></li>
+<li>
+<span id="Priority">Priority = (1shl12)</span></li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PSpriteData"></span><code><b>PSpriteData</b> = &circ;<a  href="TilengineBindings.TSpriteData.html">TSpriteData</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PSpriteInfo"></span><code><b>PSpriteInfo</b> = &circ;<a  href="TilengineBindings.TSpriteInfo.html">TSpriteInfo</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PTileInfo"></span><code><b>PTileInfo</b> = &circ;<a  href="TilengineBindings.TTileInfo.html">TTileInfo</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PTileAtributes"></span><code><b>PTileAtributes</b> = &circ;<a  href="TilengineBindings.TTileAtributes.html">TTileAtributes</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PSquenceFrame"></span><code><b>PSquenceFrame</b> = &circ;<a  href="TilengineBindings.TSequenceFrame.html">TSequenceFrame</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PColorStrip"></span><code><b>PColorStrip</b> = &circ;<a  href="TilengineBindings.TColorStrip.html">TColorStrip</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PSequenceInfo"></span><code><b>PSequenceInfo</b> = &circ;<a  href="TilengineBindings.TSequenceInfo.html">TSequenceInfo</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PColor"></span><code><b>PColor</b> = &circ;<a  href="TilengineBindings.TColor.html">TColor</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="TOverlay"></span><code><b>TOverlay</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+ overlays for CRT effect </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+<span id="Non">Non</span></li>
+<li>
+<span id="ShadowMask">ShadowMask</span></li>
+<li>
+<span id="Aperture">Aperture</span></li>
+<li>
+<span id="Scanlines">Scanlines</span></li>
+<li>
+<span id="Custm">Custm</span></li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="PPixelMap"></span><code><b>PPixelMap</b> = &circ;<a  href="TilengineBindings.TPixelMap.html">TPixelMap</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Constants</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><span id="LIB"></span><code><b>LIB</b> = 'Tilengine.dll';</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Binary dependancies</p>
+</td></tr>
+</table>
+<hr><span class="appinfo"><em>Generated by <a  href="https://github.com/pasdoc/pasdoc/wiki">PasDoc 0.15.0</a>. </em>
+</span>
+</td></tr></table></body></html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>PascalTilengine: Tilengine: Class TEngine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="PasDoc 0.15.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="tipuesearch/tipuesearch.css">
+
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>PascalTilengine</h2><p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p><p><a href="GVUses.png" class="navigation">Unit dependency graph</a></p><p><a href="GVClasses.png" class="navigation">Classes hierarchy graph</a></p><form class="search-form" action="_tipue_results.html"><div class="search-input"><input type="text" name="q" id="tipue_search_input"></div><div class="search-button"><input type="button" id="tipue_search_button" onclick="this.form.submit();"></div></form>
+<div style="clear: both"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#tipue_search_input').tipuesearch({
+        /* 10 items to display seems standard */
+        'show': 10,
+        /* For PasDoc docs, showing urls is not very useful,
+           since the page title already shows the unit and identifier. */
+        'showURL': false
+    });
+});
+</script>
+</td><td class="content">
+<span id="TEngine"></span><h1 class="cio">Class TEngine</h1>
+<div class="sections">
+<div class="one_section"><a class="section" href="#PasDoc-Description">Description</a></div><div class="one_section"><a class="section" href="#PasDoc-Hierarchy">Hierarchy</a></div><div class="one_section"><a class="section" href="#PasDoc-Fields">Fields</a></div><div class="one_section"><a class="section" href="#PasDoc-Methods">Methods</a></div><div class="one_section"><a class="section" href="#PasDoc-Properties">Properties</a></div></div>
+<span id="PasDoc-Description"></span><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="Tilengine.html">Tilengine</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TEngine = class(TObject)</code></p>
+<h2 class="description">Description</h2>
+<p>
+ Main object for engine creation and rendering </p>
+<span id="PasDoc-Hierarchy"></span><h2 class="hierarchy">Hierarchy</h2>
+<ul class="hierarchy"><li class="ancestor">TObject</li>
+<li class="thisitem">TEngine</li></ul><h2 class="overview">Overview</h2>
+<span id="PasDoc-Fields"></span><h3 class="summary">Fields</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code><b><a  href="Tilengine.TEngine.html#Animations">Animations</a></b>: TArray&lt;<a  href="Tilengine.TAnimation.html">TAnimation</a>&gt;;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code><b><a  href="Tilengine.TEngine.html#Layers">Layers</a></b>: TArray&lt;<a  href="Tilengine.TLayer.html">TLayer</a>&gt;;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code><b><a  href="Tilengine.TEngine.html#Sprites">Sprites</a></b>: TArray&lt;<a  href="Tilengine.TSprite.html">TSprite</a>&gt;;</code></td>
+</tr>
+</table>
+<span id="PasDoc-Methods"></span><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a  href="Tilengine.TEngine.html#Singleton">Singleton</a></b>(Hres, Vres, numLayers, numSprites, numAnimations : Integer) : <a  href="Tilengine.TEngine.html">TEngine</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#Deinit">Deinit</a></b>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#SetBackgroundColor">SetBackgroundColor</a></b>(const value : <a  href="TilengineBindings.TColor.html">TColor</a>); overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#SetBackgroundColor">SetBackgroundColor</a></b>(const tilemap : <a  href="Tilengine.TTilemap.html">TTilemap</a>); overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#DisableBackgroundColor">DisableBackgroundColor</a></b>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#SetRenderTarget">SetRenderTarget</a></b>(data : TArray&lt;Byte&gt;; pitch : Integer);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#SetRasterCallback">SetRasterCallback</a></b>(callback : <a  href="Tilengine.html#TVideocallback">TVideocallback</a>);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#SetFrameCallback">SetFrameCallback</a></b>(callback : <a  href="Tilengine.html#TVideocallback">TVideocallback</a>);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#SetCustomBlendFunction">SetCustomBlendFunction</a></b>(customfunction : <a  href="Tilengine.html#TBlendFunction">TBlendFunction</a>);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#BeginFrame">BeginFrame</a></b>(frame : Integer);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Tilengine.TEngine.html#DrawNextScanLine">DrawNextScanLine</a></b> : Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="Tilengine.TEngine.html#GetAvailableSprite">GetAvailableSprite</a></b> : <a  href="Tilengine.TSprite.html">TSprite</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#InitSprites">InitSprites</a></b>(count : Integer);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#InitLayers">InitLayers</a></b>(count : Integer);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#UpdateFrame">UpdateFrame</a></b>(time : Integer);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="Tilengine.TEngine.html#InitAnimations">InitAnimations</a></b>(count : Integer);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>destructor <b><a  href="Tilengine.TEngine.html#Destroy">Destroy</a></b>; override;</code></td>
+</tr>
+</table>
+<span id="PasDoc-Properties"></span><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Tilengine.TEngine.html#Width">Width</a></b> : Integer read GetWidth write SetWidth;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Tilengine.TEngine.html#Height">Height</a></b> : Integer read GetHeight write SetHeight;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Tilengine.TEngine.html#Version">Version</a></b> : UInt32 read GetVersion write SetVersion;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Tilengine.TEngine.html#Ticks">Ticks</a></b> : Word read GetTicks;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Tilengine.TEngine.html#LoadPath">LoadPath</a></b> : PAnsiChar write SetLoadPath;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Tilengine.TEngine.html#NumObjects">NumObjects</a></b> : UInt32 read GetNumObjects;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Tilengine.TEngine.html#UsedMemory">UsedMemory</a></b> : UInt32 read GetUsedMemory;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Tilengine.TEngine.html#BackgroundBitmap">BackgroundBitmap</a></b> : <a  href="Tilengine.TBitmap.html">TBitmap</a> write SetBackgroundBitmap;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="Tilengine.TEngine.html#BackgroundPalette">BackgroundPalette</a></b> : <a  href="Tilengine.TPalette.html">TPalette</a> write SetBackgroundPalette;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Fields</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Animations"></span><code><b>Animations</b>: TArray&lt;<a  href="Tilengine.TAnimation.html">TAnimation</a>&gt;;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Layers"></span><code><b>Layers</b>: TArray&lt;<a  href="Tilengine.TLayer.html">TLayer</a>&gt;;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Sprites"></span><code><b>Sprites</b>: TArray&lt;<a  href="Tilengine.TSprite.html">TSprite</a>&gt;;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Singleton"></span><code>class function <b>Singleton</b>(Hres, Vres, numLayers, numSprites, numAnimations : Integer) : <a  href="Tilengine.TEngine.html">TEngine</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Initializes the graphic engine </p>
+<p>
+ 
+
+<p>
+
+<p>
+
+<p>
+
+<p>
+
+<p> This is a singleton object: calling Init multiple times will return the same reference</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>hres</dt>
+<dd>horizontal resolution in pixels</dd>
+<dt>vres</dt>
+<dd>vertical resolution in pixels</dd>
+<dt>numLayers</dt>
+<dd>number of layers</dd>
+<dt>numSprites</dt>
+<dd>number of sprites</dd>
+<dt>numAnimations</dt>
+<dd>number of animations</dd>
+</dl>
+<h6 class="description_section">Returns</h6>
+<p class="return">Engine instance</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Deinit"></span><code>procedure <b>Deinit</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Deinits engine and frees associated resources </p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="SetBackgroundColor"></span><code>procedure <b>SetBackgroundColor</b>(const value : <a  href="TilengineBindings.TColor.html">TColor</a>); overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Sets the background color, that is the color of the pixel when there isn't any layer or sprite at that position </p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="SetBackgroundColor"></span><code>procedure <b>SetBackgroundColor</b>(const tilemap : <a  href="Tilengine.TTilemap.html">TTilemap</a>); overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Sets the background color from a tilemap, that is the color of the pixel when there isn't any layer or sprite at that position </p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="DisableBackgroundColor"></span><code>procedure <b>DisableBackgroundColor</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Disables background color rendering. If you know that the last background layer will always cover the entire screen, you can disable it to gain some performance </p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="SetRenderTarget"></span><code>procedure <b>SetRenderTarget</b>(data : TArray&lt;Byte&gt;; pitch : Integer);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Sets the output surface for rendering </p>
+<p>
+ 
+
+<p>
+
+<p>The render target pixel format must be 32 bits RGBA</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>data</dt>
+<dd>Array of bytes that will hold the render target</dd>
+<dt>pitch</dt>
+<dd>Number of bytes per each scanline of the framebuffer</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="SetRasterCallback"></span><code>procedure <b>SetRasterCallback</b>(callback : <a  href="Tilengine.html#TVideocallback">TVideocallback</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Enables raster effects processing, like a virtual HBLANK interrupt where any render parameter can be modified between scanlines. </p>
+<p>
+ </p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>callback</dt>
+<dd>name of the user-defined function to call for each scanline. Set Null to disable.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="SetFrameCallback"></span><code>procedure <b>SetFrameCallback</b>(callback : <a  href="Tilengine.html#TVideocallback">TVideocallback</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Enables user callback for each drawn frame, like a virtual VBLANK interrupt </p>
+<p>
+ </p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>callback</dt>
+<dd>name of the user-defined function to call for each frame. Set Null to disable.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="SetCustomBlendFunction"></span><code>procedure <b>SetCustomBlendFunction</b>(customfunction : <a  href="Tilengine.html#TBlendFunction">TBlendFunction</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Sets custom blend function to use in sprites or background layers when cref=&quot;Blend.Custom&quot; mode is selected with the cref=&quot;Layer.BlendMode&quot; and cref=&quot;Sprite.BlendMode&quot; properties. </p>
+<p>
+ </p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>function</dt>
+<dd>user-defined function to call when blending that takes two integer arguments: source component intensity, destination component intensity, and returns the desired intensity.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="BeginFrame"></span><code>procedure <b>BeginFrame</b>(frame : Integer);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Starts active rendering of the current frame </p>
+<p>
+ 
+
+<p>This method is used for active rendering combined with DrawNextScanline(), instead of using delegates for raster effects</p>
+<h6 class="description_section">Parameters</h6>
+<dl class="parameters">
+<dt>frame</dt>
+<dd>Timestamp value</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="DrawNextScanLine"></span><code>function <b>DrawNextScanLine</b> : Boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Draws the next scanline of the frame when doing active rendering (without delegates) </p>
+<p>
+ </p>
+<h6 class="description_section">Returns</h6>
+<p class="return">true if there are still scanlines to draw or false when the frame is complete</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="GetAvailableSprite"></span><code>function <b>GetAvailableSprite</b> : <a  href="Tilengine.TSprite.html">TSprite</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Returns reference to first unused sprite </p>
+<p>
+ @returns</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="InitSprites"></span><code>procedure <b>InitSprites</b>(count : Integer);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Init engine sprite array. WARNING! If you call this method you will current sprites </p>
+<p>
+ @returns</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="InitLayers"></span><code>procedure <b>InitLayers</b>(count : Integer);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Init engine layers array. WARNING! If you call this method you will current layers </p>
+<p>
+ @returns</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="UpdateFrame"></span><code>procedure <b>UpdateFrame</b>(time : Integer);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Init engine animations array. WARNING! If you call this method you will current animations </p>
+<p>
+ @returns</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="InitAnimations"></span><code>procedure <b>InitAnimations</b>(count : Integer);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Destroy"></span><code>destructor <b>Destroy</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Width"></span><code>property <b>Width</b> : Integer read GetWidth write SetWidth;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Height"></span><code>property <b>Height</b> : Integer read GetHeight write SetHeight;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Version"></span><code>property <b>Version</b> : UInt32 read GetVersion write SetVersion;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Ticks"></span><code>property <b>Ticks</b> : Word read GetTicks;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="LoadPath"></span><code>property <b>LoadPath</b> : PAnsiChar write SetLoadPath;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Base path for all data loading .FromFile() static methods </p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="NumObjects"></span><code>property <b>NumObjects</b> : UInt32 read GetNumObjects;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Returns the number of objets used by the engine so far </p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="UsedMemory"></span><code>property <b>UsedMemory</b> : UInt32 read GetUsedMemory;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Returns the total amount of memory used by the objects so far </p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="BackgroundBitmap"></span><code>property <b>BackgroundBitmap</b> : <a  href="Tilengine.TBitmap.html">TBitmap</a> write SetBackgroundBitmap;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Sets an optional, static bitmap as background instead of a solid color </p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="BackgroundPalette"></span><code>property <b>BackgroundPalette</b> : <a  href="Tilengine.TPalette.html">TPalette</a> write SetBackgroundPalette;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+ Sets the palette for the optional background bitmap </p>
+</td></tr>
+</table>
+<hr><span class="appinfo"><em>Generated by <a  href="https://github.com/pasdoc/pasdoc/wiki">PasDoc 0.15.0</a>. </em>
+</span>
+</td></tr></table></body></html>
