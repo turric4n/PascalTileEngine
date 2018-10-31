@@ -73,7 +73,7 @@ begin
   SetLength(framebuffer, hres * vres * 4);
   engine.SetRenderTarget(framebuffer, HRES * 4);
   engine.DisableBackgroundColor;
-  if VISIBLEWINDOW then window := TWindow.Singleton('', TWindowsFlags.Vsync);
+  if VISIBLEWINDOW then window := TWindow.Singleton('', 0);
 
   // Create assets
   engine.LoadPath := '../../../assets/tf4';

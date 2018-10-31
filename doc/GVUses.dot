@@ -1,6 +1,0 @@
-DiGraph Uses {
-  "Tilengine" -> "TilengineBindings"
-  "Tilengine" -> "SysUtils"
-  "Tilengine" [href="Tilengine.html"]
-  "TilengineBindings" [href="TilengineBindings.html"]
-}

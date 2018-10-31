@@ -56,7 +56,7 @@ type
   /// <summary>
   /// List of flag values for window creation
   /// </summary>
-  TWindowsFlags = (
+  TWindowsFlag = (
     Fullscreen = (1 shl 0),
     Vsync = (1 shl 1),
     S1 = (1 shl 2),
@@ -274,8 +274,8 @@ type
   function TLN_GetAvailableSprite : Integer; cdecl; external LIB name 'TLN_GetAvailableSprite';
   procedure TLN_SetLoadPath(path : PAnsiChar) cdecl; external LIB name 'TLN_SetLoadPath';
   procedure TLN_SetCustomBlendFunction(customfunction : Pointer) cdecl; external LIB name 'TLN_SetCustomBlendFunction';
-  function TLN_CreateWindow(const overlay : PAnsiChar; flags : TWindowsFlags) : Boolean; cdecl; external LIB name 'TLN_CreateWindow';
-  function TLN_CreateWindowThread(const overlay : PAnsiChar; flags : TWindowsFlags) : Boolean; cdecl; external LIB name 'TLN_CreateWindowThread';
+  function TLN_CreateWindow(const overlay : PAnsiChar; flags : Integer) : Boolean; cdecl; external LIB name 'TLN_CreateWindow';
+  function TLN_CreateWindowThread(const overlay : PAnsiChar; flags : Integer) : Boolean; cdecl; external LIB name 'TLN_CreateWindowThread';
   procedure TLN_SetWindowTitle(const title : PAnsiChar) cdecl; external LIB name 'TLN_SetWindowTitle';
   function TLN_ProcessWindow : Boolean; cdecl; external LIB name 'TLN_ProcessWindow';
   function TLN_IsWindowActive : Boolean; cdecl; external LIB name 'TLN_IsWindowActive';

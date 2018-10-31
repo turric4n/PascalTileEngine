@@ -738,7 +738,7 @@ type
       /// <param name="flags">Combined mask of the possible creation flags</param>
       /// <returns>Window instance</returns>
       /// <remarks>This is a singleton object: calling Init multiple times will return the same reference</remarks>
-      class function Singleton(const overlay : PAnsiChar; flags : TWindowsFlags) : TWindow;
+      class function Singleton(const overlay : PAnsiChar; flags : Integer) : TWindow;
       /// <summary>
       /// Singleton
       /// Creates a multithreaded window for rendering
@@ -747,7 +747,7 @@ type
       /// <param name="flags">Combined mask of the possible creation flags</param>
       /// <returns>Window instance</returns>
       /// <remarks>This is a singleton object: calling Init multiple times will return the same reference</remarks>
-      class function SingletonThreaded(const overlay : PAnsiChar; flags : TWindowsFlags) : TWindow;
+      class function SingletonThreaded(const overlay : PAnsiChar; flags : Integer) : TWindow;
       /// <summary>
       /// Does basic window housekeeping in signgle-threaded window. Must be called for each frame in game loop
       /// </summary>
@@ -1117,7 +1117,7 @@ begin
   TLN_SetWindowTitle(Value);
 end;
 
-class function TWindow.Singleton(const overlay: PAnsiChar; flags: TWindowsFlags): TWindow;
+class function TWindow.Singleton(const overlay: PAnsiChar; flags: Integer): TWindow;
 var
   retval : Boolean;
 begin
@@ -1131,13 +1131,13 @@ begin
   Result := finstance;
 end;
 
-class function TWindow.SingletonThreaded(const overlay: PAnsiChar; flags: TWindowsFlags): TWindow;
+class function TWindow.SingletonThreaded(const overlay: PAnsiChar; flags: Integer): TWindow;
 var
   retval : Boolean;
 begin
   if not finit then
   begin
-    retval := TLN_CreateWindowThread(overlay, flags);
+    //retval := TLN_CreateWindowThread(overlay, Byte(flags));
     TEngine.ThrowException(retval);
     finit := True;
     finstance := TWindow.Create;

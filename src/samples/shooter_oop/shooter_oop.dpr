@@ -10,7 +10,7 @@
 *
 ******************************************************************************}
 
-program scaling;
+program shooter_oop;
 
 uses
   {$IFDEF FPC}
@@ -18,7 +18,6 @@ uses
   {$ELSE}
   System.SysUtils,
   {$ENDIF }
-  TilengineBindings in '..\..\common\bindings\TilengineBindings.pas',
   Tilengine in '..\..\common\Tilengine.pas';
 
 // constants
@@ -64,18 +63,18 @@ begin
 end;
 
 // integer linear interploation
-function Lerp(x, x0, x1, fx0, fx1 : Single) : Single; overload; inline;
+function Lerp(x, x0, x1, fx0, fx1 : Single) : Single; overload;
 begin
   Result := (fx0) + ((fx1) - (fx0))*((x) - (x0))/((x1) - (x0));
 end;
 
-function Lerp(x, x0, x1, fx0, fx1 : Integer) : Integer; overload; inline;
+function Lerp(x, x0, x1, fx0, fx1 : Integer) : Integer; overload;
 begin
   Result := (fx0) + ((fx1) - (fx0))*((x) - (x0))div((x1) - (x0));
 end;
 
 // color interpolation
-function InterpolateColor(v, v1, v2 : Integer; const color1, color2 : TColor) : TColor; inline;
+function InterpolateColor(v, v1, v2 : Integer; const color1, color2 : TColor) : TColor;
 begin
   Result.R := Byte(Lerp(v, v1, v2, color1.R, color2.R));
   Result.G := Byte(Lerp(v, v1, v2, color1.G, color2.G));
@@ -83,7 +82,7 @@ begin
 end;
 
 // raster effects (virtual HBLANK)
-procedure MyRasterEffects(line : Integer); cdecl; inline;
+procedure MyRasterEffects(line : Integer); cdecl;
 var
   color : TColor;
 begin
@@ -150,7 +149,7 @@ begin
   scale := 100;
 
   // Main Loop
-  window := TWindow.Singleton('', Ord(TWindowsFlag.Vsync));
+  window := TWindow.Singleton('', TWindowsFlags.Vsync);
   frame := 0;
   while window.Process do
   begin

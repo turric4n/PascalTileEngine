@@ -159,7 +159,7 @@ begin
   engine.SetRasterCallback(Callback);
 
   // Main Loop
-  window := TWindow.Singleton('', TWindowsFlags.Vsync);
+  window := TWindow.Singleton('', Ord(TWindowsFlag.Vsync));
   frame := 0;
   while window.Process do
   begin

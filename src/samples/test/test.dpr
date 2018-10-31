@@ -38,7 +38,7 @@ begin
   foreground := TTilemap.FromFile('Sonic_md_fg1.tmx', '');
   engine.Layers[0].SetMap(foreground);
   //Main Loop
-  window := TWindow.Singleton('', TWindowsFlags.VSync);
+  window := TWindow.Singleton('', Ord(TWindowsFlag.VSync));
   frame := 0;
   while window.Process do
   begin
