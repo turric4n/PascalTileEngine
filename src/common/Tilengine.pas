@@ -292,6 +292,7 @@ type
       ///
       /// </summary>
       /// <param name="res"></param>
+      ftileset : TTileset;
       constructor Create(res : PInteger); overload;
       function GetCols : Integer;
       function GetRows : Integer;
@@ -371,7 +372,13 @@ type
       /// </summary>
       /// <param name="filename"></param>
       /// <returns></returns>
-      class function FromFile(filename : PAnsiChar) : TSpriteSet;
+      class function FromFile(filename : PAnsiChar) : TSpriteSet; overload;
+      /// <summary>
+      /// Reload same instance from file
+      /// </summary>
+      /// <param name="filename"></param>
+      /// <returns></returns>
+      procedure ReloadFromFile(filename : PAnsiChar);
       function Clone : TSpriteset;
       /// <summary>
       ///
@@ -454,17 +461,27 @@ type
       function GetCollision : Boolean;
       procedure SetPalette(const Value: TPalette);
       procedure SetPicture(const Value: Integer);
+      function GetPicture: Integer;
     public
       constructor Create(index : Integer);
       property SpriteSet : TSpriteset write SetSpriteSet;
       property Flags : TTileFlags write SetFlags;
-      property Picture : Integer write SetPicture;
+      property Picture : Integer read GetPicture write SetPicture;
       property Palette : TPalette write SetPalette;
+      property Idx : Integer read findex;
       /// <summary>
       /// Sets blending mode
       /// </summary>
       property BlendMode : TBlend write SetBlendMode;
       property Collision : Boolean read GetCollision;
+      /// <summary>
+      /// Disables animation if has an assigned animation
+      /// </summary>
+      procedure DisableAnimation;
+      /// <summary>
+      /// Disables sprite
+      /// </summary>
+      procedure Disable;
       /// <summary>
       ///
       /// </summary>
@@ -498,6 +515,8 @@ type
     private
       findex : Integer;
       FBlendMode: TBlend;
+      FTileSet: TTileset;
+      FTileMap: TTilemap;
       procedure SetBitmap(const Value: TBitmap);
       procedure SetPalette(const Value: TPalette);
       function GetPalette: TPalette;
@@ -510,6 +529,8 @@ type
       property BlendMode : TBlend write SetBlendMode;
       property Palette : TPalette read GetPalette write SetPalette;
       property Bitmap : TBitmap write SetBitmap;
+      property TileSet : TTileset read FTileSet;
+      property TileMap : TTilemap read FTileMap;
       property Width : Integer read GetWidth;
       property Height : Integer read GetHeight;
       property Collision : Boolean read GetCollision;
@@ -559,6 +580,7 @@ type
       procedure DisableMosaic;
       function GetTileInfo(index, x, y : Integer) : TTileInfo;
       procedure Disable;
+
   end;
 
   /// <summary>
@@ -572,6 +594,10 @@ type
       FVersion: UInt32;
       FHeight : Integer;
       FWidth : Integer;
+      Animations : TArray<TAnimation>;
+      Layers : TArray<TLayer>;
+      Sprites : TArray<TSprite>;
+      SpriteSets : TArray<TSpriteset>;
       //Hidden constructor for Singleton Pattern
       constructor Create(numLayers, numSprites, numAnimations : Integer);
       procedure SetVersion(const Value: UInt32);
@@ -592,9 +618,6 @@ type
       /// <param name="success"></param>
       class procedure ThrowException(success : Boolean);
     public
-      Animations : TArray<TAnimation>;
-      Layers : TArray<TLayer>;
-      Sprites : TArray<TSprite>;
       property Width : Integer read GetWidth write SetWidth;
       property Height : Integer read GetHeight write SetHeight;
       property Version : UInt32 read GetVersion write SetVersion;
@@ -700,10 +723,9 @@ type
       /// </summary>
       /// <returns></returns>
       procedure InitLayers(count : Integer);
-      /// <summary>
-      /// Init engine animations array. WARNING! If you call this method you will current animations
-      /// </summary>
-      /// <returns></returns>
+      function GetLayer(idx : Integer) : TLayer;
+      function GetSprite(idx : Integer) : TSprite;
+      function GetAnimation(idx : Integer) : TAnimation;
       procedure UpdateFrame(time : Integer);
       procedure InitAnimations(count : Integer);
       destructor Destroy; override;
@@ -858,6 +880,12 @@ begin
   Result := TLN_DrawNextScanline;
 end;
 
+function TEngine.GetAnimation(idx: Integer): TAnimation;
+begin
+  if Animations[idx - 1] = nil then raise Exception.Create('Animation ' + IntToStr(idx) + ' not found.');
+  Result := Animations[idx];
+end;
+
 function TEngine.GetAvailableSprite: TSprite;
 var
   index : Integer;
@@ -872,9 +900,21 @@ begin
   Result := fheight;
 end;
 
+function TEngine.GetLayer(idx: Integer): TLayer;
+begin
+  if Layers[idx - 1] = nil then raise Exception.Create('Layer ' + IntToStr(idx) + ' not found.');
+  Result := Layers[idx];
+end;
+
 function TEngine.GetNumObjects: UInt32;
 begin
   Result := TLN_GetNumObjects;
+end;
+
+function TEngine.GetSprite(idx: Integer): TSprite;
+begin
+  if Sprites[idx - 1] = nil then raise Exception.Create('Sprite ' + IntToStr(idx) + ' not found.');
+  Result := Sprites[idx];
 end;
 
 function TEngine.GetTicks: Word;
@@ -1137,7 +1177,7 @@ var
 begin
   if not finit then
   begin
-    //retval := TLN_CreateWindowThread(overlay, Byte(flags));
+    retval := TLN_CreateWindowThread(overlay, Byte(flags));
     TEngine.ThrowException(retval);
     finit := True;
     finstance := TWindow.Create;
@@ -1266,6 +1306,7 @@ procedure TLayer.SetMap(Tilemap: TTIlemap);
 var
   ok : Boolean;
 begin
+  ftilemap := Tilemap;
   ok := TLN_SetLayer(findex, nil, Tilemap.ptr);
   TEngine.ThrowException(ok);
 end;
@@ -1322,6 +1363,8 @@ procedure TLayer.Setup(tileset: TTileset; tilemap: TTilemap);
 var
   ok : Boolean;
 begin
+  FTileSet := tileset;
+  FTileMap := tilemap;
   ok := TLN_SetLayer(findex, tileset.ptr, tilemap.ptr);
   TEngine.ThrowException(ok);
 end;
@@ -1331,6 +1374,22 @@ end;
 constructor TSprite.Create(index: Integer);
 begin
   findex := index;
+end;
+
+procedure TSprite.Disable;
+var
+  ok : Boolean;
+begin
+  ok := TLN_DisableSprite(findex);
+  TEngine.ThrowException(ok);
+end;
+
+procedure TSprite.DisableAnimation;
+var
+  ok : Boolean;
+begin
+  ok := TLN_DisableAnimation(findex);
+  TEngine.ThrowException(ok);
 end;
 
 procedure TSprite.EnableCollision(mode: Boolean);
@@ -1344,6 +1403,11 @@ end;
 function TSprite.GetCollision: Boolean;
 begin
   Result := TLN_GetSpriteCollision(findex);
+end;
+
+function TSprite.GetPicture: Integer;
+begin
+  Result := TLN_GetSpritePicture(findex);
 end;
 
 procedure TSprite.Reset;
@@ -1429,7 +1493,7 @@ procedure TAnimation.Disable;
 var
   ok : Boolean;
 begin
-  ok := TLN_GetAnimationState(findex);
+  ok := TLN_DisableAnimation(findex);
   TEngine.ThrowException(ok);
 end;
 
@@ -1556,6 +1620,15 @@ begin
   Result := TPalette.Create(TLN_GetSpritesetPalette(ptr));
 end;
 
+procedure TSpriteset.ReloadFromFile(filename: PAnsiChar);
+var
+  retval : PInteger;
+begin
+  retval := TLN_LoadSpriteset(filename);
+  TEngine.ThrowException(retval <> nil);
+  ptr := retval;
+end;
+
 procedure TSpriteset.SetSpritesetData(entry: Integer; data: TArray<TSpriteData>;
   pixels: PInteger; pitch: Integer);
 var
@@ -1676,6 +1749,7 @@ var
   color : Int64;
   retval : PInteger;
 begin
+  ftileset := tileset;
   color := $FF000000 + (bgcolor.R shl 16) + (bgcolor.G shl 8) + bgcolor.B;
   {$IFNDEF DELPHI}
   retval := TLN_CreateTilemap(rows, cols, tiles, UInt32(color), tileset.ptr);
@@ -1731,7 +1805,8 @@ end;
 
 function TTilemap.GetTileset: TTileset;
 begin
-  Result := TTileset.Create(TLN_GetTilemapTileset(ptr));
+  Result := ftileset;
+  if ftileset = nil then ftileset := TTileset.Create(TLN_GetTilemapTileset(ptr))
 end;
 
 procedure TTilemap.SetTile(row, col: Integer; tile: PTile);

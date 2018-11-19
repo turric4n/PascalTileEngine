@@ -3,6 +3,7 @@ unit TilengineBindings;
 interface
 
 const
+
   //Binary dependancies
  {$IFDEF LINUX}
    LIB = 'libTilengine.so';
@@ -18,6 +19,11 @@ const
  {$ENDIF}
 
 type
+
+{$IFDEF NEXTGEN}
+  PAnsiChar = System.MarshaledString;
+{$ENDIF}
+
   /// <summary>
   /// Tile data contained in each cell of a cref="Tilemap" object
   /// </summary>
