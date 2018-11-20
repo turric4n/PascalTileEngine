@@ -5,7 +5,7 @@
         <FrameworkType>None</FrameworkType>
         <MainSource>shooter_oop.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Console</AppType>
@@ -98,6 +98,7 @@
         <DCC_BplOutput>..\..\..\bin\package\$(Platform)\$(Config)</DCC_BplOutput>
         <DCC_UseMSBuildExternally>true</DCC_UseMSBuildExternally>
         <DCC_Namespace>System;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_UnitSearchPath>..\..\..\src\common;..\..\..\src\common\bindings;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;DBXInterBaseDriver;tethering;bindcompfmx;FmxTeeUI;fmx;dbexpress;IndyCore;dsnap;bindengine;IndyIPCommon;bindcompdbx;IndyIPServer;IndySystem;fmxFireDAC;FMXTee;DbxCommonDriver;xmlrtl;rtl;DbxClientDriver;CustomIPTransport;bindcomp;IndyIPClient;dbxcds;dsnapxml;dbrtl;IndyProtocols;$(DCC_UsePackage)</DCC_UsePackage>
@@ -192,7 +193,19 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="..\..\common\Tilengine.pas"/>
+        <DCCReference Include="common\uGlobal.pas"/>
+        <DCCReference Include="common\uActor.pas"/>
+        <DCCReference Include="common\uTypes.pas"/>
+        <DCCReference Include="common\uActorHandler.pas"/>
+        <DCCReference Include="entities\Entities.Ship.pas"/>
+        <DCCReference Include="base\Base.Entity.pas"/>
+        <DCCReference Include="entities\Entities.Claw.pas"/>
+        <DCCReference Include="..\..\common\utils\TilengineUtils.pas"/>
+        <DCCReference Include="..\..\common\utils\RasterEffects.pas"/>
+        <DCCReference Include="entities\Entities.Enemy.pas"/>
+        <DCCReference Include="entities\Entities.Explosion.pas"/>
+        <DCCReference Include="interfaces\Interfaces.Entity.pas"/>
+        <DCCReference Include="entities\Entities.Bullet.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -226,12 +239,30 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="iOSSimulator">
+                <DeployFile LocalName="..\..\..\bin\package\Win32\Release\shooter_oop.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>shooter_oop.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\bin\package\x86_64-win64\shooter_oop.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>shooter_oop.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Debug\shooter_oop.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>shooter_oop.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -241,14 +272,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\..\bin\package\Win32\Release\shooter_oop.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>shooter_oop.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win32\Debug\shooter_oop.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
+                <DeployFile LocalName="..\..\..\bin\package\x86_64-win64\shooter_oop.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
                         <RemoteName>shooter_oop.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
