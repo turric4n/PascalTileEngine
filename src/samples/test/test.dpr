@@ -36,7 +36,7 @@ begin
   engine := TEngine.Singleton(400, 240, 1, 0, 20);
   engine.LoadPath := '../../../assets/sonic/';
   foreground := TTilemap.FromFile('Sonic_md_fg1.tmx', '');
-  engine.Layers[0].SetMap(foreground);
+  engine.GetLayer(0).SetMap(foreground);
   //Main Loop
   window := TWindow.Singleton('', Ord(TWindowsFlag.VSync));
   frame := 0;

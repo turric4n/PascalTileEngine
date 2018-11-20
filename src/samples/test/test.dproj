@@ -33,11 +33,6 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='OSX32' and '$(Base)'=='true') or '$(Base_OSX32)'!=''">
-        <Base_OSX32>true</Base_OSX32>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
         <Base_Win32>true</Base_Win32>
         <CfgParent>Base</CfgParent>
@@ -120,10 +115,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_iOSSimulator)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;DBXInterBaseDriver;tethering;bindcompfmx;FmxTeeUI;fmx;dbexpress;IndyCore;dsnap;bindengine;IndyIPCommon;bindcompdbx;IndyIPServer;IndySystem;fmxFireDAC;FMXTee;DbxCommonDriver;xmlrtl;rtl;DbxClientDriver;CustomIPTransport;bindcomp;IndyIPClient;dbxcds;dsnapxml;dbrtl;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_OSX32)'!=''">
-        <DCC_UsePackage>DBXSqliteDriver;DBXInterBaseDriver;tethering;bindcompfmx;inetdb;FmxTeeUI;fmx;fmxdae;dbexpress;IndyCore;dsnap;bindengine;DBXMySQLDriver;FireDACMySQLDriver;FireDACCommonODBC;IndyIPCommon;bindcompdbx;IndyIPServer;IndySystem;fmxFireDAC;FireDACPgDriver;FMXTee;DbxCommonDriver;xmlrtl;fmxobj;rtl;DbxClientDriver;CustomIPTransport;bindcomp;IndyIPClient;dbxcds;dsnapxml;dbrtl;IndyProtocols;inetdbxpress;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
-        <DCC_ConsoleTarget>true</DCC_ConsoleTarget>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;DBXInterBaseDriver;vclactnband;vclFireDAC;tethering;svnui;JvGlobus;FireDACADSDriver;JvPluginSystem;JvMM;tmsxlsdXE11;vcltouch;JvBands;vcldb;bindcompfmx;svn;JvJans;JvNet;inetdb;JvAppFrm;FmxTeeUI;JvDotNetCtrls;fmx;fmxdae;tmsdXE11;JvWizards;tmsexdXE11;dbexpress;IndyCore;vclx;JvPageComps;dsnap;JvDB;VCLRESTComponents;acntDX10Tokyo_R;JclDeveloperTools;vclie;bindengine;DBXMySQLDriver;JvCmp;FireDACMySQLDriver;JvHMI;FireDACCommonODBC;IndyIPCommon;bindcompdbx;JvCustom;vcl;IndyIPServer;JvXPCtrls;IndySystem;dsnapcon;FireDACMSAccDriver;fmxFireDAC;vclimg;TeeDB;Jcl;JvCore;JvCrypt;FireDACPgDriver;FMXTee;DbxCommonDriver;JvDlgs;JvRuntimeDesign;JvManagedThreads;Tee;xmlrtl;JvTimeFramework;fmxobj;vclwinx;rtl;DbxClientDriver;CustomIPTransport;vcldsnap;JvSystem;JvStdCtrls;bindcomp;appanalytics;tmswizdXE11;IndyIPClient;bindcompvcl;TeeUI;TMSFMXPackPkgDXE11;JvDocking;dbxcds;VclSmp;JvPascalInterpreter;adortl;JclVcl;dsnapxml;dbrtl;IndyProtocols;inetdbxpress;JvControls;JvPrintPreview;JclContainers;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
@@ -669,7 +660,6 @@
                 <Platform value="iOSDevice32">False</Platform>
                 <Platform value="iOSDevice64">False</Platform>
                 <Platform value="iOSSimulator">False</Platform>
-                <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>

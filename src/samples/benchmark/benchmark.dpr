@@ -81,7 +81,7 @@ begin
   spriteset := TSpriteset.FromFile('FireLeo');
 
   // Setup layer
-  engine.Layers[0].SetMap(tilemap);
+  engine.GetLayer(0).SetMap(tilemap);
   pixels := HRES * VRES;
 
   // Benchmark
@@ -89,42 +89,42 @@ begin
   Profile;
 
   Write('Scaling layer.......');
-  engine.Layers[0].SetScaling(2.0, 2.0);
+  engine.GetLayer(0).SetScaling(2.0, 2.0);
   Profile;
 
   Write('Affine layer........');
-  engine.Layers[0].SetTransform(45.0, 0.0, 0.0, 1.0, 1.0);
+  engine.GetLayer(0).SetTransform(45.0, 0.0, 0.0, 1.0, 1.0);
   Profile;
 
   Write('Blend layer.........');
-  engine.Layers[0].Reset;
-  engine.Layers[0].BlendMode := TBlend.Mix50;
+  engine.GetLayer(0).Reset;
+  engine.GetLayer(0).BlendMode := TBlend.Mix50;
   Profile;
 
   Write('Scaling blend layer.');
-  engine.Layers[0].SetScaling(2.0, 2.0);
+  engine.GetLayer(0).SetScaling(2.0, 2.0);
   Profile;
 
   Write('Affine blend layer..');
-  engine.Layers[0].SetTransform(45.0, 0, 0, 1.0, 1.0);
+  engine.GetLayer(0).SetTransform(45.0, 0, 0, 1.0, 1.0);
   Profile;
 
-  engine.Layers[0].Disable;
+  engine.GetLayer(0).Disable;
 
   for c := 0 to NUM_SPRITES - 1 do
   begin
     y := c div 25;
     x := c mod 25;
-    engine.Sprites[c].Setup(spriteset, TTileFlags.FNone);
-    engine.Sprites[c].Picture := 0;
-    engine.Sprites[c].SetPosition(x * 15, y * 21);
+    engine.GetSprite(c).Setup(spriteset, TTileFlags.FNone);
+    engine.GetSprite(c).Picture := 0;
+    engine.GetSprite(c).SetPosition(x * 15, y * 21);
   end;
   spriteinfo := spriteset.GetInfo(0);
   pixels := NUM_SPRITES * spriteinfo.W * spriteinfo.H;
   Write('Normal sprites......');
   Profile;
   Write('Colliding sprites...');
-  for c := 0 to NUM_SPRITES - 1 do engine.Sprites[c].EnableCollision(True);
+  for c := 0 to NUM_SPRITES - 1 do engine.GetSprite(c).EnableCollision(True);
   Profile;
   tilemap.Free;
   engine.Free;

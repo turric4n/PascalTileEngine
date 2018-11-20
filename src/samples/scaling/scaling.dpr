@@ -136,8 +136,8 @@ begin
   engine.SetBackgroundColor(BACKGROUNDCOLOR);
   callback := @MyRasterEffects;
   engine.SetRasterCallback(Callback);
-  foreground := engine.Layers[0];
-  background := engine.Layers[1];
+  foreground := engine.GetLayer(0);
+  background := engine.GetLayer(1);
 
   // Load Resources
   engine.LoadPath := '../../../assets/fox/';

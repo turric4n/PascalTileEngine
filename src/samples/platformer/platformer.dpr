@@ -142,8 +142,8 @@ var
 begin
   // Setup engine
   engine := TEngine.Singleton(HRES, VRES, 2, 0, 20);
-  foreground := engine.Layers[0];
-  background := engine.Layers[1];
+  foreground := engine.GetLayer(0);
+  background := engine.GetLayer(1);
 
   // Load Resources
   engine.LoadPath := '../../../assets/sonic/';
@@ -154,7 +154,7 @@ begin
   sp := TSequencePack.FromFile('Sonic_md_seq.sqx');
   waterSequence := sp.find('seq_water');
   palette := background.Palette;
-  engine.Animations[0].SetPaletteAnimation(palette, waterSequence, true);
+  engine.GetAnimation(0).SetPaletteAnimation(palette, waterSequence, true);
   Callback := @MyRasterEffects;
   engine.SetRasterCallback(Callback);
 
