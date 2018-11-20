@@ -1,3 +1,14 @@
+{******************************************************************************
+*
+* Pascal Tilengine horizontal shooter sample (OOP aproach)
+* Copyright (c) 2018 coversion by Enrique Fuentes (aka Turric4n) - thanks to
+* Marc Palacios for this great project.
+* http://www.tilengine.org
+*
+* Complete game example, horizontal scrolling, actors, collisions... OOP
+*
+******************************************************************************}
+
 unit RasterEffects;
 
 interface

@@ -1,3 +1,14 @@
+{******************************************************************************
+*
+* Pascal Tilengine horizontal shooter sample (OOP aproach)
+* Copyright (c) 2018 coversion by Enrique Fuentes (aka Turric4n) - thanks to
+* Marc Palacios for this great project.
+* http://www.tilengine.org
+*
+* Complete game example, horizontal scrolling, actors, collisions... OOP
+*
+******************************************************************************}
+
 unit Entities.Ship;
 
 interface
@@ -16,6 +27,9 @@ uses
 
 
 type
+  /// <summary>
+  /// Ship is the main entity of the game can move and shoot. Has two more entities contained, 2 claws. Claws will shoot too.
+  /// </summary>
   TShip = class(TEntity)
     private
       fclaws : array[0..1] of TClaw;
@@ -49,6 +63,7 @@ end;
 constructor TShip.Create(ActorHandler : TActorHandler; SpriteSet : TSpriteSet; SequencePack : TSequencePack);
 begin
   inherited Create(ActorHandler, TActorDef.acShip, SpriteSet, SequencePack);
+  //TODO create ship claws
   //fclaws[0] := TClaw.Create(factorhandler, TActorDef.acClaw1, SpriteSet, SequencePack);
   //fclaws[1] := TClaw.Create(factorhandler, TActorDef.acClaw2, SpriteSet, SequencePack);
   fhasclaw := True;
@@ -82,7 +97,7 @@ begin
   begin
     // Get actual sprite frame
     spriteidx := fmyactor.Sprite.Picture;
-    // Set 0-6 frame time timeout to play with sprite frames and make a fluid motion effect
+    // Set 6 frames between make a fluid motion effect
     fmyactor.SetTimeout(Time, 0, 6);
     // If vertical down movement
     if fmyactor.VY < 0 then
@@ -115,10 +130,12 @@ var
   spriteidx : Integer;
 begin
   window := factorhandler.Window;
+  // Shoot action timeout from 10 frame time from last shoot?
   if fmyactor.GetTimeout(Time, 1) and window.GetInput(TInput.Button_A) then
   begin
-    // 10 frames per shoot
+    // Assign 10 frames timeout again
     fmyactor.SetTimeout(Time, 1, 10);
+    // Shoot!!!!
     Shoot(TActorType.atBladeB, fmyactor.X + 32, fmyactor.Y + (Random(RANDOMSEED) mod 10) - 5);
   end;
 end;
@@ -127,10 +144,15 @@ procedure TShip.ActorSetup;
 var
   shipsprite : TSprite;
 begin
+  // Get engine first sprite for the ship
   shipsprite := factorhandler.Engine.GetSprite(Ord(TActorDef.acShip));
+  // Setup actor
   fmyactor.Setup(shipsprite, TActorType.atShip, 100, 100, 32, 16);
+  // Assign actor process callback
   fmyactor.OnProcess := ActorProcess;
+  // Assign sprite spriteset sheet
   fmyactor.Sprite.Setup(fspriteset, TTileflags.FNone);
+  // Define sprite initial frame picture
   fmyactor.Sprite.Picture := 3;
 end;
 
@@ -146,8 +168,9 @@ end;
 
 procedure TShip.Shoot(shootType: TActorType; x, y: Integer);
 var
-  bullet : IEntity;
+  bullet : TEntity;
 begin
+  // Create a shoot entitiy
   bullet := TBullet.Create(x, y, shootType, factorhandler, fspriteset, fsequencepack);
 end;
 

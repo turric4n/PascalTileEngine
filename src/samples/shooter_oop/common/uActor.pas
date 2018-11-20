@@ -1,3 +1,14 @@
+{******************************************************************************
+*
+* Pascal Tilengine horizontal shooter sample (OOP aproach)
+* Copyright (c) 2018 coversion by Enrique Fuentes (aka Turric4n) - thanks to
+* Marc Palacios for this great project.
+* http://www.tilengine.org
+*
+* Complete game example, horizontal scrolling, actors, collisions... OOP
+*
+******************************************************************************}
+
 unit uActor;
 
 interface
@@ -67,12 +78,14 @@ implementation
 
 function TActor.CheckCollisionWith(Actor: TActor): Boolean;
 begin
+  // Collision result based on actors hitbox
   Result := (fhitbox.x1 < actor.Hitbox.x2) and (fhitbox.x2 > Actor.Hitbox.x1) and
-            (fhitbox.y1 > Actor.Hitbox.y2) and (fhitbox.y2 > Actor.Hitbox.y1);
+            (fhitbox.y1 < actor.Hitbox.y2) and (fhitbox.y2 > Actor.Hitbox.y1);
 end;
 
 constructor TActor.Create(Idx : Integer);
 begin
+  // Actor default values
   fsprite := nil;
   fanimation := nil;
   fxpos := 0;
@@ -85,55 +98,78 @@ end;
 
 function TActor.GetTimeout(Time, Timer: Integer): Boolean;
 begin
+  // Basic timer elapsed time
   Result := Time >= ftimers[Timer];
 end;
 
 procedure TActor.Release;
 begin
+  // We unasign callback
+  fprocessevent := nil;
+  // Fade sprite
   fsprite.BlendMode := TBlend.BNone;
+  // Set actor at available state
   fstate := 0;
 end;
 
 procedure TActor.SetTimeout(Time, Timer, Timeout: Integer);
 begin
+  // Basic timer implementation (Time : Current time; Timer : Target idx timer; Timeout : Seconds to configure)
   ftimers[timer] := Time + Timeout;
 end;
 
 procedure TActor.Setup(Sprite: TSprite; Animation: TAnimation; ActorType: TActorType; x, y, w, h: Integer);
 begin
+  // Set actor active and owned
   fstate := 1;
+  // Assign actor current sprite
   fsprite := Sprite;
+  // Assign actor animation
   fanimation := Animation;
+  // Assign actor type
   ftype := ActorType;
+  // Assign initial horizontal position
   fxpos := x;
+  // Assign inital vertical position
   fypos := y;
+  // Assign initial actor width (Warning! must be same as the sprite)
   fwidth := w;
+  // Assign initial actor width (Warning! must be same as the sprite)
   fheight := h;
+  // Call initial update hitbox
   UpdateHitbox;
 end;
 
 procedure TActor.Setup(Sprite: TSprite; ActorType: TActorType; x, y, w, h: Integer);
 begin
+  // Call to base constructor
   Setup(Sprite, nil, ActorType, x, y, w, h);
 end;
 
 procedure TActor.Task(Time: Integer);
 begin
-  // motion
-  Inc(fxpos, fvxpos);
-  Inc(fypos, fvypos);
-  if Assigned(OnProcess) then OnProcess(Self, Time);
+  {* Process basic tasks *}
+  // If actor is owned/playing
   if fstate <> 0 then
   begin
+    // Increment horizontal position by virtual movement index
+    Inc(fxpos, fvxpos);
+    // Increment vertical position by virtual movement index
+    Inc(fypos, fvypos);
+    // Ignite actor process callback
+    if Assigned(OnProcess) then OnProcess(Self, Time);
+    // Update hitbox
     UpdateHitbox;
+    // Set sprite physical position
     fsprite.SetPosition(fxpos, fypos);
   end
   else
   begin
+    // If actor is not owned/playing and has an assigned sprite then disable sprite on the screen
     if Assigned(fsprite) then
     begin
       fsprite.Disable;
-     fsprite.DisableAnimation;
+      fsprite.DisableAnimation;
     end;
   end;
 end;

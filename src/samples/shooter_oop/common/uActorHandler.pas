@@ -1,3 +1,14 @@
+{******************************************************************************
+*
+* Pascal Tilengine horizontal shooter sample (OOP aproach)
+* Copyright (c) 2018 coversion by Enrique Fuentes (aka Turric4n) - thanks to
+* Marc Palacios for this great project.
+* http://www.tilengine.org
+*
+* Complete game example, horizontal scrolling, actors, collisions... OOP
+*
+******************************************************************************}
+
 unit uActorHandler;
 
 interface
@@ -46,6 +57,7 @@ procedure TActorHandler.CreateActors(num : Integer);
 var
   x : Integer;
 begin
+  // Create available actors
   if Length(factors) > 0 then raise Exception.Create('Actors already initialized');
   SetLength(factors, num);
   for x := 0 to num - 1 do factors[x] := TActor.Create(x);
@@ -55,6 +67,7 @@ procedure TActorHandler.DeleteActors;
 var
   actor : TActor;
 begin
+  // Unused
   for actor in factors do actor.Free;
 end;
 

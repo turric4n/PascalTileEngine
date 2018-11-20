@@ -1,3 +1,14 @@
+{******************************************************************************
+*
+* Pascal Tilengine horizontal shooter sample (OOP aproach)
+* Copyright (c) 2018 coversion by Enrique Fuentes (aka Turric4n) - thanks to
+* Marc Palacios for this great project.
+* http://www.tilengine.org
+*
+* Complete game example, horizontal scrolling, actors, collisions... OOP
+*
+******************************************************************************}
+
 unit Entities.Explosion;
 
 interface
@@ -26,7 +37,14 @@ implementation
 
 procedure TExplosion.ActorProcess(aSender: TObject; Time: Word);
 begin
-  if not fmyactor.Animation.Active then fmyactor.Release;
+  // Is animation end?
+  if not fmyactor.Animation.Active then
+  begin
+    // Release actor
+    fmyactor.Release;
+    // Free entity
+    Free;
+  end;
 end;
 
 procedure TExplosion.ActorSetup;
@@ -35,14 +53,20 @@ var
   explosion_anim : TAnimation;
   explosion_seq : TSequence;
 begin
-  explosion_sprite := factorhandler.Engine.GetSprite(Ord(TActortype.atExplosion));
+  // Get passed enemy actor sprite
+  explosion_sprite := factorhandler.Engine.GetSprite(fmyactor.Idx);
+  // Get current enemy animation
   explosion_anim := factorhandler.Engine.GetAnimation(explosion_sprite.Idx);
-  explosion_seq := fsequencepack.Get(Ord(TActorAnim.aaExpl01));
+  // Get explosion sequence
+  explosion_seq := fsequencepack.Get(Ord(TActorAnim.aaExpl02));
+  // Setup enemy actor to be a explosion
   fmyactor.Setup(explosion_sprite, explosion_anim, TActorType.atExplosion, fmyactor.X, fmyactor.Y, 32, 32);
+  // Assign process callback
   fmyactor.OnProcess := ActorProcess;
+  // Setup the spriteset
   fmyactor.Sprite.Setup(fspriteset, TTileflags.FNone);
-  fmyactor.Animation.SetSpriteAnimation(explosion_sprite.Idx, explosion_seq, 0);
-  fmyactor.OnProcess := ActorProcess;
+  // Set explosion animation (no loop)
+  fmyactor.Animation.SetSpriteAnimation(explosion_sprite.Idx, explosion_seq, 1);
 end;
 
 constructor TExplosion.Create(Actor: TActor; ActorHandler: TActorHandler; SpriteSet: TSpriteSet; SequencePack: TSequencePack);
