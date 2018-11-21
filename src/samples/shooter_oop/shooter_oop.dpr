@@ -168,7 +168,7 @@ begin
   sequencepack := TSequencePack.FromFile('TF4_seq.sqx');
 
   // Create engine renderer and input logic (AKA SDL)
-  window := TWindow.Singleton('', Ord(TWindowsFlag.Vsync));
+  window := TWindow.Singleton('', Ord(TWindowsFlag.Vsync) or Ord(TWindowsFlag.Fullscreen));
   window.Title := 'Pascal horizontal shooter demo';
 
   // Create actor handler

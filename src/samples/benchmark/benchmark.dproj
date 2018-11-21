@@ -87,6 +87,7 @@
         <DCC_BplOutput>..\..\..\bin\package\$(Platform)\$(Config)</DCC_BplOutput>
         <DCC_UseMSBuildExternally>true</DCC_UseMSBuildExternally>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_UnitSearchPath>..\..\..\src\common;..\..\..\src\common\bindings;..\..\..\src\common\utils;..\..\..\src\common;..\..\..\src\common\bindings;..\..\..\src\common\utils;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;DBXInterBaseDriver;tethering;bindcompfmx;FmxTeeUI;fmx;dbexpress;IndyCore;dsnap;bindengine;IndyIPCommon;bindcompdbx;IndyIPServer;IndySystem;fmxFireDAC;FMXTee;DbxCommonDriver;xmlrtl;rtl;DbxClientDriver;CustomIPTransport;bindcomp;IndyIPClient;dbxcds;dsnapxml;dbrtl;IndyProtocols;$(DCC_UsePackage)</DCC_UsePackage>
@@ -171,10 +172,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="..\..\common\Tilengine.pas">
-            <Form>/ constants</Form>
-        </DCCReference>
-        <DCCReference Include="..\..\common\bindings\TilengineBindings.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
