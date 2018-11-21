@@ -2,8 +2,12 @@ unit TilengineBindings;
 
 interface
 
-const
+{$IFDEF FPC}
+  uses
+    Sysutils;
+{$ENDIF}
 
+const
   //Binary dependancies
  {$IFDEF LINUX}
    LIB = 'libTilengine.so';
