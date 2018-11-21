@@ -5,8 +5,7 @@ echo "##############################"
 ./initsubmodules
 cd src/deps/tilengine/src
 make all
-cd src/deps/tilengine
-./install
-cp /src/deps/lib/libTilengine.so /usr/local/lib
+cd ..
+sudo ./install
 sudo chmod 755 /usr/local/lib/libTilengine.so
 cd src
