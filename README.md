@@ -50,6 +50,10 @@ SOFTWARE.
 * Cross platform: available builds for Windows (32/64), Linux PC(32/64), Mac OS X and Raspberry Pi using FPC
 * High performance: Wrapper is made using native lightweight OOP Pascal (no VM or garbage collector environment)
 
+* Fully playable shooter example made in OOP 
+
+![PascalTilengine demo](shooter.gif)
+
 # Requirements
 As OpenSource project, I recommend to use FPC but is fine Delphi Community (Free) to compile too. Delphi has sightly 
 better perfomance in Windows but FreePascal is a real multiarch. Firemonkey is not supported yet... if you want Android definetly 
