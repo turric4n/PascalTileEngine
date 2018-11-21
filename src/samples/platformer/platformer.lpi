@@ -44,6 +44,7 @@
     <PathDelim Value="\"/>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="..\..\common\bindings;..\..\common\utils;..\..\common"/>
       <UnitOutputDirectory Value="..\..\..\bin\package\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>
@@ -52,8 +53,6 @@
       </SyntaxOptions>
     </Parsing>
     <CodeGeneration>
-      <TargetCPU Value="x86_64"/>
-      <TargetOS Value="win64"/>
       <Optimizations>
         <OptimizationLevel Value="3"/>
       </Optimizations>

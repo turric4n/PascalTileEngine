@@ -587,17 +587,18 @@ type
   /// Main object for engine creation and rendering
   /// </summary>
   TEngine = class
+    protected
+      Layers : TArray<TLayer>;
+      Sprites : TArray<TSprite>;
+      SpriteSets : TArray<TSpriteset>;
+      Animations : TArray<TAnimation>;
+      FVersion: UInt32;
+      FHeight : Integer;
+      FWidth : Integer;
     private
       //Singleton
       class var finstance : TEngine;
       class var finit : Boolean;
-      FVersion: UInt32;
-      FHeight : Integer;
-      FWidth : Integer;
-      Animations : TArray<TAnimation>;
-      Layers : TArray<TLayer>;
-      Sprites : TArray<TSprite>;
-      SpriteSets : TArray<TSpriteset>;
       //Hidden constructor for Singleton Pattern
       constructor Create(numLayers, numSprites, numAnimations : Integer);
       procedure SetVersion(const Value: UInt32);
@@ -882,7 +883,7 @@ end;
 
 function TEngine.GetAnimation(idx: Integer): TAnimation;
 begin
-  if Animations[idx - 1] = nil then raise Exception.Create('Animation ' + IntToStr(idx) + ' not found.');
+  if Animations[idx] = nil then raise Exception.Create('Animation ' + IntToStr(idx) + ' not found.');
   Result := Animations[idx];
 end;
 
@@ -902,7 +903,7 @@ end;
 
 function TEngine.GetLayer(idx: Integer): TLayer;
 begin
-  if Layers[idx - 1] = nil then raise Exception.Create('Layer ' + IntToStr(idx) + ' not found.');
+  if Layers[idx] = nil then raise Exception.Create('Layer ' + IntToStr(idx) + ' not found.');
   Result := Layers[idx];
 end;
 
@@ -913,7 +914,7 @@ end;
 
 function TEngine.GetSprite(idx: Integer): TSprite;
 begin
-  if Sprites[idx - 1] = nil then raise Exception.Create('Sprite ' + IntToStr(idx) + ' not found.');
+  if Sprites[idx] = nil then raise Exception.Create('Sprite ' + IntToStr(idx) + ' not found.');
   Result := Sprites[idx];
 end;
 
@@ -950,7 +951,8 @@ var
   c : Integer;
 begin
   SetLength(layers, count);
-  for c := 0 to count - 1 do layers[c] := TLayer.Create(c);
+  for c := 0 to count - 1 do
+      layers[c] := TLayer.Create(c);
 end;
 
 procedure TEngine.InitSprites(count: Integer);

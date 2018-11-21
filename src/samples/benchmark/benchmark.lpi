@@ -45,6 +45,7 @@
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
       <Libraries Value="..\..\..\prebuilt\Tilengine\arm-linux"/>
+      <OtherUnitFiles Value="..\..\common;..\..\common\bindings;..\..\common\utils"/>
       <UnitOutputDirectory Value="..\..\..\bin\package\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>
@@ -53,8 +54,6 @@
       </SyntaxOptions>
     </Parsing>
     <CodeGeneration>
-      <TargetCPU Value="arm"/>
-      <TargetOS Value="linux"/>
       <Optimizations>
         <OptimizationLevel Value="3"/>
       </Optimizations>

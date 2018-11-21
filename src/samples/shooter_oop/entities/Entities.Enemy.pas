@@ -14,7 +14,11 @@ unit Entities.Enemy;
 interface
 
 uses
+  {$IFDEF FPC}
+  SysUtils,
+  {$ELSE}
   System.SysUtils,
+  {$ENDIF }
   Tilengine,
   TilengineBindings,
   uGlobal,
@@ -86,7 +90,7 @@ begin
     // Assign random enemy x movement
     fmyactor.VX := -(Random(RANDOMSEED) mod 3 + 2);
     // Start life values
-    fmyactor.Life := 8;
+    fmyactor.Life := 1;
     // Set first 60 frames timeout among each movement
     fmyactor.SetTimeout(factorhandler.Time, 1, 60);
     // Sprite set spriteset

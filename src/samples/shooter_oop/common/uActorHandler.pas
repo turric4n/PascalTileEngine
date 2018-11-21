@@ -14,7 +14,11 @@ unit uActorHandler;
 interface
 
 uses
+  {$IFDEF FPC}
+  SysUtils,
+  {$ELSE}
   System.SysUtils,
+  {$ENDIF }
   uActor,
   Tilengine;
 
