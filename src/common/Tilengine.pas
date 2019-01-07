@@ -967,7 +967,7 @@ procedure TEngine.SetBackgroundBitmap(const Value: TBitmap);
 var
   ok : Boolean;
 begin
-  ok := TLN_SetBGPalette(value.ptr);
+  ok := TLN_SetBGBitmap(value.ptr);
 end;
 
 procedure TEngine.SetBackgroundColor(const tilemap: TTilemap);
