@@ -16,7 +16,7 @@ Pascal bindings for Tilengine 2D retro graphics engine
 * https://github.com/turric4n/PascalTileEngine
 *****************************************************************************
 
-Copyright (c) 2018 Enrique Fuentes (aka Turric4n) - thanks to Marc Palacios for
+Copyright (c) 2019 Enrique Fuentes (aka Turric4n) - thanks to Marc Palacios for
 this great project.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
