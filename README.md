@@ -96,3 +96,8 @@ Benchmark specs ->
 ```
 
 ![PascalTilengine benchmark Pascal vs C](benchmark_linux_vm.gif)
+
+< Warning!!! > on latest versions of Raspbian (Stretch) don't use repo SDL2 lib perfomance is AWFUL. 
+Compile it yourserlf, parameters : 
+
+./configure --prefix=/usr --host=armv7l-raspberry-linux-gnueabihf --disable-pulseaudio --disable-esd --disable-video-mir --disable-video-wayland --disable-video-x11 --disable-video-opengl --disable-static 
