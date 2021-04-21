@@ -1,7 +1,7 @@
 {******************************************************************************
 *
 * Pascal Tilengine sample
-* Copyright (c) 2018 coversion by Enrique Fuentes (aka Turric4n) - thanks to
+* Copyright (c) 2021 coversion by Enrique Fuentes (aka Turric4n) - thanks to
 * Marc Palacios for this great project.
 * http://www.tilengine.org
 *
@@ -63,6 +63,7 @@ var
 begin
   // Setup engine
   engine := TEngine.Singleton(HRES, VRES, 1, NUM_SPRITES, 0);
+  //ReadLn;
   Writeln;
   Writeln('Tilengine pascal benchmark tool');
   Writeln('Written by Turric4n based on Megamarc C version');
@@ -76,7 +77,7 @@ begin
   if VISIBLEWINDOW then window := TWindow.Singleton('', 0);
 
   // Create assets
-  engine.LoadPath := '../../../assets/tf4';
+  engine.LoadPath := '../../../assets/tf4/';
   tilemap := TTilemap.FromFile('TF4_bg1.tmx', '');
   spriteset := TSpriteset.FromFile('FireLeo');
 
@@ -133,6 +134,7 @@ end;
 begin
   try
     Main;
+    Readln;
   except
     on e : Exception do Writeln(e.Message);
   end;

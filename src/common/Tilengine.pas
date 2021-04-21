@@ -44,6 +44,12 @@ type
   end;
 
   /// <summary>
+  /// Pointer to SDL Callback to manage SDL directly (SDL headers not included here!)
+  /// Just cast PSDLEvent(Pointer)
+  /// </summary>
+  TSDLCallback = procedure(event : Pointer); cdecl;
+
+  /// <summary>
   /// Video callback aka function pointer
   /// </summary>
   TVideocallback = procedure(line : Integer); cdecl;
@@ -825,8 +831,48 @@ type
       procedure WaitRedraw;
       procedure EnableCRTEffect(overlay : TOverlay; overlay_factor, threshold, v0, v1, v2, v3 : Byte; blur, glow_factor : Byte);
       procedure DisableCRTEffect;
+      /// <summary>
+      /// Set main SDL callback pointer
+      /// </summary>
+      /// <returns></returns>
+      procedure SetSDLCallback(callback : TSDLCallback);
+      procedure EnableBlur(mode : Boolean);
       procedure Delay(msecs : Word);
       procedure Delete;
+      destructor Destroy; override;
+  end;
+
+  TTObject = class
+    public
+      Id : Word;
+      GId : Word;
+      Flags : Word;
+      X : Integer;
+      Y : Integer;
+      constructor Create(id, gId, flags : Word; x, y : Integer);
+  end;
+
+  TObjectList = class
+    private
+      ptr : PInteger;
+    public
+      constructor CreateFromFile(const filename, layername : PAnsiChar);
+      constructor CreateFromClone(ptr : PInteger);
+      constructor Create;
+      procedure Add(obj : TTObject);
+      function Clone : TObjectList;
+      function Count : Integer;
+      destructor Destroy; override;
+  end;
+
+  TWorld = class
+    private
+
+    public
+      constructor Create(const tmxfile : PAnsiChar; first_layer : Integer);
+      procedure SetPosition(x, y : Integer);
+      procedure SetLayerParallaxFactor(nlayer : Integer; x, y : Single);
+      procedure SetSpriteWorldPosition(nsprite : Integer; x, y : Integer);
       destructor Destroy; override;
   end;
 
@@ -845,12 +891,10 @@ end;
 
 procedure TEngine.BeginFrame(frame: Integer);
 begin
-  TLN_BeginFrame(frame);
+  //TLN_BeginFrame(frame);
 end;
 
 constructor TEngine.Create(numLayers, numSprites, numAnimations: Integer);
-var
-  c: Integer;
 begin
   InitLayers(numLayers);
   InitSprites(numSprites);
@@ -878,7 +922,7 @@ end;
 
 function TEngine.DrawNextScanLine: Boolean;
 begin
-  Result := TLN_DrawNextScanline;
+  //Result := TLN_DrawNextScanline;
 end;
 
 function TEngine.GetAnimation(idx: Integer): TAnimation;
@@ -968,6 +1012,7 @@ var
   ok : Boolean;
 begin
   ok := TLN_SetBGBitmap(value.ptr);
+  TEngine.ThrowException(ok);
 end;
 
 procedure TEngine.SetBackgroundColor(const tilemap: TTilemap);
@@ -985,6 +1030,7 @@ var
   ok : Boolean;
 begin
   ok := TLN_SetBGPalette(value.ptr);
+  TEngine.ThrowException(ok);
 end;
 
 procedure TEngine.SetCustomBlendFunction(customfunction: TBlendFunction);
@@ -1048,13 +1094,15 @@ class procedure TEngine.ThrowException(success: Boolean);
 var
   error : TError;
   name : PAnsiChar;
+  astr : AnsiString;
 begin
   if not success then
   begin
     error := TLN_GetLastError;
     name := TLN_GetErrorString(error);
     if name = nil then name := '';
-    raise TTilengineException.Create(name);
+    astr := AnsiString(name);
+    raise TTilengineException.Create(string(astr));
   end;
 end;
 
@@ -1072,7 +1120,7 @@ end;
 
 procedure TWindow.BeginFrame(frame: Integer);
 begin
-  TLN_BeginWindowFrame(frame);
+  //TLN_BeginWindowFrame(frame);
 end;
 
 constructor TWindow.Create;
@@ -1118,6 +1166,11 @@ begin
   TLN_DrawFrame(time);
 end;
 
+procedure TWindow.EnableBlur(mode: Boolean);
+begin
+  TLN_EnableBlur(mode);
+end;
+
 procedure TWindow.EnableCRTEffect(overlay: TOverlay; overlay_factor, threshold,
   v0, v1, v2, v3, blur, glow_factor: Byte);
 begin
@@ -1131,7 +1184,7 @@ end;
 
 procedure TWindow.EndFrame;
 begin
-  TLN_EndWindowFrame;
+  //TLN_EndWindowFrame;
 end;
 
 function TWindow.GetActive: Boolean;
@@ -1152,6 +1205,11 @@ end;
 function TWindow.Process: Boolean;
 begin
   Result := TLN_ProcessWindow;
+end;
+
+procedure TWindow.SetSDLCallback(callback: TSDLCallback);
+begin
+  TLN_SetSDLCallback(@callback);
 end;
 
 procedure TWindow.SetTitle(const Value: PAnsiChar);
@@ -1284,8 +1342,10 @@ procedure TLayer.SetBlendMode(const Value: TBlend);
 var
   ok : Boolean;
 begin
+
   ok := TLN_SetLayerBlendMode(findex, PInteger(value), 128);
   TEngine.ThrowException(ok);
+  FBlendMode := Value;
 end;
 
 procedure TLayer.SetClip(x1, y1, x2, y2: Integer);
@@ -1387,11 +1447,11 @@ begin
 end;
 
 procedure TSprite.DisableAnimation;
-var
-  ok : Boolean;
+//var
+  //ok : Boolean;
 begin
-  ok := TLN_DisableAnimation(findex);
-  TEngine.ThrowException(ok);
+  //ok := TLN_DisableAnimation(findex);
+  //TEngine.ThrowException(ok);
 end;
 
 procedure TSprite.EnableCollision(mode: Boolean);
@@ -1432,7 +1492,7 @@ procedure TSprite.SetFlags(value: TTileFlags);
 var
   ok : Boolean;
 begin
-  ok := TLN_SetSpriteFlags(findex, PInteger(value));
+  ok := TLN_SetSpriteFlags(findex, Word(value));
   TEngine.ThrowException(ok);
 end;
 
@@ -1480,7 +1540,7 @@ procedure TSprite.Setup(spriteset: TSpriteset; flags: TTileFlags);
 var
   ok : Boolean;
 begin
-  ok := TLN_ConfigSprite(findex, spriteset.ptr, PInteger(flags));
+  ok := TLN_ConfigSprite(findex, spriteset.ptr, Word(flags));
   TEngine.ThrowException(ok);
 end;
 
@@ -1492,11 +1552,11 @@ begin
 end;
 
 procedure TAnimation.Disable;
-var
-  ok : Boolean;
+//var
+  //ok : Boolean;
 begin
-  ok := TLN_DisableAnimation(findex);
-  TEngine.ThrowException(ok);
+  //ok := TLN_DisableAnimation(findex);
+  //TEngine.ThrowException(ok);
 end;
 
 function TAnimation.GetActive: Boolean;
@@ -1534,26 +1594,26 @@ procedure TAnimation.SetSpriteAnimation(spriteIndex: Integer;
 var
   ok : Boolean;
 begin
-  ok := TLN_SetSpriteAnimation(findex, spriteIndex, sequence.ptr, loop);
+  ok := TLN_SetSpriteAnimation(spriteIndex, sequence.ptr, loop);
   TEngine.ThrowException(ok);
 end;
 
 procedure TAnimation.SetTilemapAnimation(layerIndex: Integer;
   sequence: TSequence);
-var
-  ok : Boolean;
+//var
+  //ok : Boolean;
 begin
-  ok := TLN_SetTilemapAnimation(findex, layerIndex, sequence.ptr);
-  TEngine.ThrowException(ok);
+  //ok := TLN_SetTilemapAnimation(findex, layerIndex, sequence.ptr);
+  //TEngine.ThrowException(ok);
 end;
 
 procedure TAnimation.SetTilesetAnimation(layerIndex: Integer;
   sequence: TSequence);
-var
-  ok : Boolean;
+//var
+//  ok : Boolean;
 begin
-  ok := TLN_SetTilesetAnimation(findex, layerIndex, sequence.ptr);
-  TEngine.ThrowException(ok);
+//  ok := TLN_SetTilesetAnimation(findex, layerIndex, sequence.ptr);
+//  TEngine.ThrowException(ok);
 end;
 
 { TSpriteset }
@@ -1652,11 +1712,8 @@ begin
 end;
 
 procedure TTileset.CopyTile(src, dst: Integer);
-var
-  ok : Boolean;
 begin
-  ok := TLN_CopyTile(ptr, src, dst);
-  TEngine.ThrowException(ok);
+
 end;
 
 constructor TTileset.Create(numTiles, width, height: Integer; palette: TPalette;
@@ -1781,7 +1838,8 @@ class function TTilemap.FromFile(filename, layername: PAnsiChar): TTilemap;
 var
   retval : PInteger;
 begin
-  retval := TLN_LoadTilemap(filename, layername);
+  if layername = '' then retval := TLN_LoadTilemap(filename, nil)
+  else retval := TLN_LoadTilemap(filename, layername);
   TEngine.ThrowException(retval <> nil);
   Result := TTilemap.Create(retval);
 end;
@@ -2005,6 +2063,7 @@ begin
   retval := TLN_CloneSequence(ptr);
   TEngine.ThrowException(retval <> nil);
   ptr := retval;
+  Result := TSequence.Create(ptr);
 end;
 
 constructor TSequence.Create(res: PInteger);
@@ -2113,6 +2172,83 @@ begin
   excpt := msg;
   if msg = '' then excpt := 'Unknown error';
   inherited Create(excpt);
+end;
+
+{ TWorld }
+
+constructor TWorld.Create(const tmxfile: PAnsiChar; first_layer : Integer);
+begin
+  TLN_LoadWorld(tmxfile, first_layer);
+end;
+
+destructor TWorld.Destroy;
+begin
+  TLN_ReleaseWorld;
+  inherited;
+end;
+
+procedure TWorld.SetLayerParallaxFactor(nlayer: Integer; x, y : Single);
+begin
+  TEngine.ThrowException(TLN_SetLayerParallaxFactor(nlayer, x, y));
+end;
+
+procedure TWorld.SetPosition(x, y: Integer);
+begin
+  TLN_SetWorldPosition(x, y);
+end;
+
+procedure TWorld.SetSpriteWorldPosition(nsprite, x, y : Integer);
+begin
+  TEngine.ThrowException(TLN_SetSpriteWorldPosition(nsprite, x, y));
+end;
+
+{ TObjectList }
+
+procedure TObjectList.Add(obj: TTObject);
+begin
+  TLN_AddTileObjectToList(ptr, obj.Id, obj.GId, obj.Flags, obj.X, obj.Y);
+end;
+
+function TObjectList.Clone: TObjectList;
+begin
+  Result := TObjectList.CreateFromClone(ptr);
+end;
+
+function TObjectList.Count: Integer;
+begin
+  Result := TLN_GetListNumObjects(ptr);
+end;
+
+constructor TObjectList.Create;
+begin
+  ptr := TLN_CreateObjectList;
+end;
+
+constructor TObjectList.CreateFromClone(ptr: PInteger);
+begin
+  Self.ptr := ptr;
+end;
+
+constructor TObjectList.CreateFromFile(const filename, layername: PAnsiChar);
+begin
+  ptr := TLN_LoadObjectList(filename, layername);
+end;
+
+destructor TObjectList.Destroy;
+begin
+  TLN_DeleteObjectList(ptr);
+  inherited;
+end;
+
+{ TTObject }
+
+constructor TTObject.Create(id, gId, flags: Word; x, y: Integer);
+begin
+  self.Id := id;
+  self.GId := gId;
+  Self.Flags := flags;
+  self.X := x;
+  self.Y := y;
 end;
 
 end.

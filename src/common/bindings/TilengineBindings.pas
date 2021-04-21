@@ -253,6 +253,41 @@ type
 
   PPixelMap = ^TPixelMap;
 
+  TPalette = record
+    entries : Integer;
+    data : array [0..1] of Byte;
+  end;
+
+  TBitmap = record
+    width : Integer;
+    height : Integer;
+    bpp : Integer;
+    pitch : Integer;
+    palette : TPalette;
+    data : array of Byte;
+  end;
+
+  /// <summary>
+  /// Engine object
+  /// </summary>
+
+  TLN_Object = record
+    id : Word;
+    gid : Word;
+    flags : Word;
+    type_ : Byte;
+    name : array[1..64] of AnsiChar;
+    x : Integer;
+    y : Integer;
+    width : Integer;
+    height : Integer;
+    bitmap : TBitmap;
+    has_gid : Boolean;
+    visible : Boolean;
+  end;
+
+
+
   /// <summary>
   // TLN Library Bindings don't use these externals directly
   // ENGINE BINDINGS
@@ -276,8 +311,8 @@ type
   procedure TLN_SetFrameCallback(callback : Pointer) cdecl; external LIB name 'TLN_SetFrameCallback';
   procedure TLN_SetRenderTarget(data : TArray<Byte>; pitch : Integer) cdecl; external LIB name 'TLN_SetRenderTarget';
   procedure TLN_UpdateFrame(time : Integer) cdecl; external LIB name 'TLN_UpdateFrame';
-  procedure TLN_BeginFrame(frame : Integer) cdecl; external LIB name 'TLN_BeginFrame';
-  function TLN_DrawNextScanline : Boolean; cdecl; external LIB name 'TLN_DrawNextScanline';
+  //procedure TLN_BeginFrame(frame : Integer) cdecl; external LIB name 'TLN_BeginFrame';
+  //function TLN_DrawNextScanline : Boolean; cdecl; external LIB name 'TLN_DrawNextScanline';
   procedure TLN_SetLastError(error : TError) cdecl; external LIB name 'TLN_SetLastError';
   function TLN_GetLastError : TError; cdecl; external LIB name 'TLN_GetLastError';
   function TLN_GetErrorString(error : TError) : PAnsiChar; cdecl; external LIB name 'TLN_GetErrorString';
@@ -300,10 +335,12 @@ type
   procedure TLN_EnableCRTEffect(overlay : TOverlay; overlay_factor, threshold, v0, v1, v2, v3 : Byte;
   blur, glow_factor : Byte) cdecl; external LIB name 'TLN_EnableCRTEffect';
   procedure TLN_DisableCRTEffect cdecl; external LIB name 'TLN_DisableCRTEffect';
+  procedure TLN_SetSDLCallback(callback : Pointer) cdecl; external LIB name 'TLN_SetSDLCallback';
+  procedure TLN_EnableBlur(mode : Boolean) cdecl; external LIB name 'TLN_EnableBlur';
   procedure TLN_Delay(msecs : Word) cdecl; external LIB name 'TLN_Delay';
   function TLN_GetTicks : Word cdecl; external LIB name 'TLN_GetTicks';
-  procedure TLN_BeginWindowFrame(frame : Integer) cdecl; external LIB name 'TLN_BeginWindowFrame';
-  procedure TLN_EndWindowFrame cdecl; external LIB name 'TLN_EndWindowFrame';
+  //procedure TLN_BeginWindowFrame(frame : Integer) cdecl; external LIB name 'TLN_BeginWindowFrame';
+  //procedure TLN_EndWindowFrame cdecl; external LIB name 'TLN_EndWindowFrame';
   function TLN_SetLayer(nlayer : Integer; tileset, tilemap : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetLayer';
   function TLN_SetLayerPalette(nlayer : Integer; tilemap : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetLayerPalette';
   function TLN_SetLayerBitmap(nlayer : Integer; bitmap : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetLayerBitmap';
@@ -323,9 +360,9 @@ type
   function TLN_GetLayerTile(nlayer, x, y : Integer; out info : TTileInfo) : Boolean; cdecl; external LIB name 'TLN_GetLayerTile';
   function TLN_GetLayerWidth(nlayer : Integer) : Integer; cdecl; external LIB name 'TLN_GetLayerWidth';
   function TLN_GetLayerHeight(nlayer : Integer) : Integer; cdecl; external LIB name 'TLN_GetLayerHeight';
-  function TLN_ConfigSprite(nsprite : Integer; spriteset : PInteger; flags : PInteger) : Boolean; cdecl; external LIB name 'TLN_ConfigSprite';
+  function TLN_ConfigSprite(nsprite : Integer; spriteset : PInteger; flags : Word) : Boolean; cdecl; external LIB name 'TLN_ConfigSprite';
   function TLN_SetSpriteSet(nsprite : Integer; spriteset : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetSpriteSet';
-  function TLN_SetSpriteFlags(nsprite : Integer; flags : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetSpriteFlags';
+  function TLN_SetSpriteFlags(nsprite : Integer; flags : Word) : Boolean; cdecl; external LIB name 'TLN_SetSpriteFlags';
   function TLN_SetSpritePosition(nsprite, x, y : Integer) : Boolean; cdecl; external LIB name 'TLN_SetSpritePosition';
   function TLN_SetSpritePicture(nsprite, entry : Integer) : Boolean; cdecl; external LIB name 'TLN_SetSpritePicture';
   function TLN_SetSpritePalette(nsprite : Integer; Palette : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetSpritePalette';
@@ -336,16 +373,18 @@ type
   function TLN_EnableSpriteCollision(nsprite : Integer; enable : Boolean) : Boolean; cdecl; external LIB name 'TLN_EnableSpriteCollision';
   function TLN_GetSpriteCollision(nsprite : Integer) : Boolean; cdecl; external LIB name 'TLN_GetSpriteCollision';
   function TLN_DisableSprite(nsprite : Integer) : Boolean; cdecl; external LIB name 'TLN_DisableSprite';
+  function TLN_DisableSpriteAnimation(nsprite : Boolean) : Boolean; cdecl; external LIB name 'TLN_DisableSpriteAnimation';
+
   function TLN_GetSpritePalette(nsprite : Integer) : PInteger; cdecl; external LIB name 'TLN_GetSpritePalette';
   function TLN_SetPaletteAnimation(index : Integer; palette, sequence : PInteger; blend : Boolean) : Boolean; cdecl; external LIB name 'TLN_SetPaletteAnimation';
   function TLN_SetPaletteAnimationSource(index : Integer; palette : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetPaletteAnimationSource';
-  function TLN_SetTilemapAnimation(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetTilemapAnimation';
-  function TLN_SetTilesetAnimation(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetTilesetAnimation';
-  function TLN_SetSpriteAnimation(index, nlayer : Integer; sequence : PInteger; loop : Integer) : Boolean; cdecl; external LIB name 'TLN_SetSpriteAnimation';
+  //function TLN_SetTilemapnimation(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetTilemapAnimation';
+  //function TLN_SetTilesetAnimation(index, nlayer : Integer; sequence : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetTilesetAnimation';
+  function TLN_SetSpriteAnimation(index : Integer; sequence : PInteger; loop : Integer) : Boolean; cdecl; external LIB name 'TLN_SetSpriteAnimation';
   function TLN_GetAnimationState(index : Integer) : Boolean; cdecl; external LIB name 'TLN_GetAnimationState';
   function TLN_SetAnimationDelay(index, delay : Integer) : Boolean; cdecl; external LIB name 'TLN_SetAnimationDelay';
   function TLN_GetAvailableAnimation : Integer; cdecl; external LIB name 'TLN_GetAvailableAnimation';
-  function TLN_DisableAnimation(index : Integer) : Boolean; cdecl; external LIB name 'TLN_DisableAnimation';
+  //function TLN_DisableAnimation(index : Integer) : Boolean; cdecl; external LIB name 'TLN_DisableAnimation';
   function TLN_CreateSpriteset(bitmap : PInteger; rects : TArray<TSpriteData>; entries : Integer) : PInteger; cdecl; external LIB name 'TLN_CreateSpriteset';
   function TLN_LoadSpriteset(name : PAnsiChar) : PInteger; cdecl; external LIB name 'TLN_LoadSpriteset';
   function TLN_CloneSpriteset(src : PInteger) : PInteger; cdecl; external LIB name 'TLN_CloneSpriteset';
@@ -357,7 +396,8 @@ type
   function TLN_CreateTileset(numtiles, width, height : Integer; palette, sequencepack : PInteger; attributes : TArray<TTileAtributes>) : PInteger; cdecl; external LIB name 'TLN_CreateTileset';
   function TLN_LoadTileset(filename : PAnsiChar) : PInteger; cdecl; external LIB name 'TLN_LoadTileset';
   function TLN_CloneTileset(src : PInteger) : PInteger; cdecl; external LIB name 'TLN_CloneTileset';
-  function TLN_CopyTile(tileset : PInteger; src, dst : Integer) : Boolean; cdecl; external LIB name 'TLN_CopyTile';
+  //Removed
+  //function TLN_CopyTile(tileset : PInteger; src, dst : Integer) : Boolean; cdecl; external LIB name 'TLN_CopyTile';
   function TLN_SetTilesetPixels(tileset : PInteger; entry : Integer; srcdata : TArray<Byte>; srcpitch : Integer) : Boolean; cdecl; external LIB name 'TLN_SetTilesetPixels';
   function TLN_GetTileWidth(tileset : PInteger) : Integer; cdecl; external LIB name 'TLN_GetTileWidth';
   function TLN_GetTileHeight(tileset : PInteger) : Integer; cdecl; external LIB name 'TLN_GetTileHeight';
@@ -407,6 +447,18 @@ type
   function TLN_GetSequencePackCount(sp : PInteger) : Integer; cdecl; external LIB name 'TLN_GetSequencePackCount';
   function TLN_AddSequenceToPack(sp, sequence : PInteger) : Boolean; cdecl; external LIB name 'TLN_AddSequenceToPack';
   function TLN_DeleteSequencePack(sp : PInteger) : Boolean; cdecl; external LIB name 'TLN_AddSequenceToPack';
+  function TLN_LoadWorld(tmxfile : PAnsiChar; first_layer : Integer) : Boolean; cdecl external LIB name 'TLN_LoadWorld';
+  procedure TLN_SetWorldPosition(x, y : Integer); cdecl external LIB name 'TLN_SetWorldPosition';
+  function TLN_SetLayerParallaxFactor(nlayer : Integer; x, y : Single) : Boolean; cdecl external LIB name 'TLN_SetLayerParallaxFactor';
+  function TLN_SetSpriteWorldPosition(nsprite : Integer; x, y : Integer) : Boolean; cdecl external LIB name 'TLN_SetSpriteWorldPosition';
+  procedure TLN_ReleaseWorld; cdecl external LIB name 'TLN_ReleaseWorld';
+  function TLN_CreateObjectList : PInteger; cdecl external LIB name 'TLN_CreateObjectList';
+  function TLN_AddTileObjectToList(list : PInteger; id, gid, flags : Word; x, y : Integer) : Boolean; cdecl external LIB name 'TLN_AddTileObjectToList';
+  function TLN_LoadObjectList(filename, layername : PAnsiChar) : PInteger; cdecl external LIB name 'TLN_LoadObjectList';
+  function TLN_CloneObjectList(src : PAnsiChar) : PAnsiChar; cdecl external LIB name 'TLN_LoadObjectList';
+  function TLN_GetListNumObjects(list : PInteger) : Integer; cdecl external LIB name 'TLN_GetListNumObjects';
+  function TLN_GetListObject(list : PInteger; info : PInteger) : Boolean; cdecl external LIB name 'TLN_GetListObject';
+  function TLN_DeleteObjectList(list : PInteger) : Boolean; cdecl external LIB name 'TLN_DeleteObjectList';
 
 implementation
 

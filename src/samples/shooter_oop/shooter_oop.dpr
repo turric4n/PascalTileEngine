@@ -125,7 +125,7 @@ begin
   if gametime > 100 then
   begin
     // Max random number div 30 remainder result will be in an enemy spawn
-    if (Random(RadomSeed) mod 30) = 1 then Enemy := TEnemy.Create(actorhandler, spritesets[Ord(TSpritesetType.ssMain)], sequencepack);
+    if (Random(RandomSeed) mod 30) = 1 then Enemy := TEnemy.Create(actorhandler, spritesets[Ord(TSpritesetType.ssMain)], sequencepack);
   end
   // boss creation at 600
   else if gametime = 600 then //TODO create boss;
@@ -168,7 +168,7 @@ begin
   sequencepack := TSequencePack.FromFile('TF4_seq.sqx');
 
   // Create engine renderer and input logic (AKA SDL)
-  window := TWindow.Singleton('', Ord(TWindowsFlag.Vsync) or Ord(TWindowsFlag.Fullscreen));
+  window := TWindow.Singleton('', Ord(TWindowsFlag.Vsync) {or Ord(TWindowsFlag.Fullscreen)});
   window.Title := 'Pascal horizontal shooter demo';
 
   // Create actor handler
