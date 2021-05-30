@@ -42,44 +42,41 @@ procedure rasterEffects(line : Integer); cdecl;
 var
   pos : Integer;
   y : Integer;
-  backgroundlayer, foregroundlayer : TLayer;
 begin
-  backgroundlayer := engine.GetLayer(Ord(TLayerType.ltBackground));
-  foregroundlayer := engine.GetLayer(Ord(TLayerType.ltForeground));
   if line < 64 then
   begin
     // Apply sky color gradient
     engine.SetBackgroundColor(InterpolateColor(line, 0, 63, sky_hi, sky_lo));
   end;
   // Foreground
-  if line = 32 then backgroundlayer.SetPosition(Round(gametime / 4), 160);
+  if line = 32 then background_layer.SetPosition(Round(gametime / 4), 160);
   if line = 64 then
   begin
     // Switch layer again (because clouds are on foreground and mountains on background)
-    backgroundlayer.Setup(background_tileset, background_tilemap);
-    foregroundlayer.Setup(foreground_tileset, foreground_tilemap);
-    backgroundlayer.SetPosition(pos_background[0], 64);
+    background_layer.Setup(background_tileset, background_tilemap);
+    foreground_layer.Setup(foreground_tileset, foreground_tilemap);
+    background_layer.SetPosition(pos_background[0], 64);
     // Switch palettes again
-    foregroundlayer.Palette := palettes[Ord(TLayerType.ltForeground)];
-    backgroundlayer.Palette := palettes[Ord(TLayerType.ltBackground)];
+    foreground_layer.Palette := palettes[Ord(TLayerType.ltForeground)];
+    background_layer.Palette := palettes[Ord(TLayerType.ltBackground)];
     // Move Cloud layer
-    foregroundlayer.SetPosition((frame shl 2) div 3, 192 - line);
-    foregroundlayer.BlendMode := TBlend.Mix50;
+    foreground_layer.SetPosition((frame shl 2) div 3, 192 - line);
+    foreground_layer.BlendMode := TBlend.Mix50;
   end;
   // We don't want to draw foreground layer anymore
-  if line = 112 then foregroundlayer.Disable;
+  if line = 112 then foreground_layer.Disable;
   if line = 192 then
   begin
-    foregroundlayer.BlendMode := TBlend.BNone;
+    foreground_layer.BlendMode := TBlend.BNone;
     // Move middle foreground layer clouds and foreground mountains
-    foregroundlayer.SetPosition(frame * 10, 448 - line);
+    foreground_layer.SetPosition(frame * 10, 448 - line);
   end;
   if line >= 112 then
   begin
     // Water pixel effect
     pos := Lerp(line, 112, 240, pos_background[1], pos_background[2]);
     y := 224 - 112;
-    backgroundlayer.SetPosition(pos + TTilengineUtils.CalcSin(line * 5 + frame, 5), y);
+    background_layer.SetPosition(pos { + TTilengineUtils.CalcSin(line * 5 + frame, 5)}, y);
   end;
 end;
 
@@ -98,23 +95,19 @@ end;
 procedure updateScroll;
 var
   c : Integer;
-  backgroundlayer, foregroundlayer : TLayer;
 begin
   // Increment position x of our fixed array
   for c := 0 to 2 do
     Inc(pos_background[c], inc_background[c]);
-  // Get engine layers
-  foregroundlayer := engine.GetLayer(Ord(TLayerType.ltForeground));
-  backgroundlayer := engine.GetLayer(Ord(TLayerType.ltBackground));
   // Switch tilemaps for background and foreground
-  backgroundlayer.Setup(foreground_tileset, foreground_tilemap);
-  foregroundlayer.Setup(background_tileset, background_tilemap);
+  background_layer.Setup(foreground_tileset, foreground_tilemap);
+  foreground_layer.Setup(background_tileset, background_tilemap);
   // Update delta position for each layer
-  backgroundlayer.SetPosition(Round(time / 3), 160);
-  foregroundlayer.SetPosition(pos_background[0], 64);
+  background_layer.SetPosition(Round(time / 3), 160);
+  foreground_layer.SetPosition(pos_background[0], 64);
   // Assign defined palettes for switched layers
-  foregroundlayer.Palette := palettes[Ord(TLayerType.ltBackground)];
-  backgroundlayer.Palette := palettes[Ord(TLayerType.ltForeground)];
+  foreground_layer.Palette := palettes[Ord(TLayerType.ltBackground)];
+  background_layer.Palette := palettes[Ord(TLayerType.ltForeground)];
 end;
 
 procedure spawnEnemies;
@@ -136,6 +129,7 @@ var
   c : Integer;
   ship : IEntity;
 begin
+  //eep(20000);
   // Setup engine
   engine := TEngine.Singleton(WIDTH, HEIGHT, Ord(TLayerType.ltMax), Ord(TActorDef.acMAX), Ord(TActorDef.acMAX));
   engine.SetBackgroundColor(BACKGROUNDCOLOR);
@@ -147,18 +141,21 @@ begin
   // Base resource path
   engine.LoadPath := '../../../assets/tf4/';
 
+  foreground_layer := engine.GetLayer(Ord(TLayerType.ltForeground));
+
+  background_layer := engine.GetLayer(Ord(TLayerType.ltBackground));
+
   // Load Layers
-  TTilengineUtils.LoadLayer(engine.GetLayer(Ord(TLayerType.ltBackground)), 'TF4_bg1');
-  TTilengineUtils.LoadLayer(engine.GetLayer(Ord(TLayerType.ltForeground)), 'TF4_fg1');
+  TTilengineUtils.LoadLayer(background_layer, 'TF4_bg1');
+  TTilengineUtils.LoadLayer(foreground_layer, 'TF4_fg1');
 
   // Setup background layer
-  background_tileset := engine.GetLayer(Ord(TLayerType.ltBackground)).TileSet;
-  background_tilemap := engine.GetLayer(Ord(TLayerType.ltBackground)).TileMap;
+  background_tileset := background_layer.TileSet;
+  background_tilemap := background_layer.TileMap;
 
   // Setup foreground layer
-  foreground_tileset :=  engine.GetLayer(Ord(TLayerType.ltForeground)).TileSet;
-  foreground_tilemap :=  engine.GetLayer(Ord(TLayerType.ltForeground)).TileMap;
-
+  foreground_tileset :=  foreground_layer.TileSet;
+  foreground_tilemap :=  background_layer.TileMap;
 
   // Load Spritesets
   spritesets[Ord(TSpritesetType.ssMain)] := TSpriteset.FromFile('FireLeo');

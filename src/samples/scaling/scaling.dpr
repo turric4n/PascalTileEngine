@@ -131,8 +131,10 @@ var
   waterSequence : TSequence;
   palette : TPalette;
 begin
+  Sleep(10000);
   // Setup engine
   engine := TEngine.Singleton(HRES, VRES, NUM_LAYERS, 0, 0);
+  engine.SetLogLevel(TLN_LOG_VERBOSE);
   engine.SetBackgroundColor(BACKGROUNDCOLOR);
   callback := @MyRasterEffects;
   engine.SetRasterCallback(Callback);

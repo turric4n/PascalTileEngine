@@ -64,6 +64,8 @@ var
   background_tileset : TTileset;
   foreground_tilemap : TTilemap;
   background_tilemap : TTilemap;
+  foreground_layer   : TLayer;
+  background_layer   : TLayer;
 
 
 implementation

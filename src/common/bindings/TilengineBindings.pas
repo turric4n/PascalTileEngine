@@ -63,6 +63,11 @@ type
     MaxError
   );
 
+  TPalette = record
+    entries : Integer;
+    data : array [0..1] of Byte;
+  end;
+
   /// <summary>
   /// List of flag values for window creation
   /// </summary>
@@ -132,6 +137,15 @@ type
     Mix = Mix50
   );
 
+  TBitmap = record
+    width : Integer;
+    height : Integer;
+    bpp : Integer;
+    pitch : Integer;
+    palette : TPalette;
+    data : array of Byte;
+  end;
+
   /// <summary>
   /// List of flags for tiles and sprites
   /// </summary>
@@ -154,6 +168,20 @@ type
     H : Integer;
   end;
 
+  TSpriteEntry = record
+    Hash : Word;
+    W : Integer;
+    H : Integer;
+    Offset : Integer;
+  end;
+
+  TSpriteSet = record
+    Entries : Integer;
+    Bitmap : TBitMap;
+    Palete : TPalette;
+    Data : array of TSpriteEntry;
+  end;
+
   PSpriteData = ^TSpriteData;
 
   /// <summary>
@@ -165,6 +193,16 @@ type
   end;
 
   PSpriteInfo = ^TSpriteInfo;
+
+  TSpriteState = record
+    X, Y, W, H : Integer;
+    Flags : Word;
+    Palette : TPalette;
+    Spriteset : TSpriteSet;
+    Index : Integer;
+    Enabled : Boolean;
+    Collision : Boolean;
+  end;
 
   /// <summary>
   /// Data returned by cref="Layer.GetTile" about a given tile inside a background layer
@@ -253,20 +291,6 @@ type
 
   PPixelMap = ^TPixelMap;
 
-  TPalette = record
-    entries : Integer;
-    data : array [0..1] of Byte;
-  end;
-
-  TBitmap = record
-    width : Integer;
-    height : Integer;
-    bpp : Integer;
-    pitch : Integer;
-    palette : TPalette;
-    data : array of Byte;
-  end;
-
   /// <summary>
   /// Engine object
   /// </summary>
@@ -286,7 +310,10 @@ type
     visible : Boolean;
   end;
 
-
+  /// <summary>
+  /// Log level enumerator
+  /// </summary>
+  TLogLevel = (TLN_LOG_NONE = $0, TLN_LOG_ERRORS, TLN_LOG_VERBOSE);
 
   /// <summary>
   // TLN Library Bindings don't use these externals directly
@@ -318,6 +345,7 @@ type
   function TLN_GetErrorString(error : TError) : PAnsiChar; cdecl; external LIB name 'TLN_GetErrorString';
   function TLN_GetAvailableSprite : Integer; cdecl; external LIB name 'TLN_GetAvailableSprite';
   procedure TLN_SetLoadPath(path : PAnsiChar) cdecl; external LIB name 'TLN_SetLoadPath';
+  procedure TLN_SetLogLevel(loglevel : TLogLevel) cdecl; external LIB name 'TLN_SetLogLevel';
   procedure TLN_SetCustomBlendFunction(customfunction : Pointer) cdecl; external LIB name 'TLN_SetCustomBlendFunction';
   function TLN_CreateWindow(const overlay : PAnsiChar; flags : Integer) : Boolean; cdecl; external LIB name 'TLN_CreateWindow';
   function TLN_CreateWindowThread(const overlay : PAnsiChar; flags : Integer) : Boolean; cdecl; external LIB name 'TLN_CreateWindowThread';
@@ -342,6 +370,7 @@ type
   //procedure TLN_BeginWindowFrame(frame : Integer) cdecl; external LIB name 'TLN_BeginWindowFrame';
   //procedure TLN_EndWindowFrame cdecl; external LIB name 'TLN_EndWindowFrame';
   function TLN_SetLayer(nlayer : Integer; tileset, tilemap : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetLayer';
+  function TLN_SetLayerTilemap(nlayer : Integer; tilemap : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetLayerTilemap';
   function TLN_SetLayerPalette(nlayer : Integer; tilemap : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetLayerPalette';
   function TLN_SetLayerBitmap(nlayer : Integer; bitmap : PInteger) : Boolean; cdecl; external LIB name 'TLN_SetLayerBitmap';
   function TLN_SetLayerPosition(nlayer, hstart, vstart : Integer) : Boolean; cdecl; external LIB name 'TLN_SetLayerPosition';

@@ -43,6 +43,8 @@ type
     procedure ByRGB(R,G,B : Byte);
   end;
 
+
+
   /// <summary>
   /// Pointer to SDL Callback to manage SDL directly (SDL headers not included here!)
   /// Just cast PSDLEvent(Pointer)
@@ -506,6 +508,17 @@ type
       /// <param name="sx"></param>
       /// <param name="sy"></param>
       procedure SetScaling(sx, sy : Single);
+      /// <summary>
+      /// Sets the sprite position in world space coordinates
+      /// </summary>
+      /// <param name="x">x Horizontal world position of pivot (0 = left margin)</param>
+      /// <param name="y">y Vertical world position of pivot (0 = top margin)</param>
+      procedure SetWorldPosition(x, y : Integer);
+
+      procedure SetPivot(px, py : Single);
+
+      procedure SetFirst;
+
       procedure Reset;
       /// <summary>
       ///
@@ -577,6 +590,8 @@ type
       /// </summary>
       /// <param name="map"></param>
       procedure SetPixelMapping(map : TArray<TPixelMap>);
+
+      procedure SetParallaxFactor(x, y : Single);
       procedure Reset;
       procedure EnableCollision(mode : Boolean);
       procedure SetColumnOffset(offsets : TArray<Integer>);
@@ -730,11 +745,19 @@ type
       /// </summary>
       /// <returns></returns>
       procedure InitLayers(count : Integer);
+      /// <summary>
+      /// Sets engine log level into console.
+      /// </summary>
+      /// <returns></returns>
+      procedure SetLogLevel(loglevel : TLogLevel);
       function GetLayer(idx : Integer) : TLayer;
       function GetSprite(idx : Integer) : TSprite;
       function GetAnimation(idx : Integer) : TAnimation;
       procedure UpdateFrame(time : Integer);
       procedure InitAnimations(count : Integer);
+      procedure LoadWorld(const Filename : PAnsiChar; FirstLayer : Integer = 0);
+      procedure SetWorldPosition(x, y : Integer);
+      procedure ReleaseWorld;
       destructor Destroy; override;
   end;
 
@@ -1007,6 +1030,19 @@ begin
   for c := 0 to count - 1 do sprites[c] := TSprite.Create(c);
 end;
 
+procedure TEngine.LoadWorld(const Filename: PAnsiChar; FirstLayer : Integer = 0);
+var
+  ok : Boolean;
+begin
+  ok := TLN_LoadWorld(Filename, FirstLayer);
+  TEngine.ThrowException(ok);
+end;
+
+procedure TEngine.ReleaseWorld;
+begin
+  TLN_ReleaseWorld;
+end;
+
 procedure TEngine.SetBackgroundBitmap(const Value: TBitmap);
 var
   ok : Boolean;
@@ -1053,6 +1089,11 @@ begin
   TLN_SetLoadPath(Value);
 end;
 
+procedure TEngine.SetLogLevel(loglevel: TLogLevel);
+begin
+  TLN_SetLogLevel(loglevel);
+end;
+
 procedure TEngine.SetRasterCallback(callback: TVideocallback);
 begin
   TLN_SetRasterCallback(@callback);
@@ -1071,6 +1112,11 @@ end;
 procedure TEngine.SetWidth(const Value: Integer);
 begin
   FWidth := Value;
+end;
+
+procedure TEngine.SetWorldPosition(x, y: Integer);
+begin
+  TLN_SetWorldPosition(x, y);
 end;
 
 class function TEngine.Singleton(Hres, Vres, numLayers, numSprites, numAnimations: Integer): TEngine;
@@ -1364,12 +1410,12 @@ begin
   TEngine.ThrowException(ok);
 end;
 
-procedure TLayer.SetMap(Tilemap: TTIlemap);
+procedure TLayer.SetMap(Tilemap: TTilemap);
 var
   ok : Boolean;
 begin
   ftilemap := Tilemap;
-  ok := TLN_SetLayer(findex, nil, Tilemap.ptr);
+  ok := TLN_SetLayerTilemap(findex, Tilemap.ptr);
   TEngine.ThrowException(ok);
 end;
 
@@ -1386,6 +1432,14 @@ var
   ok : Boolean;
 begin
   ok := TLN_SetLayerPalette(findex, value.ptr);
+  TEngine.ThrowException(ok);
+end;
+
+procedure TLayer.SetParallaxFactor(x, y: Single);
+var
+  ok : Boolean;
+begin
+  ok := TLN_SetLayerParallaxFactor(findex, x, y);
   TEngine.ThrowException(ok);
 end;
 
@@ -1488,6 +1542,11 @@ begin
   TEngine.ThrowException(ok);
 end;
 
+procedure TSprite.SetFirst;
+begin
+
+end;
+
 procedure TSprite.SetFlags(value: TTileFlags);
 var
   ok : Boolean;
@@ -1510,6 +1569,11 @@ var
 begin
   ok := TLN_SetSpritePicture(findex, Value);
   TEngine.ThrowException(ok);
+end;
+
+procedure TSprite.SetPivot(px, py: Single);
+begin
+
 end;
 
 procedure TSprite.SetPosition(x, y: Integer);
@@ -1542,6 +1606,11 @@ var
 begin
   ok := TLN_ConfigSprite(findex, spriteset.ptr, Word(flags));
   TEngine.ThrowException(ok);
+end;
+
+procedure TSprite.SetWorldPosition(x, y: Integer);
+begin
+  TLN_SetSpriteWorldPosition(findex, x, y);
 end;
 
 { TAnimation }

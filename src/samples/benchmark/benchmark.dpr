@@ -28,7 +28,7 @@ const
   VRES = 240;
   NUM_SPRITES = 250;
   NUM_FRAMES = 2000;
-  VISIBLEWINDOW = False;
+  VISIBLEWINDOW = True;
 
 var
   pixels : Integer;
