@@ -5,6 +5,8 @@
 # WARNING
 This branch is expected to work with Tilengine 2.9.1, change to Master if you want to use old Tilengine versions
 
+You can compile Tilengine Library yourself or buy it here : https://megamarc.itch.io/tilengine
+
 ## Delphi + Windows
 ![PascalTilengine demo](PascalTilengineDemo.gif)
 
@@ -19,7 +21,7 @@ Pascal bindings for Tilengine 2D retro graphics engine
 * https://github.com/turric4n/PascalTileEngine
 *****************************************************************************
 
-Copyright (c) 2019 Enrique Fuentes (aka Turric4n) - thanks to Marc Palacios for
+Copyright (c) 2021 Enrique Fuentes (aka Turric4n) - thanks to Marc Palacios for
 this great project.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
