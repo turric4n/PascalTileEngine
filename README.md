@@ -2,6 +2,9 @@
 # PascalTilengine
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
 
+# WARNING
+This branch is expected to work with Tilengine 2.9.1, change to Master if you want to use old Tilengine versions
+
 ## Delphi + Windows
 ![PascalTilengine demo](PascalTilengineDemo.gif)
 
