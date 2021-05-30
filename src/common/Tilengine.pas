@@ -94,6 +94,7 @@ type
       /// <param name="name"></param>
       /// <param name="strips"></param>
       constructor Create(name : PAnsiChar; strips : TArray<TColorStrip>); overload;
+
       function Clone : TSequence;
       procedure GetInfo(info : PSequenceInfo);
       procedure Delete;
@@ -188,6 +189,7 @@ type
       /// <param name="first"></param>
       /// <param name="count"></param>
       procedure MulColor(color : TColor; first, count : Byte);
+      procedure Animate(Sequence : TSequence; Blend : Boolean = True);
       procedure Delete;
   end;
 
@@ -1953,6 +1955,14 @@ var
   ok : Boolean;
 begin
   ok := TLN_AddPaletteColor(ptr, color.R, color.G, color.B, first, count);
+  TEngine.ThrowException(ok);
+end;
+
+procedure TPalette.Animate(Sequence: TSequence; Blend: Boolean);
+var
+  ok : Boolean;
+begin
+  ok := TLN_SetPaletteAnimation(0, ptr, Sequence.ptr, Blend);
   TEngine.ThrowException(ok);
 end;
 
