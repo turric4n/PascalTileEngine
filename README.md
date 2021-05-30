@@ -16,7 +16,7 @@ You can compile Tilengine Library yourself or buy it here : https://megamarc.itc
 Pascal bindings for Tilengine 2D retro graphics engine 
 
 *****************************************************************************
-* Delphi/FreePascal Tilengine wrapper - Up to date to library version 2.1
+* Delphi/FreePascal Tilengine wrapper - Up to date to library version 2.9.1
 * http://www.tilengine.org
 * https://github.com/turric4n/PascalTileEngine
 *****************************************************************************
