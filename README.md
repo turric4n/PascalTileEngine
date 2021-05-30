@@ -2,6 +2,11 @@
 # PascalTilengine
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
 
+# WARNING
+This branch is expected to work with Tilengine 2.9.1, change to Master if you want to use old Tilengine versions
+
+You can compile Tilengine Library yourself or buy it here : https://megamarc.itch.io/tilengine
+
 ## Delphi + Windows
 ![PascalTilengine demo](PascalTilengineDemo.gif)
 
@@ -11,12 +16,12 @@
 Pascal bindings for Tilengine 2D retro graphics engine 
 
 *****************************************************************************
-* Delphi/FreePascal Tilengine wrapper - Up to date to library version 2.1
+* Delphi/FreePascal Tilengine wrapper - Up to date to library version 2.9.1
 * http://www.tilengine.org
 * https://github.com/turric4n/PascalTileEngine
 *****************************************************************************
 
-Copyright (c) 2019 Enrique Fuentes (aka Turric4n) - thanks to Marc Palacios for
+Copyright (c) 2021 Enrique Fuentes (aka Turric4n) - thanks to Marc Palacios for
 this great project.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
